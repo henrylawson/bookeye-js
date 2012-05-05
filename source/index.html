@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>bookeye</title>
+	<script type="text/javascript" src="lib/jquery-1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="lib/handlebars-1.0.0.beta.6/handlebars.js"></script>
+	<script type="text/javascript" src="src/bootstrap.js"></script>
+	<script type="text/javascript" src="src/controllers.js"></script>
+	<script type="text/javascript" src="src/views.js"></script>
+	<script type="text/javascript" src="src/services.js"></script>
+	<script id="books-view-all" type="text/x-handlebars-template">
+		<div class="book">
+			<div class="title">{{title}}</div>
+			<div class="author">{{author}}</div>
+		</div>
+	</script>
+	<script id="books-view-form" type="text/x-handlebars-template">
+		<div class="book">
+			<div class="title">Title: <input type="text" value="{{title}}" class="book-name" name="book-name" /></div>
+			<div class="author">Author: <input type="text" value="{{author}}" class="book-author" name="book-author" /></div>
+			<div class="save">Save</div>
+		</div>
+	</script>
+</head>
+<body>
+	<div id="header">
+	</div>
+	<div id="navigation">
+		<ul>
+			<li class="view-all">View all</li>
+			<li class="view-all">Add Book</li>
+		</ul>
+	</div>
+	<div id="content">
+		
+	</div>
+</body>
+</html>
