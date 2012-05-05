@@ -1,4 +1,4 @@
-bookeye-angularjs
-=================
+bookeye-js
+==========
 
-[INCOMPLETE] A client for bookeye built using AngularJS.
+[INCOMPLETE] A client for bookeye built using JavaScript.
