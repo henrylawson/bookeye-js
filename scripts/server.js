@@ -1,18 +1,21 @@
+var templateLoader = require('./template.loader');
 var fs = require('fs');
 var express = require("express");
 var path = require('path');
+
 var settings = {
 	staticDir: path.join(__dirname, '..', 'app'),
 	port: 4567
 };
+
 var app = express.createServer();
 
 app.get("/", function(req, res) {
-	res.end(TemplateLoader.parse(path.join(settings.staticDir, 'index.html')));
+	res.end(templateLoader.insertAfterHead(path.join(settings.staticDir, 'index.html'), path.join(settings.staticDir, 'templates')));
 });
 
-app.get('/spec', function(req, res) {
-	res.end(TemplateLoader.parse(path.join(settings.staticDir, 'test', 'index.html')));
+app.get('/test', function(req, res) {
+	res.end(templateLoader.insertAfterHead(path.join(settings.staticDir, 'test', 'index.html'), path.join(settings.staticDir, 'templates')));
 });
 
 app.configure(function(){
@@ -30,21 +33,3 @@ app.listen(settings.port);
 
 console.log('Running on 127.0.0.1:' + settings.port);
 console.log('Serving static content from:\n' + settings.staticDir);
-
-var TemplateLoader = {
-}
-TemplateLoader.parse = function(htmlFilePath) {
-	var htmlTagToInsertAfter = "<head>";
-	var htmlFile = fs.readFileSync(htmlFilePath);
-	return htmlFile.toString('utf8').replace(htmlTagToInsertAfter, htmlTagToInsertAfter + TemplateLoader.gatherAllTemplatesContents());
-}
-TemplateLoader.gatherAllTemplatesContents = function() {
-	var templatesDir = path.join(settings.staticDir, 'templates');
-	var templateFileNames = fs.readdirSync(templatesDir);
-	var templateContents = "";
-	for(var i = 0; i < templateFileNames.length; i++) {
-		var templateFilePath = path.join(templatesDir, templateFileNames[i]);
-		templateContents += fs.readFileSync(templateFilePath);
-	}
-	return templateContents;
-}
