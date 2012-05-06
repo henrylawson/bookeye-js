@@ -1,5 +1,6 @@
-var BooksService = function(statusWidget) {
+var BooksService = function(statusWidget, ajaxHandler) {
 	this.statusWidget = statusWidget;
+	this.ajaxHandler = ajaxHandler;
 	this.books = [];
 }
 BooksService.guid = function() {
@@ -12,10 +13,23 @@ BooksService.prototype.getAll = function() {
 	return this.books;
 }
 BooksService.prototype.save = function(book) {
+	var booksService = this;
 	if (typeof book.id === "undefined" || !book.id) {
 		book.id = BooksService.guid();
 		this.books.push(book);
 	}
-	this.statusWidget.displaySuccess("Book saved!");
+	this.statusWidget.displayMessage("Saving book...");
+	this.ajaxHandler({
+		type: 'POST',
+		url: '/books',
+		data: { books: this.books },
+		complete: function(jqXHR, textStatus) {
+			if (textStatus == "success") {
+				booksService.statusWidget.displaySuccess("Book saved!");
+			} else if (textStatus == "error") {
+				booksService.statusWidget.displayError("Error saving book to service");
+			}
+		}
+	});
 	return book;
 }

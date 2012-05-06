@@ -1,10 +1,12 @@
 describe("BooksService", function() {
 	var booksService;
 	var mockStatusWidget;
+	var mockAjaxHandler;
 	
 	beforeEach(function() {
+		mockAjaxHandler = jasmine.createSpy('ajax spy');
 		mockStatusWidget = new StatusWidget();
-		booksService = new BooksService(mockStatusWidget);
+		booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
 	});
 	
 	describe("getAll", function() {
@@ -19,38 +21,76 @@ describe("BooksService", function() {
 	});
 	
 	describe("save", function() {
-		it("should save a book and return it", function() {
-			var book = {};
-			
-			var returnedBook = booksService.save(book);
+		var newBook;
 		
-			expect(returnedBook).toEqual(book);
+		beforeEach(function() {
+			newBook = BookFactory.createBook();
+			newBook.id = null;
+		});
+		
+		it("should save a book and return it", function() {
+			var returnedBook = booksService.save(newBook);
+		
+			expect(returnedBook.name).toEqual(newBook.name);
 		});
 		
 		it("should save a book and it should be available in getAll", function() {
-			var book = { name: "Awesome, totally unique non existing book name" };
+			booksService.save(newBook);
 			
-			booksService.save(book);
-			
-			expect(booksService.getAll()).toContain(book);
+			expect(booksService.getAll()).toContain(newBook);
 		});
 		
-		it("should update a book that already exists in the serivce", function() {
-			var book = { name: "Awesome, totally unique non existing book name" };
+		it("should not re-add a book that already exists in the serivce", function() {
 			var originalBooksCount = booksService.getAll().length;
 			
-			booksService.save(booksService.save(book));
+			booksService.save(booksService.save(newBook));
 			
 			expect(booksService.getAll().length).toEqual(originalBooksCount + 1);
-			expect(booksService.getAll()).toContain(book);
+			expect(booksService.getAll()).toContain(newBook);
 		});
 		
-		it("should set success message when book is saved", function() {
-			spyOn(mockStatusWidget, "displaySuccess")
+		it("should set standard message when book is sending to ajax service", function() {
+			spyOn(mockStatusWidget, "displayMessage");
 			
-			booksService.save({});
+			booksService.save(newBook);
+			
+			expect(mockStatusWidget.displayMessage).toHaveBeenCalled();
+		});
+		
+		it("should POST to url when sending book to ajax service", function() {
+			booksService.save(newBook);
+			
+			expect(mockAjaxHandler.mostRecentCall.args[0].type).toEqual("POST");
+		});
+		
+		it("should have /books URL when sending book to ajax service", function() {
+			booksService.save(newBook);
+			
+			expect(mockAjaxHandler.mostRecentCall.args[0].url).toEqual("/books");
+		});
+		
+		it("should send the complte list of all books to ajax service", function() {
+			booksService.save(newBook);
+			
+			expect(mockAjaxHandler.mostRecentCall.args[0].data).toEqual({ books: [newBook] });
+		});
+		
+		it("should set success message when book is sent to ajax service", function() {
+			spyOn(mockStatusWidget, "displaySuccess");
+			
+			booksService.save(newBook);
+			mockAjaxHandler.mostRecentCall.args[0].complete(null, "success");
 			
 			expect(mockStatusWidget.displaySuccess).toHaveBeenCalled();
+		});
+
+		it("should set success message when book has failed to send to ajax service", function() {
+			spyOn(mockStatusWidget, "displayError");
+
+			booksService.save(newBook);
+			mockAjaxHandler.mostRecentCall.args[0].complete(null, "error");
+
+			expect(mockStatusWidget.displayError).toHaveBeenCalled();
 		});
 	});
 });

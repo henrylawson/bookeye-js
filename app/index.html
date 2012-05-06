@@ -12,8 +12,10 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var statusWidget = new StatusWidget($('#status'));
+			var booksService = new BooksService(statusWidget, $.ajax);
+			var booksView = new BooksView();
 			
-			var booksController = new BooksController($('#content'), new BooksView(), new BooksService(statusWidget));
+			var booksController = new BooksController($('#content'), booksView, booksService);
 			booksController.all();
 			
 			var navigationWidget = new NavigationWidget($('#navigation ul.items'));
