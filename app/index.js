@@ -1,4 +1,4 @@
-var templateLoader = require('./src/template.loader');
+var basicRouter = require('./src/basic.router');
 var express = require("express");
 var path = require('path');
 
@@ -20,15 +20,13 @@ app.configure(function(){
 		dumpExceptions: false, 
 		showStack: false
 	}));
-	app.get("/", function(req, res) {
-		res.end(templateLoader.insertAfterHead(path.join(settings.clientDir, 'html', 'index.html'), path.join(settings.clientDir, 'templates')));
-	});
+	app.get("/", basicRouter.index);
+	app.get("/books", basicRouter.getBooks);
+	app.post("/books", basicRouter.postBooks);
 });
 
 app.configure('development', function(){
-	app.get('/test', function(req, res) {
-		res.end(templateLoader.insertAfterHead(path.join(settings.clientDir, 'test', 'index.html'), path.join(settings.clientDir, 'templates')));
-	});
+	app.get('/test', basicRouter.test);
 	app.use('/specs', express.static(path.join(settings.clientDir, 'specs')));
 	app.use('/test/factories', express.static(path.join(settings.clientDir, 'test', 'factories')));
 	app.use(express.errorHandler({
