@@ -12,7 +12,7 @@ app.get("/", function(req, res) {
 });
 
 app.get('/spec', function(req, res) {
-	res.end(TemplateLoader.parse(path.join(settings.staticDir, 'spec', 'index.html')));
+	res.end(TemplateLoader.parse(path.join(settings.staticDir, 'test', 'index.html')));
 });
 
 app.configure(function(){
