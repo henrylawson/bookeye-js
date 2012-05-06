@@ -39,15 +39,15 @@ describe("BooksView", function() {
 			});
 			
 			it("with author", function() {
-				expect(displayElement.html()).toContain(book.title);
+				expect(displayElement.html()).toContain(book.author);
 			});
 			
 			it("with year", function() {
-				expect(displayElement.html()).toContain(book.title);
+				expect(displayElement.html()).toContain(book.year);
 			});
 			
 			it("with cover image", function() {
-				expect(displayElement.html()).toContain(book.title);
+				expect(displayElement.find('img.cover').attr('src')).toEqual(book.cover);
 			});
 			
 			it("with has been read checked", function() {
@@ -99,11 +99,44 @@ describe("BooksView", function() {
 			expect(displayElement.html()).not.toContain("REMOVE ME");
 		});
 		
-		it("should render book in template", function() {
-			booksView.form(displayElement, null, book);
+		describe("should render book in form template", function() {
+			var book;
 			
-			expect(displayElement.html()).toContain(book.title);
-			expect(displayElement.html()).toContain(book.author);
+			beforeEach(function() {
+				book = BookFactory.createBook(); 
+				book.hasBeenRead = true;
+				book.ownTheBook = true;
+				book.ownTheEBook = false;
+				booksView.form(displayElement, null, book);
+			});
+		
+			it("with title", function() {
+				expect(displayElement.html()).toContain(book.title);
+			});
+			
+			it("with author", function() {
+				expect(displayElement.html()).toContain(book.title);
+			});
+			
+			it("with year", function() {
+				expect(displayElement.html()).toContain(book.title);
+			});
+			
+			it("with cover image", function() {
+				expect(displayElement.html()).toContain(book.title);
+			});
+			
+			it("with has been read checked", function() {
+				expect(displayElement.find('.has-been-read').prop('checked')).toEqual(book.hasBeenRead);
+			});
+			
+			it("with own the ebook unchecked", function() {
+				expect(displayElement.find('.own-the-book').prop('checked')).toEqual(book.ownTheBook);
+			});
+			
+			it("with has been read checked", function() {
+				expect(displayElement.find('.own-the-ebook').prop('checked')).toEqual(book.ownTheEBook);
+			});
 		});
 		
 		it("should render template when no book provided", function() {

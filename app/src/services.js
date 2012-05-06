@@ -1,30 +1,19 @@
 var BooksService = function() {
-	
+	this.books = [];
+}
+BooksService.guid = function() {
+    var S4 = function() {
+       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    };
+    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
 }
 BooksService.prototype.getAll = function() {
-	return [
-		{ 
-			id: 5, 
-			title: "Awesome book", 
-			author: "Henry",
-			year: "2009",
-			cover: "http://bks9.books.google.co.in/books?id=KjmXSQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-			hasBeenRead: true,
-			ownTheBook: true,
-			ownTheEBook: true
-		},
-		{ 
-			id: 9, 
-			title: "Awesomer book", 
-			author: "Tomo",
-			year: "2007",
-			cover: "http://bks9.books.google.co.in/books?id=KjmXSQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-			hasBeenRead: false,
-			ownTheBook: false,
-			ownTheEBook: false
-		},
-	];
+	return this.books;
 }
 BooksService.prototype.save = function(book) {
+	if (typeof book.id === "undefined" || !book.id) {
+		book.id = BooksService.guid();
+		this.books.push(book);
+	}
 	return book;
 }
