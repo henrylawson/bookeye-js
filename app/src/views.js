@@ -14,6 +14,9 @@ BooksView.prototype.all = function(displayElement, callback, books) {
 BooksView.prototype.form = function(displayElement, callback, book) {
 	var element = $(displayElement).empty();
 	var template = Handlebars.compile($('#books-view-form').html());
+	if (typeof book === "undefined") {
+		var book = {};
+	}
 	var editHtml = $(template(book));
 	editHtml.find('div.save').click(function() {
 		book.title = $(this).parent().find('.book-title').val();

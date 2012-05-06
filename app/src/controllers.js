@@ -1,5 +1,5 @@
-var BooksController = function(booksView, booksService) {
-	this.contentArea = "#content";
+var BooksController = function(displayElement, booksView, booksService) {
+	this.contentArea = displayElement;
 	this.booksView = booksView;
 	this.booksService = booksService;
 }

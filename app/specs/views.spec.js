@@ -66,34 +66,52 @@ describe("BooksView", function() {
 			expect(displayElement.html()).toContain(book.author);
 		});
 		
-		it("should execute callback when save is clicked", function() {
-			var callback = jasmine.createSpy();
+		it("should render template when no book provided", function() {
+			booksView.form(displayElement, null);
 			
-			booksView.form(displayElement, callback, book);
-			displayElement.find('div.save').click();
-		
-			expect(callback).toHaveBeenCalledWith(book);
+			expect(displayElement).toContain('div.save');
 		});
 		
 		it("should execute callback when save is clicked", function() {
-			var callback = jasmine.createSpy();
+			var saveClickedCallback = jasmine.createSpy("save clicked callback");
 			
-			booksView.form(displayElement, callback, book);
+			booksView.form(displayElement, saveClickedCallback, book);
 			displayElement.find('div.save').click();
 		
-			expect(callback).toHaveBeenCalledWith(book);
+			expect(saveClickedCallback).toHaveBeenCalledWith(book);
+		});
+		
+		it("should execute callback when save is clicked", function() {
+			var saveClickedCallback = jasmine.createSpy("save clicked callback");
+			
+			booksView.form(displayElement, saveClickedCallback, book);
+			displayElement.find('div.save').click();
+		
+			expect(saveClickedCallback).toHaveBeenCalledWith(book);
 		});
 
 		it("should pass book to callback with all form values set", function() {
-			var callback = jasmine.createSpy();
+			var saveClickedCallback = jasmine.createSpy("save clicked callback");
 			var expectedBook = { id: book.id, title: "New title", author: "New author" };
 
-			booksView.form(displayElement, callback, book);
+			booksView.form(displayElement, saveClickedCallback, book);
 			displayElement.find('.book-title').val(expectedBook.title);
 			displayElement.find('.book-author').val(expectedBook.author);
 			displayElement.find('div.save').click();
 
-			expect(callback).toHaveBeenCalledWith(expectedBook);
+			expect(saveClickedCallback).toHaveBeenCalledWith(expectedBook);
+		});
+		
+		it("should pass book to callback with all values set when book not provided", function() {
+			var saveClickedCallback = jasmine.createSpy("save clicked callback");
+			var expectedBook = { title: "New title", author: "New author" };
+
+			booksView.form(displayElement, saveClickedCallback);
+			displayElement.find('.book-title').val(expectedBook.title);
+			displayElement.find('.book-author').val(expectedBook.author);
+			displayElement.find('div.save').click();
+
+			expect(saveClickedCallback).toHaveBeenCalledWith(expectedBook);
 		});
 	});
 });

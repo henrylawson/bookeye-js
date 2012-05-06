@@ -6,7 +6,7 @@ describe("BooksController", function() {
 	beforeEach(function() {
 		mockBooksView = new BooksView();
 		mockBooksService = new BooksService();
-		booksController = new BooksController(mockBooksView, mockBooksService);
+		booksController = new BooksController($('<div></dv>'), mockBooksView, mockBooksService);
 	});
 	
 	describe("all", function() {
@@ -35,10 +35,9 @@ describe("BooksController", function() {
 
 	describe("new", function() {
 		it("should render new view", function() {
-			var book = BookFactory.createBook();
 			spyOn(mockBooksView, 'form');
 
-			booksController.new(book);
+			booksController.new();
 
 			expect(mockBooksView.form).toHaveBeenCalled();
 		});

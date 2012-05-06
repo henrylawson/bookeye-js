@@ -5,22 +5,27 @@
 	<title>bookeye</title>
 	<script type="text/javascript" src="lib/jquery-1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="lib/handlebars-1.0.0.beta.6/handlebars.js"></script>
-	<script type="text/javascript" src="src/bootstrap.js"></script>
 	<script type="text/javascript" src="src/controllers.js"></script>
 	<script type="text/javascript" src="src/views.js"></script>
 	<script type="text/javascript" src="src/services.js"></script>
+	<script type="text/javascript" src="src/widgets.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var booksController = new BooksController($('#content'), new BooksView(), new BooksService());
+			booksController.all();
+			var navigationWidget = new NavigationWidget($('#navigation ul.items'));
+			navigationWidget.add("All", function() { booksController.all() });
+			navigationWidget.add("Add", function() { booksController.new() });
+		});
+	</script>
 </head>
 <body>
 	<div id="header">
 	</div>
 	<div id="navigation">
-		<ul>
-			<li class="view-all">View all</li>
-			<li class="view-all">Add Book</li>
-		</ul>
+		<ul class="items"></ul>
 	</div>
 	<div id="content">
-		
 	</div>
 </body>
 </html>
