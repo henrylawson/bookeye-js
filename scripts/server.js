@@ -1,5 +1,4 @@
 var templateLoader = require('./template.loader');
-var fs = require('fs');
 var express = require("express");
 var path = require('path');
 
@@ -19,14 +18,14 @@ app.get('/test', function(req, res) {
 });
 
 app.configure(function(){
-  app.use(express.methodOverride());
-  app.use(express.bodyParser());
-  app.use(express.static(settings.staticDir));
-  app.use(express.errorHandler({
-    dumpExceptions: true, 
-    showStack: true
-  }));
-  app.use(app.router);
+	app.use(express.methodOverride());
+	app.use(express.bodyParser());
+	app.use(express.static(settings.staticDir));
+	app.use(express.errorHandler({
+		dumpExceptions: true, 
+		showStack: true
+	}));
+	app.use(app.router);
 });
 
 app.listen(settings.port);
