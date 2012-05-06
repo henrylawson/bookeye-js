@@ -31,6 +31,7 @@ BooksService.prototype.getAllBooksFromWebService = function() {
 	this.ajaxHandler({
 		type: 'GET',
 		url: '/books',
+		async: false,
 		success: function(newBooks) {
 			booksService.books = newBooks;
 		},

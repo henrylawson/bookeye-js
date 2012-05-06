@@ -29,6 +29,13 @@ describe("BooksService", function() {
 		
 				expect(mockAjaxHandler.mostRecentCall.args[0].url).toEqual("/books");
 			});
+			
+			it("should do a synchronous call when retrieving", function() {
+				booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
+
+				expect(mockAjaxHandler.mostRecentCall.args[0].async).toBeDefined();
+				expect(mockAjaxHandler.mostRecentCall.args[0].async).toBeFalsy();
+			});
 	
 			it("should set success message when retrieved successfully", function() {
 				spyOn(mockStatusWidget, "displaySuccess");
