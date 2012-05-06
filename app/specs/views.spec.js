@@ -22,14 +22,54 @@ describe("BooksView", function() {
 				
 			expect(displayElement.html()).not.toContain("REMOVE ME");
 		});
+		
+		describe("should render single book in template", function() {
+			var book;
+			
+			beforeEach(function() {
+				book = BookFactory.createBook(); 
+				book.hasBeenRead = true;
+				book.ownTheBook = false;
+				book.ownTheEBook = true;
+				booksView.all(displayElement, null, [book]);
+			});
+		
+			it("with title", function() {
+				expect(displayElement.html()).toContain(book.title);
+			});
+			
+			it("with author", function() {
+				expect(displayElement.html()).toContain(book.title);
+			});
+			
+			it("with year", function() {
+				expect(displayElement.html()).toContain(book.title);
+			});
+			
+			it("with cover image", function() {
+				expect(displayElement.html()).toContain(book.title);
+			});
+			
+			it("with has been read checked", function() {
+				expect(displayElement.find('.has-been-read')).toHaveClass('checked');
+			});
+			
+			it("with own the ebook unchecked", function() {
+				expect(displayElement.find('.own-the-book')).not.toHaveClass('checked');
+			});
+			
+			it("with has been read checked", function() {
+				expect(displayElement.find('.own-the-ebook')).toHaveClass('checked');
+			});
+		});
 	
-		it("should render books in template", function() {
+		it("should render multiple books in template", function() {
+			expect(books[0].title).not.toEqual(books[1].title);
+			
 			booksView.all(displayElement, null, books);
 		
 			expect(displayElement.html()).toContain(books[0].title);
-			expect(displayElement.html()).toContain(books[0].author);
 			expect(displayElement.html()).toContain(books[1].title);
-			expect(displayElement.html()).toContain(books[1].author);
 		});
 	
 		it("should execute callback with book when a book is clicked", function() {
@@ -90,28 +130,90 @@ describe("BooksView", function() {
 			expect(saveClickedCallback).toHaveBeenCalledWith(book);
 		});
 
-		it("should pass book to callback with all form values set", function() {
-			var saveClickedCallback = jasmine.createSpy("save clicked callback");
-			var expectedBook = { id: book.id, title: "New title", author: "New author" };
+		describe("should pass book to callback when save is clicked", function() {
+			var actualBook;
+			var expectedBook;
+			
+			beforeEach(function() {
+				var saveClickedCallback = function(book) {
+					actualBook = book;
+				};
+				booksView.form(displayElement, saveClickedCallback, book);
+			});
 
-			booksView.form(displayElement, saveClickedCallback, book);
-			displayElement.find('.book-title').val(expectedBook.title);
-			displayElement.find('.book-author').val(expectedBook.author);
-			displayElement.find('div.save').click();
-
-			expect(saveClickedCallback).toHaveBeenCalledWith(expectedBook);
+			it("with modified title", function() {
+				var title = "New Title";
+				displayElement.find('input.title').val(title);
+				
+				displayElement.find('div.save').click();
+				
+				expect(actualBook.title).toEqual(title);
+			});
+			
+			it("with modified author", function() {
+				var author = "New Author";
+				displayElement.find('input.author').val(author);
+				
+				displayElement.find('div.save').click();
+				
+				expect(actualBook.author).toEqual(author);
+			});
+			
+			it("with modified year", function() {
+				var year = "2010";
+				displayElement.find('input.year').val(year);
+				
+				displayElement.find('div.save').click();
+				
+				expect(actualBook.year).toEqual(year);
+			});
+			
+			it("with modified cover", function() {
+				var cover = "new_cover";
+				displayElement.find('input.cover').val(cover);
+				
+				displayElement.find('div.save').click();
+				
+				expect(actualBook.cover).toEqual(cover);
+			});
+			
+			it("with 'has been read' modified", function() {
+				displayElement.find('input.has-been-read').prop('checked', false);
+				
+				displayElement.find('div.save').click();
+				
+				expect(actualBook.hasBeenRead).toBeFalsy();
+			});
+			
+			it("with 'own the book' modified", function() {
+				displayElement.find('input.own-the-book').prop('checked', false);
+				
+				displayElement.find('div.save').click();
+				
+				expect(actualBook.ownTheBook).toBeFalsy();
+			});
+			
+			it("with 'own the ebook' modified", function() {
+				displayElement.find('input.own-the-ebook').prop('checked', true);
+				
+				displayElement.find('div.save').click();
+				
+				expect(actualBook.ownTheEBook).toBeTruthy();
+			});
 		});
 		
-		it("should pass book to callback with all values set when book not provided", function() {
-			var saveClickedCallback = jasmine.createSpy("save clicked callback");
-			var expectedBook = { title: "New title", author: "New author" };
+		it("should pass book to callback with values set when book is not provided", function() {
+			var actualBook;
+			var saveClickedCallback = function(book) {
+				actualBook = book;
+			}
+			var newTitle = "New title";
 
 			booksView.form(displayElement, saveClickedCallback);
-			displayElement.find('.book-title').val(expectedBook.title);
-			displayElement.find('.book-author').val(expectedBook.author);
+			displayElement.find('input.title').val(newTitle);
 			displayElement.find('div.save').click();
 
-			expect(saveClickedCallback).toHaveBeenCalledWith(expectedBook);
+			expect(actualBook.title).toEqual(newTitle);
 		});
 	});
 });
