@@ -1,4 +1,5 @@
-var BooksService = function() {
+var BooksService = function(statusWidget) {
+	this.statusWidget = statusWidget;
 	this.books = [];
 }
 BooksService.guid = function() {
@@ -15,5 +16,6 @@ BooksService.prototype.save = function(book) {
 		book.id = BooksService.guid();
 		this.books.push(book);
 	}
+	this.statusWidget.displaySuccess("Book saved!");
 	return book;
 }

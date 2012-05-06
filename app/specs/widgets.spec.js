@@ -26,3 +26,42 @@ describe("NavigationWidget", function() {
 		});
 	});
 });
+
+describe("StatusWidget", function() {
+	var statusWidget;
+	var displayElement;
+	
+	beforeEach(function() {
+		displayElement = $('<div></div>');
+		statusWidget = new StatusWidget(displayElement);
+	});
+	
+	describe("display", function() {
+		it("should display the success message", function() {
+			var status = "A success occured!";
+			
+			statusWidget.displaySuccess(status);
+			
+			expect(displayElement.html()).toContain(status);
+			expect(displayElement.find('.success-message')).toExist();
+		});
+		
+		it("should display the standard message", function() {
+			var status = "An event completed!";
+			
+			statusWidget.displayMessage(status);
+			
+			expect(displayElement.html()).toContain(status);
+			expect(displayElement.find('.standard-message')).toExist();
+		});
+		
+		it("should display the error message", function() {
+			var status = "An error occured!";
+			
+			statusWidget.displayError(status);
+			
+			expect(displayElement.html()).toContain(status);
+			expect(displayElement.find('.error-message')).toExist();
+		});
+	});
+});

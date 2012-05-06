@@ -11,8 +11,11 @@
 	<script type="text/javascript" src="src/widgets.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			var booksController = new BooksController($('#content'), new BooksView(), new BooksService());
+			var statusWidget = new StatusWidget($('#status'));
+			
+			var booksController = new BooksController($('#content'), new BooksView(), new BooksService(statusWidget));
 			booksController.all();
+			
 			var navigationWidget = new NavigationWidget($('#navigation ul.items'));
 			navigationWidget.add("All", function() { booksController.all() });
 			navigationWidget.add("Add", function() { booksController.new() });
@@ -24,6 +27,8 @@
 	</div>
 	<div id="navigation">
 		<ul class="items"></ul>
+	</div>
+	<div id="status">
 	</div>
 	<div id="content">
 	</div>

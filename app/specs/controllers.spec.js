@@ -5,7 +5,7 @@ describe("BooksController", function() {
 
 	beforeEach(function() {
 		mockBooksView = new BooksView();
-		mockBooksService = new BooksService();
+		mockBooksService = new BooksService(new StatusWidget());
 		booksController = new BooksController($('<div></dv>'), mockBooksView, mockBooksService);
 	});
 	
