@@ -1,37 +1,50 @@
-var http = require("http"),
-    url = require("url"),
-    path = require("path"),
-    fs = require("fs")
-    port = process.argv[2] || 8888;
+var fs = require('fs');
+var express = require("express");
+var path = require('path');
+var settings = {
+	staticDir: path.join(__dirname, '..', 'app'),
+	port: 4567
+};
+var app = express.createServer();
 
-http.createServer(function(request, response) {
+app.get("/", function(req, res) {
+	res.end(TemplateLoader.parse(path.join(settings.staticDir, 'index.html')));
+});
 
-  var uri = url.parse(request.url).pathname, 
-      filename = path.join(process.cwd(), uri);
-  
-  path.exists(filename, function(exists) {
-    if(!exists) {
-      response.writeHead(404, {"Content-Type": "text/plain"});
-      response.write("404 Not Found\n");
-      response.end();
-      return;
-    }
+app.get('/spec', function(req, res) {
+	res.end(TemplateLoader.parse(path.join(settings.staticDir, 'spec', 'index.html')));
+});
 
-	if (fs.statSync(filename).isDirectory()) filename += '/index.html';
+app.configure(function(){
+  app.use(express.methodOverride());
+  app.use(express.bodyParser());
+  app.use(express.static(settings.staticDir));
+  app.use(express.errorHandler({
+    dumpExceptions: true, 
+    showStack: true
+  }));
+  app.use(app.router);
+});
 
-    fs.readFile(filename, "binary", function(err, file) {
-      if(err) {        
-        response.writeHead(500, {"Content-Type": "text/plain"});
-        response.write(err + "\n");
-        response.end();
-        return;
-      }
+app.listen(settings.port);
 
-      response.writeHead(200);
-      response.write(file, "binary");
-      response.end();
-    });
-  });
-}).listen(parseInt(port, 10));
+console.log('Running on 127.0.0.1:' + settings.port);
+console.log('Serving static content from:\n' + settings.staticDir);
 
-console.log("Static file server running at\n  => http://localhost:" + port + "/\nCTRL + C to shutdown");
+var TemplateLoader = {
+}
+TemplateLoader.parse = function(htmlFilePath) {
+	var htmlTagToInsertAfter = "<head>";
+	var htmlFile = fs.readFileSync(htmlFilePath);
+	return htmlFile.toString('utf8').replace(htmlTagToInsertAfter, htmlTagToInsertAfter + TemplateLoader.gatherAllTemplatesContents());
+}
+TemplateLoader.gatherAllTemplatesContents = function() {
+	var templatesDir = path.join(settings.staticDir, 'templates');
+	var templateFileNames = fs.readdirSync(templatesDir);
+	var templateContents = "";
+	for(var i = 0; i < templateFileNames.length; i++) {
+		var templateFilePath = path.join(templatesDir, templateFileNames[i]);
+		templateContents += fs.readFileSync(templateFilePath);
+	}
+	return templateContents;
+}

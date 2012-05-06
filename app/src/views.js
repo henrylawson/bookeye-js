@@ -1,9 +1,7 @@
-var BooksView = function() {
-	
-}
-BooksView.prototype.all = function(templateElement, displayElement, callback, books) {
+var BooksView = function() {}
+BooksView.prototype.all = function(displayElement, callback, books) {
 	var element = $(displayElement).empty();
-	var template = Handlebars.compile($(templateElement).html());
+	var template = Handlebars.compile($('#books-view-all').html());
 	var view = this;
 	$.each(books, function(i, book) {
 		var bookHtml = $(template(book));
@@ -13,9 +11,9 @@ BooksView.prototype.all = function(templateElement, displayElement, callback, bo
 		element.append(bookHtml);
 	});
 }
-BooksView.prototype.form = function(templateElement, displayElement, callback, book) {
+BooksView.prototype.form = function(displayElement, callback, book) {
 	var element = $(displayElement).empty();
-	var template = Handlebars.compile($(templateElement).html());
+	var template = Handlebars.compile($('#books-view-form').html());
 	var editHtml = $(template(book));
 	editHtml.find('div.save').click(function() {
 		book.title = $(this).parent().find('.book-title').val();
