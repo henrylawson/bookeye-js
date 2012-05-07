@@ -1,0 +1,19 @@
+body {
+	padding-top:50px;
+}
+div.page-container {
+	margin-left:10px;
+	margin-right:10px;
+}
+.cover-container {
+	background:#fafafa;
+	font-style:italic;
+}
+.cover-container img.cover {
+	width:100%;
+	border:0;
+}
+.book .properties {
+	text-align:right;
+	margin-bottom:10px;
+}

@@ -9,6 +9,9 @@
 	<script type="text/javascript" src="src/views.js"></script>
 	<script type="text/javascript" src="src/services.js"></script>
 	<script type="text/javascript" src="src/widgets.js"></script>
+	<link href="lib/bootstrap-2.0.3/css/bootstrap.css" rel="stylesheet">
+	<script type="text/javascript" src="lib/bootstrap-2.0.3/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="lib/bootstrap-2.0.3/components/bootstrap-alert.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var statusWidget = new StatusWidget($('#status'));
@@ -23,16 +26,29 @@
 			navigationWidget.add("Add", function() { booksController.new() });
 		});
 	</script>
+	<link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-	<div id="header">
-	</div>
-	<div id="navigation">
-		<ul class="items"></ul>
-	</div>
-	<div id="status">
-	</div>
-	<div id="content">
+	<div class="page-container">
+		<div id="navigation">
+			<div class="navbar navbar-fixed-top">
+			  <div class="navbar-inner">
+				<div class="page-container">
+					<a class="brand" href="#">
+					  bookeye
+					</a>
+					<ul class="items nav"></ul>
+					<form class="navbar-form pull-right">
+					  <input type="text" class="search-query" placeholder="Search">
+					</form>
+				</div>
+			  </div>
+			</div>
+		</div>
+		<div id="status">
+		</div>
+		<div id="content">
+		</div>
 	</div>
 </body>
 </html>

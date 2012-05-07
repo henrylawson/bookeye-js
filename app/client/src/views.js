@@ -1,7 +1,7 @@
 var BooksView = function() {}
 BooksView.prototype.all = function(displayElement, callback, books) {
 	var element = $(displayElement).empty();
-	var template = Handlebars.compile($('#books-view-all').html());
+	var template = Handlebars.compile($('#books-view-all').html(), {noEscape: true});
 	var view = this;
 	$.each(books, function(i, book) {
 		var bookHtml = $(template(book));
@@ -13,7 +13,7 @@ BooksView.prototype.all = function(displayElement, callback, books) {
 }
 BooksView.prototype.form = function(displayElement, callback, book) {
 	var element = $(displayElement).empty();
-	var template = Handlebars.compile($('#books-view-form').html());
+	var template = Handlebars.compile($('#books-view-form').html(), {noEscape: true});
 	if (typeof book === "undefined") {
 		var book = {};
 	}

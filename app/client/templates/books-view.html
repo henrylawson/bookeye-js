@@ -1,25 +1,69 @@
 <script id="books-view-all" type="text/x-handlebars-template">
 	<div class="book">
-		<div class="title">{{title}}</div>
-		<div class="author">{{author}}</div>
-		<div class="year">{{year}}</div>
-		<div class="cover"><img src="{{cover}}" title="{{title}} by {{author}}" alt="{{title}} by {{author}}" class="cover" /></div>
-		<div class="properties">
-			<div class="has-been-read {{#if hasBeenRead}}checked{{/if}}">READ</div>
-			<div class="own-the-book {{#if ownTheBook}}checked{{/if}}">BOOK</div>
-			<div class="own-the-ebook {{#if ownTheEBook}}checked{{/if}}">EBOOK</div>
+		<div class="well">
+			<div class="row-fluid">
+				<div class="span2">
+					<div class="cover-container well">
+						<img src="{{{cover}}}" title="{{title}} by {{author}}" alt="{{title}} by {{author}}" class="cover" />
+					</div>
+				</div>
+				<div class="span7">
+					<h1><span class="title">{{title}}</span></h1>
+					<h2><small><span class="author">{{author}}</span></small></h2>
+					
+				</div>
+				<div class="span3">
+					<div class="properties">
+						<span class="label has-been-read {{#if hasBeenRead}}checked label-success{{/if}}">READ</span>
+						<span class="label own-the-book {{#if ownTheBook}}checked label-success{{/if}}">BOOK</span>
+						<span class="label own-the-ebook {{#if ownTheEBook}}checked label-success{{/if}}">EBOOK</span>
+					</div>
+					<div class="properties">
+						<h6><span class="year"><em>{{year}}</em></span></h6>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </script>
 <script id="books-view-form" type="text/x-handlebars-template">
-	<div class="book-form">
-		<div class="field">Title: <input type="text" value="{{title}}" class="title" name="title" /></div>
-		<div class="field">Author: <input type="text" value="{{author}}" class="author" name="author" /></div>
-		<div class="field">Year: <input type="text" value="{{author}}" class="year" name="year" /></div>
-		<div class="field">Cover: <input type="text" value="{{cover}}" class="cover" name="cover" /></div>
-		<div class="field">Has been read? <input type="checkbox" {{#if hasBeenRead}}checked="checked"{{/if}} class="has-been-read" name="has-been-read" /></div>
-		<div class="field">Own the book? <input type="checkbox" {{#if ownTheBook}}checked="checked"{{/if}} class="own-the-book" name="own-the-book" /></div>
-		<div class="field">Own the eBook? <input type="checkbox" {{#if ownTheEBook}}checked="checked"{{/if}} class="own-the-ebook" name="own-the-ebook" /></div>
-		<div class="save">Save</div>
-	</div>
+	<form class="well">
+		<div class="book-form">
+			<div class="field">
+				<label>Title</label>
+				<input type="text" value="{{title}}" class="title" name="title" />
+			</div>
+			<div class="field">
+				<label>Author</label>
+				<input type="text" value="{{year}}" class="author" name="author" />
+			</div>
+			<div class="field">
+				<label>Year</label>
+				<input type="text" value="{{author}}" class="year" name="year" />
+			</div>
+			<div class="field">
+				<label>Cover</label>
+				<input type="text" value="{{{cover}}}" class="cover" name="cover" />
+			</div>
+			<div class="field">
+				<label class="checkbox">
+					<input type="checkbox" {{#if hasBeenRead}}checked="checked"{{/if}} class="has-been-read" name="has-been-read" /> 
+					Has been read?
+				</label>
+			</div>
+			<div class="field">
+				<label class="checkbox">
+					<input type="checkbox" {{#if ownTheBook}}checked="checked"{{/if}} class="own-the-book" name="own-the-book" />
+					Own the book?
+				</label>
+			</div>
+			<div class="field">
+				<label class="checkbox">
+					<input type="checkbox" {{#if ownTheEBook}}checked="checked"{{/if}} class="own-the-ebook" name="own-the-ebook" />
+					Own the eBook?
+				</label>
+			</div>
+			<div class="save btn btn-primary">Save</div>
+		</div>
+	</form>
 </script>

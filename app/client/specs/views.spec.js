@@ -115,15 +115,15 @@ describe("BooksView", function() {
 			});
 			
 			it("with author", function() {
-				expect(displayElement.html()).toContain(book.title);
+				expect(displayElement.html()).toContain(book.author);
 			});
 			
 			it("with year", function() {
-				expect(displayElement.html()).toContain(book.title);
+				expect(displayElement.html()).toContain(book.year);
 			});
 			
 			it("with cover image", function() {
-				expect(displayElement.html()).toContain(book.title);
+				expect(displayElement.html()).toContain(book.cover);
 			});
 			
 			it("with has been read checked", function() {
