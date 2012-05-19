@@ -126,11 +126,11 @@ describe("BooksService", function() {
 			expect(mockAjaxHandler.mostRecentCall.args[0].type).toEqual("GET");
 		});
 		
-		it("should hit /books URL", function() {
+		it("should use /books URL", function() {
 			expect(mockAjaxHandler.mostRecentCall.args[0].url).toEqual("/books");
 		});
 
-		it("should have the correct data", function() {
+		it("should have no data", function() {
 			expect(mockAjaxHandler.mostRecentCall.args[0].data).not.toBeDefined();
 		});
 		
@@ -160,15 +160,15 @@ describe("BooksService", function() {
 			expect(mockAjaxHandler.mostRecentCall.args[0].type).toEqual("POST");
 		});
 		
-		it("should hit /books URL", function() {
+		it("should use /books URL", function() {
 			expect(mockAjaxHandler.mostRecentCall.args[0].url).toEqual("/books");
 		});
 
-		it("should have the correct data", function() {
+		it("should have books to post as data", function() {
 			expect(mockAjaxHandler.mostRecentCall.args[0].data).toEqual({ books: booksToPost });
 		});
 		
-		it("should do a sync call", function() {
+		it("should do an async call", function() {
 			expect(mockAjaxHandler.mostRecentCall.args[0].async).toBeTruthy();
 		});
 		
