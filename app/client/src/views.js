@@ -5,7 +5,7 @@ BooksView.prototype.all = function(displayElement, callback, books) {
 	var view = this;
 	$.each(books, function(i, book) {
 		var bookHtml = $(template(book));
-		bookHtml.click(function() {
+		bookHtml.find('div.edit').click(function() {
 			callback(book);
 		});
 		element.append(bookHtml);

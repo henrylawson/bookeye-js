@@ -72,12 +72,12 @@ describe("BooksView", function() {
 			expect(displayElement.html()).toContain(books[1].title);
 		});
 	
-		it("should execute callback with book when a book is clicked", function() {
+		it("should execute callback with book when edit button is clicked", function() {
 			var books = BookFactory.createBooks();
 			var callback = jasmine.createSpy();
 		
 			booksView.all(displayElement, callback, books);
-			displayElement.find('div').first().click();
+			displayElement.find('div.edit').first().click();
 		
 			expect(callback).toHaveBeenCalledWith(books[0]);
 		});

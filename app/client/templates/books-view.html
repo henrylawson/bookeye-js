@@ -1,30 +1,27 @@
 <script id="books-view-all" type="text/x-handlebars-template">
-	<div class="book">
-		<div class="well">
-			<div class="row-fluid">
-				<div class="span2">
-					<div class="cover-container well">
-						<img src="{{{cover}}}" title="{{title}} by {{author}}" alt="{{title}} by {{author}}" class="cover" />
-					</div>
-				</div>
-				<div class="span7">
-					<h1><span class="title">{{title}}</span></h1>
-					<h2><small><span class="author">{{author}}</span></small></h2>
-					
-				</div>
-				<div class="span3">
-					<div class="properties">
-						<span class="label has-been-read {{#if hasBeenRead}}checked label-success{{/if}}">READ</span>
-						<span class="label own-the-book {{#if ownTheBook}}checked label-success{{/if}}">BOOK</span>
-						<span class="label own-the-ebook {{#if ownTheEBook}}checked label-success{{/if}}">EBOOK</span>
-					</div>
-					<div class="properties">
-						<h6><span class="year"><em>{{year}}</em></span></h6>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<tr class="book">
+			<td class="cover-container cover-image">
+				<img src="{{{cover}}}" title="{{title}} by {{author}}" alt="{{title}} by {{author}}" class="cover" />
+			</td>
+			<td>
+				<span class="label has-been-read {{#if hasBeenRead}}checked label-success{{/if}}">READ</span>
+				<span class="label own-the-book {{#if ownTheBook}}checked label-success{{/if}}">BOOK</span>
+				<span class="label own-the-ebook {{#if ownTheEBook}}checked label-success{{/if}}">EBOOK</span>
+			</td>
+			<td>
+				<span class="year">{{year}}</span>
+			</td>
+			<td>
+				<span class="title">{{title}}</span>
+			</td>
+			<td>
+				<span class="author">{{author}}</span>
+			</td>
+			<td>
+				<div class="save btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> Delete</div>
+				<div class="edit btn btn-primary btn-mini"><i class="icon-edit icon-white"></i> Edit</div>
+			</td>
+	</tr>
 </script>
 <script id="books-view-form" type="text/x-handlebars-template">
 	<form class="well">
@@ -35,11 +32,11 @@
 			</div>
 			<div class="field">
 				<label>Author</label>
-				<input type="text" value="{{year}}" class="author" name="author" />
+				<input type="text" value="{{author}}" class="author" name="author" />
 			</div>
 			<div class="field">
 				<label>Year</label>
-				<input type="text" value="{{author}}" class="year" name="year" />
+				<input type="text" value="{{year}}" class="year" name="year" />
 			</div>
 			<div class="field">
 				<label>Cover</label>

@@ -6,6 +6,7 @@ div.page-container {
 	margin-right:10px;
 }
 .cover-container {
+	display:none;
 	background:#fafafa;
 	font-style:italic;
 }
@@ -16,4 +17,12 @@ div.page-container {
 .book .properties {
 	text-align:right;
 	margin-bottom:10px;
+}
+.book .content {
+	position:relative;
+}
+.book .actions {
+	position:absolute;
+	bottom:0;
+	right:0;
 }
