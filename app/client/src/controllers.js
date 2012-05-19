@@ -16,13 +16,17 @@ BooksController.prototype.all = function() {
 			booksController.all();
 		},
 		books: books
-		});
+	});
 }
 BooksController.prototype.edit = function(book) {
 	var booksController = this;
-	this.booksView.form(this.contentArea, function(book) { 
-		booksController.save(book) 
-	}, book);
+	this.booksView.form({
+		displayElement: this.contentArea, 
+		saveCallback: function(book) { 
+			booksController.save(book) 
+		}, 
+		book: book
+	});
 }
 BooksController.prototype.save = function(book) {
 	this.booksRepository.save(book);
@@ -30,7 +34,10 @@ BooksController.prototype.save = function(book) {
 }
 BooksController.prototype.new = function() {
 	var booksController = this;
-	this.booksView.form(this.contentArea, function(book) { 
-		booksController.save(book) 
+	this.booksView.form({
+		displayElement: this.contentArea, 
+		saveCallback: function(book) { 
+			booksController.save(book) 
+		}
 	});
 }

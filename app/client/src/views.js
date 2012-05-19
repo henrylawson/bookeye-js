@@ -14,9 +14,9 @@ BooksView.prototype.all = function(options) {
 		element.append(bookHtml);
 	});
 }
-BooksView.prototype.form = function(displayElement, callback, book) {
-	book = book || {};
-	var element = $(displayElement).empty();
+BooksView.prototype.form = function(options) {
+	var book = options.book || {};
+	var element = $(options.displayElement).empty();
 	var template = Handlebars.compile($('#books-view-form').html());
 	var editHtml = $(template(book));
 	editHtml.find('input.cover').val(book.cover);
@@ -28,7 +28,7 @@ BooksView.prototype.form = function(displayElement, callback, book) {
 		book.hasBeenRead = $(this).parent().find('input.has-been-read').prop('checked');
 		book.ownTheBook = $(this).parent().find('input.own-the-book').prop('checked');
 		book.ownTheEBook = $(this).parent().find('input.own-the-ebook').prop('checked');
-		callback(book);
+		options.saveCallback(book);
 	});
 	element.append(editHtml);
 }

@@ -93,17 +93,20 @@ describe("BooksView", function() {
 	});
 	
 	describe("form", function() {
-		var formTempalteElement;
-		var book;
+		var options;
 		
 		beforeEach(function() {
-			book = BookFactory.createBook();
+			options = {
+				displayElement: displayElement,
+				saveCallback: jasmine.createSpy("save callback"),
+				book: BookFactory.createBook()
+			}
 		});
 		
 		it("should clear any data in display element before rendering", function() {
 			displayElement.append("REMOVE ME");
 			
-			booksView.form(displayElement, null, book);
+			booksView.form(options);
 				
 			expect(displayElement.html()).not.toContain("REMOVE ME");
 		});
@@ -116,7 +119,8 @@ describe("BooksView", function() {
 				book.hasBeenRead = true;
 				book.ownTheBook = true;
 				book.ownTheEBook = false;
-				booksView.form(displayElement, null, book);
+				options.book = book;
+				booksView.form(options);
 			});
 		
 			it("with title", function() {
@@ -149,27 +153,23 @@ describe("BooksView", function() {
 		});
 		
 		it("should render template when no book provided", function() {
-			booksView.form(displayElement, null);
+			booksView.form(options);
 			
 			expect(displayElement).toContain('div.save');
 		});
 		
 		it("should execute callback when save is clicked", function() {
-			var saveClickedCallback = jasmine.createSpy("save clicked callback");
-			
-			booksView.form(displayElement, saveClickedCallback, book);
+			booksView.form(options);
 			displayElement.find('div.save').click();
 		
-			expect(saveClickedCallback).toHaveBeenCalledWith(book);
+			expect(options.saveCallback).toHaveBeenCalledWith(options.book);
 		});
 		
 		it("should execute callback when save is clicked", function() {
-			var saveClickedCallback = jasmine.createSpy("save clicked callback");
-			
-			booksView.form(displayElement, saveClickedCallback, book);
+			booksView.form(options);
 			displayElement.find('div.save').click();
 		
-			expect(saveClickedCallback).toHaveBeenCalledWith(book);
+			expect(options.saveCallback).toHaveBeenCalledWith(options.book);
 		});
 
 		describe("should pass book to callback when save is clicked", function() {
@@ -177,10 +177,10 @@ describe("BooksView", function() {
 			var expectedBook;
 			
 			beforeEach(function() {
-				var saveClickedCallback = function(book) {
+				options.saveCallback = function(book) {
 					actualBook = book;
 				};
-				booksView.form(displayElement, saveClickedCallback, book);
+				booksView.form(options);
 			});
 
 			it("with modified title", function() {
@@ -246,12 +246,13 @@ describe("BooksView", function() {
 		
 		it("should pass book to callback with values set when book is not provided", function() {
 			var actualBook;
-			var saveClickedCallback = function(book) {
+			options.saveCallback = function(book) {
 				actualBook = book;
 			}
+			options.book = null;
 			var newTitle = "New title";
 
-			booksView.form(displayElement, saveClickedCallback);
+			booksView.form(options);
 			displayElement.find('input.title').val(newTitle);
 			displayElement.find('div.save').click();
 
