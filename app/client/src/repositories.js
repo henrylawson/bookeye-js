@@ -11,11 +11,25 @@ BooksRepository.prototype.getAll = function() {
 }
 BooksRepository.prototype.save = function(book) {
 	this.addBookIfNew(book);
+	this.updateWebService();
+	return book;
+}
+BooksRepository.prototype.delete = function(book) {
+	for (var i = 0; i < this.books.length; ) {
+		if (this.books[i].id == book.id) {
+			this.books.splice(i, 1);
+			this.updateWebService();
+			return;
+		} else {
+			i++;
+		}
+	}
+}
+BooksRepository.prototype.updateWebService = function() {
 	var booksRepository = this;
 	this.booksService.postAllBooksToWebService(function(books) {
 		booksRepository.books = books;
 	}, booksRepository.books);
-	return book;
 }
 BooksRepository.prototype.addBookIfNew = function(book) {
 	BooksRepository.setIdIfMissing(book);

@@ -93,7 +93,7 @@ describe("BooksRepository", function() {
 			
 			beforeEach(function() {
 				mockBooksService.postAllBooksToWebService = jasmine.createSpy("post to web service");
-				booksRepository.save(booksRepository.save(newBook));
+				booksRepository.save(newBook);
 				mostRecentCallArguments = mockBooksService.postAllBooksToWebService.mostRecentCall.args; 
 			});
 			
@@ -106,6 +106,44 @@ describe("BooksRepository", function() {
 				
 				mostRecentCallArguments[0](serviceReturnedBooks);
 				
+				expect(booksRepository.getAll()).toEqual(serviceReturnedBooks);
+			});
+		});
+	});
+
+	describe("delete", function() {
+		var books;
+
+		beforeEach(function() {
+			books = BookFactory.createBooks();
+			booksRepository.save(books[0]);
+			booksRepository.save(books[1]);
+		});
+
+		it("should delete the book from the repository", function() {
+			booksRepository.delete(books[0]);
+			
+			expect(booksRepository.getAll()).not.toContain(books[0]);
+		});
+
+		describe("should post the books to the web service", function() {
+			var mostRecentCallArguments;
+
+			beforeEach(function() {
+				mockBooksService.postAllBooksToWebService = jasmine.createSpy("post to web service");
+				booksRepository.delete(books[1]);
+				mostRecentCallArguments = mockBooksService.postAllBooksToWebService.mostRecentCall.args; 
+			});
+
+			it("with all the books", function() {
+				expect(mostRecentCallArguments[1]).toEqual([books[0]]);
+			});
+
+			it("and on success, update the repository", function() {
+				var serviceReturnedBooks = BookFactory.createBooks();
+
+				mostRecentCallArguments[0](serviceReturnedBooks);
+
 				expect(booksRepository.getAll()).toEqual(serviceReturnedBooks);
 			});
 		});
