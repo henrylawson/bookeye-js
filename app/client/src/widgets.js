@@ -15,7 +15,11 @@ var StatusWidget = function(displayElement) {
 StatusWidget.prototype.display = function(statusMessage, templateId) {
 	var template = Handlebars.compile($(templateId).html());
 	var messageElement = $(template({ message: statusMessage }));
-	messageElement.appendTo(this.displayElement);
+	this.displayElement.append(messageElement);
+	var childrenCount = this.displayElement.children().length;
+	setTimeout(function() {
+		messageElement.fadeOut(1000);
+	}, 500 * childrenCount);
 }
 StatusWidget.prototype.displaySuccess = function(statusMessage) {
 	this.display(statusMessage, '#status-widget-message-success');

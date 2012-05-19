@@ -5,7 +5,7 @@ describe("BooksService", function() {
 	
 	beforeEach(function() {
 		mockAjaxHandler = jasmine.createSpy('ajax spy');
-		mockStatusWidget = new StatusWidget();
+		mockStatusWidget = new StatusWidget($('<div></div>'));
 	});
 	
 	describe("updateHttpService", function() {

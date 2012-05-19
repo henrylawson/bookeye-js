@@ -36,7 +36,10 @@ BooksView.prototype.form = function(options) {
 		editHtml.modal('hide');
 		options.callbacks.save(book);
 	});
-	editHtml.modal();
+	editHtml.modal({
+		keybaord: false,
+		backdrop: 'static',
+	});
 	editHtml.find('.cancel').click(function() {
 		editHtml.modal('hide');
 		options.callbacks.cancel();

@@ -3,7 +3,7 @@ describe("NavigationWidget", function() {
 	var displayElement;
 	
 	beforeEach(function() {
-		displayElement = $('<ul></ul>')
+		displayElement = $('<div></div>')
 		navigationWidget = new NavigationWidget(displayElement);
 	});
 	

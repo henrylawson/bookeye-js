@@ -4,7 +4,7 @@ describe("BooksRepository", function() {
 	var mockAjaxHandler;
 	
 	beforeEach(function() {
-		mockStatusWidget = new StatusWidget();
+		mockStatusWidget = new StatusWidget($('<div></div>'));
 		mockBooksService = new BooksService(mockStatusWidget, jasmine.createSpy('ajax service'));
 		booksRepository = new BooksRepository(mockBooksService);
 	});
