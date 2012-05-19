@@ -1,26 +1,33 @@
 <script id="books-view-all" type="text/x-handlebars-template">
 	<tr class="book">
-			<td class="cover-container cover-image">
-				<img src="{{{cover}}}" title="{{title}} by {{author}}" alt="{{title}} by {{author}}" class="cover" />
-			</td>
-			<td>
-				<span class="label has-been-read {{#if hasBeenRead}}checked label-success{{/if}}">READ</span>
-				<span class="label own-the-book {{#if ownTheBook}}checked label-success{{/if}}">BOOK</span>
-				<span class="label own-the-ebook {{#if ownTheEBook}}checked label-success{{/if}}">EBOOK</span>
-			</td>
-			<td>
-				<span class="year">{{year}}</span>
-			</td>
-			<td>
-				<span class="title">{{title}}</span>
-			</td>
-			<td>
-				<span class="author">{{author}}</span>
-			</td>
-			<td>
-				<div class="delete btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> Delete</div>
-				<div class="edit btn btn-primary btn-mini"><i class="icon-edit icon-white"></i> Edit</div>
-			</td>
+		<td class="cover-container cover-image">
+			<img src="{{{cover}}}" title="{{title}} by {{author}}" alt="{{title}} by {{author}}" class="cover" />
+		</td>
+		<td>
+			<span class="label has-been-read {{#if hasBeenRead}}checked label-success{{/if}}">READ</span>
+			<span class="label own-the-book {{#if ownTheBook}}checked label-success{{/if}}">BOOK</span>
+			<span class="label own-the-ebook {{#if ownTheEBook}}checked label-success{{/if}}">EBOOK</span>
+		</td>
+		<td>
+			<span class="year">{{year}}</span>
+		</td>
+		<td>
+			<span class="title">{{title}}</span>
+		</td>
+		<td>
+			<span class="author">{{author}}</span>
+		</td>
+		<td>
+			<div class="delete btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> Delete</div>
+			<div class="edit btn btn-primary btn-mini"><i class="icon-edit icon-white"></i> Edit</div>
+		</td>
+	</tr>
+</script>
+<script id="books-view-all-empty" type="text/x-handlebars-template">
+	<tr class="book">
+		<td colspan="5">
+			No books to display
+		</td>
 	</tr>
 </script>
 <script id="books-view-form" type="text/x-handlebars-template">

@@ -4,7 +4,7 @@ describe("BooksView", function() {
 	
 	beforeEach(function() {
 		booksView = new BooksView();
-		displayElement = $('<div></div>');
+		displayElement = $('<table></table>');
 	});
 	
 	describe("all", function() {
@@ -13,8 +13,10 @@ describe("BooksView", function() {
 		beforeEach(function() {
 			options = {
 				displayElement: displayElement, 
-				editCallback: jasmine.createSpy('edit callback'),
-				deleteCallback: jasmine.createSpy('delete callback'),
+				callbacks: {
+					edit: jasmine.createSpy('edit callback'),
+					delete: jasmine.createSpy('delete callback'),
+				},
 				books: BookFactory.createBooks()
 			};
 		});
@@ -25,6 +27,14 @@ describe("BooksView", function() {
 			booksView.all(options);
 				
 			expect(displayElement.html()).not.toContain("REMOVE ME");
+		});
+		
+		it("should show empty message when no books to display", function() {
+			options.books = [];
+			
+			booksView.all(options);
+				
+			expect(displayElement.html()).toContain("No books");
 		});
 		
 		describe("should render single book in template", function() {
@@ -81,14 +91,14 @@ describe("BooksView", function() {
 			booksView.all(options);
 			displayElement.find('div.edit').first().click();
 		
-			expect(options.editCallback).toHaveBeenCalledWith(options.books[0]);
+			expect(options.callbacks.edit).toHaveBeenCalledWith(options.books[0]);
 		});
 		
 		it("should execute delete callback with book when delete button is clicked", function() {
 			booksView.all(options);
 			displayElement.find('div.delete').first().click();
 
-			expect(options.deleteCallback).toHaveBeenCalledWith(options.books[0]);
+			expect(options.callbacks.delete).toHaveBeenCalledWith(options.books[0]);
 		});
 	});
 	
@@ -98,7 +108,9 @@ describe("BooksView", function() {
 		beforeEach(function() {
 			options = {
 				displayElement: displayElement,
-				saveCallback: jasmine.createSpy("save callback"),
+				callbacks: {
+					save: jasmine.createSpy("save callback")
+				},
 				book: BookFactory.createBook()
 			}
 		});
@@ -162,14 +174,14 @@ describe("BooksView", function() {
 			booksView.form(options);
 			displayElement.find('div.save').click();
 		
-			expect(options.saveCallback).toHaveBeenCalledWith(options.book);
+			expect(options.callbacks.save).toHaveBeenCalledWith(options.book);
 		});
 		
 		it("should execute callback when save is clicked", function() {
 			booksView.form(options);
 			displayElement.find('div.save').click();
 		
-			expect(options.saveCallback).toHaveBeenCalledWith(options.book);
+			expect(options.callbacks.save).toHaveBeenCalledWith(options.book);
 		});
 
 		describe("should pass book to callback when save is clicked", function() {
@@ -177,7 +189,7 @@ describe("BooksView", function() {
 			var expectedBook;
 			
 			beforeEach(function() {
-				options.saveCallback = function(book) {
+				options.callbacks.save = function(book) {
 					actualBook = book;
 				};
 				booksView.form(options);
@@ -246,7 +258,7 @@ describe("BooksView", function() {
 		
 		it("should pass book to callback with values set when book is not provided", function() {
 			var actualBook;
-			options.saveCallback = function(book) {
+			options.callbacks.save = function(book) {
 				actualBook = book;
 			}
 			options.book = null;

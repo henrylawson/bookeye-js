@@ -8,12 +8,14 @@ BooksController.prototype.all = function() {
 	var booksController = this;
 	this.booksView.all({
 		displayElement: this.contentArea, 
-		editCallback: function(book) { 
-			booksController.edit(book) 
-		},
-		deleteCallback: function(book) {
-			booksController.booksRepository.delete(book);
-			booksController.all();
+		callbacks: {
+			edit: function(book) { 
+				booksController.edit(book) 
+			},
+			delete: function(book) {
+				booksController.booksRepository.delete(book);
+				booksController.all();
+			},
 		},
 		books: books
 	});
@@ -22,8 +24,10 @@ BooksController.prototype.edit = function(book) {
 	var booksController = this;
 	this.booksView.form({
 		displayElement: this.contentArea, 
-		saveCallback: function(book) { 
-			booksController.save(book) 
+		callbacks: {
+			save: function(book) { 
+				booksController.save(book) 
+			},
 		}, 
 		book: book
 	});
@@ -36,8 +40,10 @@ BooksController.prototype.new = function() {
 	var booksController = this;
 	this.booksView.form({
 		displayElement: this.contentArea, 
-		saveCallback: function(book) { 
-			booksController.save(book) 
+		callbacks: {
+			save: function(book) { 
+				booksController.save(book) 
+			}
 		}
 	});
 }
