@@ -1,4 +1,4 @@
 bookeye-js
 ==========
 
-[INCOMPLETE] A client for bookeye built using JavaScript.
+A JavaScript implementation of my book tracking applicaiton.
