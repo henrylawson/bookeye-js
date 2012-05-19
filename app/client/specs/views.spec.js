@@ -123,7 +123,7 @@ describe("BooksView", function() {
 			});
 			
 			it("with cover image", function() {
-				expect(displayElement.html()).toContain(book.cover);
+				expect(displayElement.find('.cover').val()).toEqual(book.cover);
 			});
 			
 			it("with has been read checked", function() {

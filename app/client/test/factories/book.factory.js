@@ -37,3 +37,15 @@ BookFactory.createBook = function() {
 		ownTheEBook: true
 	};
 }
+BookFactory.createSerializedBook = function() {
+	return { 
+		id: 5, 
+		title: "Awesomest book", 
+		author: "Henry",
+		year: "2009",
+		cover: "http://bks9.books.google.co.in/books?id=KjmXSQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+		hasBeenRead: 'true',
+		ownTheBook: 'true',
+		ownTheEBook: 'false'
+	};
+}

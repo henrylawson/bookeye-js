@@ -33,7 +33,7 @@ BooksService.prototype.getAllBooksFromWebService = function() {
 		url: '/books',
 		async: false,
 		success: function(newBooks) {
-			booksService.books = newBooks;
+			booksService.books = booksService.cleanSerializedBooks(newBooks);
 		},
 		complete: function(jqXHR, textStatus) {
 			if (textStatus == "success") {
@@ -44,6 +44,17 @@ BooksService.prototype.getAllBooksFromWebService = function() {
 			}
 		}
 	});
+}
+BooksService.prototype.cleanSerializedBooks = function(books) {
+	for(var i = 0; i < books.length; i++) {
+		books[i].hasBeenRead = this.cleanBoolean(books[i].hasBeenRead);
+		books[i].ownTheBook = this.cleanBoolean(books[i].ownTheBook);
+		books[i].ownTheEBook = this.cleanBoolean(books[i].ownTheEBook);
+	}
+	return books;
+}
+BooksService.prototype.cleanBoolean = function(bookBooleanProperty) {
+	return (bookBooleanProperty == 'true');
 }
 BooksService.prototype.postAllBooksToWebService = function() {
 	var booksService = this;

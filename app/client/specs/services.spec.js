@@ -19,20 +19,20 @@ describe("BooksService", function() {
 			});
 	
 			it("should do a HTTP GET when retrieving", function() {
-			booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
-		
+				booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
+				
 				expect(mockAjaxHandler.mostRecentCall.args[0].type).toEqual("GET");
 			});
 	
 			it("should have correct URL when retrieving", function() {
-			booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
-		
+				booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
+				
 				expect(mockAjaxHandler.mostRecentCall.args[0].url).toEqual("/books");
 			});
 			
 			it("should do a synchronous call when retrieving", function() {
 				booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
-
+				
 				expect(mockAjaxHandler.mostRecentCall.args[0].async).toBeDefined();
 				expect(mockAjaxHandler.mostRecentCall.args[0].async).toBeFalsy();
 			});
@@ -63,6 +63,27 @@ describe("BooksService", function() {
 
 				expect(booksService.getAll()).toEqual(returnedBooks);
 			});
+			
+			
+			describe("should 'clean' the received serialized books", function() {
+				beforeEach(function() {
+					var returnedBooks = [BookFactory.createSerializedBook()];
+					booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
+					mockAjaxHandler.mostRecentCall.args[0].success(returnedBooks);
+				});
+				
+				it("be converting hasBeenRead to boolean", function() {
+					expect(booksService.getAll()[0].hasBeenRead).toEqual(true);
+				});
+
+				it("be converting ownTheBook to boolean", function() {
+					expect(booksService.getAll()[0].ownTheBook).toEqual(true);
+				});
+
+				it("be converting ownTheEBook to boolean", function() {
+					expect(booksService.getAll()[0].ownTheEBook).toEqual(false);
+				});
+			});
 		});
 	});
 	
@@ -71,8 +92,6 @@ describe("BooksService", function() {
 		
 		beforeEach(function() {
 			booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
-			newBook = BookFactory.createBook();
-			newBook.id = null;
 		});
 		
 		it("should return array of books", function() {
