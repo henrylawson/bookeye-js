@@ -109,7 +109,8 @@ describe("BooksView", function() {
 			options = {
 				displayElement: displayElement,
 				callbacks: {
-					save: jasmine.createSpy("save callback")
+					save: jasmine.createSpy("save callback"),
+					cancel: jasmine.createSpy("cancel callback")
 				},
 				book: BookFactory.createBook()
 			}
@@ -177,16 +178,15 @@ describe("BooksView", function() {
 			expect(options.callbacks.save).toHaveBeenCalledWith(options.book);
 		});
 		
-		it("should execute callback when save is clicked", function() {
+		it("should execute callback when cancel is clicked", function() {
 			booksView.form(options);
-			displayElement.find('div.save').click();
+			displayElement.find('div.cancel').click();
 		
-			expect(options.callbacks.save).toHaveBeenCalledWith(options.book);
+			expect(options.callbacks.cancel).toHaveBeenCalledWith();
 		});
 
 		describe("should pass book to callback when save is clicked", function() {
 			var actualBook;
-			var expectedBook;
 			
 			beforeEach(function() {
 				options.callbacks.save = function(book) {

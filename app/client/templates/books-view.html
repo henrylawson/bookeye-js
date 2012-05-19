@@ -31,8 +31,12 @@
 	</tr>
 </script>
 <script id="books-view-form" type="text/x-handlebars-template">
-	<form class="well">
-		<div class="book-form">
+	<form class="modal">
+		<div class="modal-header">
+	    	<button class="cancel close">×</button>
+	    	<h3>Modal header</h3>
+	  	</div>															
+		<div class="modal-body book-form">
 			<div class="field">
 				<label>Title</label>
 				<input type="text" value="{{title}}" class="title" name="title" />
@@ -67,6 +71,9 @@
 					Own the eBook?
 				</label>
 			</div>
+		</div>	
+		<div class="modal-footer">
+			<div class="cancel btn">Cancel</div>
 			<div class="save btn btn-primary">Save</div>
 		</div>
 	</form>

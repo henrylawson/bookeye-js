@@ -2,13 +2,21 @@ describe("BooksController", function() {
 	var booksController;
 	var mockBooksRepository;
 	var mockBooksView;
+	var options;
 
 	beforeEach(function() {
 		mockBooksView = new BooksView();
 		mockStatusWidget = new StatusWidget();
 		mockBooksService = new BooksService(mockStatusWidget, jasmine.createSpy('ajax service'));
 		mockBooksRepository = new BooksRepository(mockBooksService);
-		booksController = new BooksController($('<div></dv>'), mockBooksView, mockBooksRepository);
+		booksController = new BooksController({
+			displayElements: {
+				all: $('<div></dv>'),
+				form: $('<div></dv>'),
+			},
+			view: mockBooksView,
+			repository: mockBooksRepository,
+		});
 	});
 	
 	describe("all action", function() {

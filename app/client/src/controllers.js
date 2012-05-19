@@ -1,13 +1,14 @@
-var BooksController = function(displayElement, booksView, booksRepository) {
-	this.contentArea = displayElement;
-	this.booksView = booksView;
-	this.booksRepository = booksRepository;
+var BooksController = function(options) {
+	this.allDisplayElement = options.displayElements.all;
+	this.formDisplayElement = options.displayElements.form;
+	this.booksView = options.view;
+	this.booksRepository = options.repository;
 }
 BooksController.prototype.all = function() {
 	var books = this.booksRepository.getAll();
 	var booksController = this;
 	this.booksView.all({
-		displayElement: this.contentArea, 
+		displayElement: this.allDisplayElement, 
 		callbacks: {
 			edit: function(book) { 
 				booksController.edit(book) 
@@ -23,11 +24,13 @@ BooksController.prototype.all = function() {
 BooksController.prototype.edit = function(book) {
 	var booksController = this;
 	this.booksView.form({
-		displayElement: this.contentArea, 
+		displayElement: this.formDisplayElement, 
 		callbacks: {
 			save: function(book) { 
 				booksController.save(book) 
 			},
+			cancel: function() {
+			}
 		}, 
 		book: book
 	});
@@ -39,10 +42,12 @@ BooksController.prototype.save = function(book) {
 BooksController.prototype.new = function() {
 	var booksController = this;
 	this.booksView.form({
-		displayElement: this.contentArea, 
+		displayElement: this.formDisplayElement, 
 		callbacks: {
 			save: function(book) { 
 				booksController.save(book) 
+			},
+			cancel: function() {
 			}
 		}
 	});

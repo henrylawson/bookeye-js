@@ -58,7 +58,7 @@ BooksService.prototype.postAllBooksToWebService = function(successCallback, allB
 		async: true,
 		messages: {
 			started: 'Updating...',
-			completeSuccess: 'Book saved!',
+			completeSuccess: 'Book updated!',
 			completeFailure: 'Error saving book to service',
 		},
 		callbacks: {
