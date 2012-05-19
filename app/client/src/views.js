@@ -1,12 +1,15 @@
 var BooksView = function() {}
-BooksView.prototype.all = function(displayElement, callback, books) {
-	var element = $(displayElement).empty();
+BooksView.prototype.all = function(options) {
+	var element = $(options.displayElement).empty();
 	var template = Handlebars.compile($('#books-view-all').html());
 	var view = this;
-	$.each(books, function(i, book) {
+	$.each(options.books, function(i, book) {
 		var bookHtml = $(template(book));
 		bookHtml.find('div.edit').click(function() {
-			callback(book);
+			options.editCallback(book);
+		});
+		bookHtml.find('div.delete').click(function() {
+			options.deleteCallback(book);
 		});
 		element.append(bookHtml);
 	});

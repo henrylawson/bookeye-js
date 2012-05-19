@@ -8,17 +8,21 @@ describe("BooksView", function() {
 	});
 	
 	describe("all", function() {
-		var allTemplateElement;
-		var books;
+		var options;
 
 		beforeEach(function() {
-			books = BookFactory.createBooks();
+			options = {
+				displayElement: displayElement, 
+				editCallback: jasmine.createSpy('edit callback'),
+				deleteCallback: jasmine.createSpy('delete callback'),
+				books: BookFactory.createBooks()
+			};
 		});
 		
 		it("should clear any data in display element before rendering", function() {
 			displayElement.append("REMOVE ME");
 			
-			booksView.all(displayElement, null, books);
+			booksView.all(options);
 				
 			expect(displayElement.html()).not.toContain("REMOVE ME");
 		});
@@ -31,7 +35,8 @@ describe("BooksView", function() {
 				book.hasBeenRead = true;
 				book.ownTheBook = false;
 				book.ownTheEBook = true;
-				booksView.all(displayElement, null, [book]);
+				options.books = [book];
+				booksView.all(options);
 			});
 		
 			it("with title", function() {
@@ -64,22 +69,26 @@ describe("BooksView", function() {
 		});
 	
 		it("should render multiple books in template", function() {
-			expect(books[0].title).not.toEqual(books[1].title);
+			expect(options.books[0].title).not.toEqual(options.books[1].title);
 			
-			booksView.all(displayElement, null, books);
+			booksView.all(options);
 		
-			expect(displayElement.html()).toContain(books[0].title);
-			expect(displayElement.html()).toContain(books[1].title);
+			expect(displayElement.html()).toContain(options.books[0].title);
+			expect(displayElement.html()).toContain(options.books[1].title);
 		});
 	
-		it("should execute callback with book when edit button is clicked", function() {
-			var books = BookFactory.createBooks();
-			var callback = jasmine.createSpy();
-		
-			booksView.all(displayElement, callback, books);
+		it("should execute edit callback with book when edit button is clicked", function() {
+			booksView.all(options);
 			displayElement.find('div.edit').first().click();
 		
-			expect(callback).toHaveBeenCalledWith(books[0]);
+			expect(options.editCallback).toHaveBeenCalledWith(options.books[0]);
+		});
+		
+		it("should execute delete callback with book when delete button is clicked", function() {
+			booksView.all(options);
+			displayElement.find('div.delete').first().click();
+
+			expect(options.deleteCallback).toHaveBeenCalledWith(options.books[0]);
 		});
 	});
 	

@@ -6,9 +6,17 @@ var BooksController = function(displayElement, booksView, booksRepository) {
 BooksController.prototype.all = function() {
 	var books = this.booksRepository.getAll();
 	var booksController = this;
-	this.booksView.all(this.contentArea, function(book) { 
-		booksController.edit(book) 
-	}, books);
+	this.booksView.all({
+		displayElement: this.contentArea, 
+		editCallback: function(book) { 
+			booksController.edit(book) 
+		},
+		deleteCallback: function(book) {
+			booksController.booksRepository.delete(book);
+			booksController.all();
+		},
+		books: books
+		});
 }
 BooksController.prototype.edit = function(book) {
 	var booksController = this;
