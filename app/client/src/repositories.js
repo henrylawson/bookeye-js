@@ -14,7 +14,7 @@ BooksRepository.prototype.save = function(book) {
 	var booksRepository = this;
 	this.booksService.postAllBooksToWebService(function(books) {
 		booksRepository.books = books;
-	}, this.books);
+	}, booksRepository.books);
 	return book;
 }
 BooksRepository.prototype.addBookIfNew = function(book) {

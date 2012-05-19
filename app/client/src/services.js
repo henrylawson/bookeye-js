@@ -49,12 +49,12 @@ BooksService.prototype.getAllBooksFromWebService = function(successCallback) {
 		}
 	});
 }
-BooksService.prototype.postAllBooksToWebService = function(successCallback, books) {
+BooksService.prototype.postAllBooksToWebService = function(successCallback, allBooks) {
 	var booksRepository = this;
 	this.updateHttpService({
 		httpVerb: 'POST', 
 		action: '/books',	
-		data: books,
+		data: { books: allBooks },
 		async: true,
 		messages: {
 			started: 'Updating...',

@@ -111,5 +111,71 @@ describe("BooksService", function() {
 				});
 			});
 		});
+	});	
+	
+	describe("getAllBooksFromWebService", function() {
+		var mockSuccessCallback;
+		
+		beforeEach(function() {
+			mockSuccessCallback = jasmine.createSpy("succes callback");
+			booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
+			booksService.getAllBooksFromWebService(mockSuccessCallback);
+		});
+		
+		it("should do a HTTP GET", function() {
+			expect(mockAjaxHandler.mostRecentCall.args[0].type).toEqual("GET");
+		});
+		
+		it("should hit /books URL", function() {
+			expect(mockAjaxHandler.mostRecentCall.args[0].url).toEqual("/books");
+		});
+
+		it("should have the correct data", function() {
+			expect(mockAjaxHandler.mostRecentCall.args[0].data).not.toBeDefined();
+		});
+		
+		it("should do a sync call", function() {
+			expect(mockAjaxHandler.mostRecentCall.args[0].async).toBeFalsy();
+		});
+		
+		it("should call success callback on success", function() {
+			mockAjaxHandler.mostRecentCall.args[0].success(BookFactory.createBooks());
+			
+			expect(mockSuccessCallback).toHaveBeenCalled();
+		});
+	});
+	
+	describe("postAllBooksToWebService", function() {
+		var mockSuccessCallback;
+		var booksToPost;
+		
+		beforeEach(function() {
+			booksToPost = BookFactory.createBooks();
+			mockSuccessCallback = jasmine.createSpy("succes callback");
+			booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
+			booksService.postAllBooksToWebService(mockSuccessCallback, booksToPost);
+		});
+		
+		it("should do a HTTP POST", function() {
+			expect(mockAjaxHandler.mostRecentCall.args[0].type).toEqual("POST");
+		});
+		
+		it("should hit /books URL", function() {
+			expect(mockAjaxHandler.mostRecentCall.args[0].url).toEqual("/books");
+		});
+
+		it("should have the correct data", function() {
+			expect(mockAjaxHandler.mostRecentCall.args[0].data).toEqual({ books: booksToPost });
+		});
+		
+		it("should do a sync call", function() {
+			expect(mockAjaxHandler.mostRecentCall.args[0].async).toBeTruthy();
+		});
+		
+		it("should call success callback on success", function() {
+			mockAjaxHandler.mostRecentCall.args[0].success(BookFactory.createBooks());
+			
+			expect(mockSuccessCallback).toHaveBeenCalled();
+		});
 	});
 });
