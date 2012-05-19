@@ -11,6 +11,10 @@ BooksRepository.prototype.getAll = function() {
 }
 BooksRepository.prototype.save = function(book) {
 	this.addBookIfNew(book);
+	console.log("New book:");
+	console.log(book);
+	console.log("Books list:");
+	console.log(this.books);
 	var booksRepository = this;
 	this.booksService.postAllBooksToWebService(function(books) {
 		booksRepository.books = books;
@@ -18,9 +22,18 @@ BooksRepository.prototype.save = function(book) {
 	return book;
 }
 BooksRepository.prototype.addBookIfNew = function(book) {
+	BooksRepository.setIdIfMissing(book);
+	for(var i = 0; i < this.books.length; i++) {
+		if (this.books[i].id == book.id) {
+			this.books[i] = book;
+			return;
+		}
+	}
+	this.books.push(book);
+}
+BooksRepository.setIdIfMissing = function(book) {
 	if (typeof book.id === "undefined" || !book.id) {
 		book.id = BooksRepository.guid();
-		this.books.push(book);
 	}
 }
 BooksRepository.guid = function() {

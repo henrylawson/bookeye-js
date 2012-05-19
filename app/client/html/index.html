@@ -17,7 +17,6 @@
 		$(document).ready(function() {
 			var statusWidget = new StatusWidget($('#status'));
 			var booksService = new BooksService(statusWidget, $.ajax);
-			console.log(booksService);
 			var booksRepository = new BooksRepository(booksService);
 			var booksView = new BooksView();
 			

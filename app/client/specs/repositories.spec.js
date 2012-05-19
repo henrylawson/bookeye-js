@@ -75,6 +75,19 @@ describe("BooksRepository", function() {
 			expect(booksRepository.getAll()).toContain(newBook);
 		});
 		
+		it("should update an existing book", function() {
+			var originalBook = newBook;
+			booksRepository.save(originalBook);
+			var updatedBook = BookFactory.createBook();
+			updatedBook.id = originalBook.id;
+			updatedBook.title = 'Updated the title';
+			
+			booksRepository.save(updatedBook);
+			
+			expect(booksRepository.getAll()).not.toContain(originalBook);
+			expect(booksRepository.getAll()).toContain(updatedBook);
+		});
+		
 		describe("should post the books to the web service", function() {
 			var mostRecentCallArguments;
 			
