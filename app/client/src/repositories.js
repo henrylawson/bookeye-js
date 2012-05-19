@@ -11,10 +11,6 @@ BooksRepository.prototype.getAll = function() {
 }
 BooksRepository.prototype.save = function(book) {
 	this.addBookIfNew(book);
-	console.log("New book:");
-	console.log(book);
-	console.log("Books list:");
-	console.log(this.books);
 	var booksRepository = this;
 	this.booksService.postAllBooksToWebService(function(books) {
 		booksRepository.books = books;
