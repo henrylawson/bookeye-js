@@ -4,12 +4,6 @@ var BooksService = function(statusWidget, ajaxHandler) {
 	this.books = [];
 	this.getAllBooksFromWebService();
 }
-BooksService.guid = function() {
-    var S4 = function() {
-       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
-    };
-    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
-}
 BooksService.prototype.getAll = function() {
 	return this.books;
 }
@@ -45,17 +39,6 @@ BooksService.prototype.getAllBooksFromWebService = function() {
 		}
 	});
 }
-BooksService.prototype.cleanSerializedBooks = function(books) {
-	for(var i = 0; i < books.length; i++) {
-		books[i].hasBeenRead = this.cleanBoolean(books[i].hasBeenRead);
-		books[i].ownTheBook = this.cleanBoolean(books[i].ownTheBook);
-		books[i].ownTheEBook = this.cleanBoolean(books[i].ownTheEBook);
-	}
-	return books;
-}
-BooksService.prototype.cleanBoolean = function(bookBooleanProperty) {
-	return (bookBooleanProperty == 'true');
-}
 BooksService.prototype.postAllBooksToWebService = function() {
 	var booksService = this;
 	this.ajaxHandler({
@@ -73,4 +56,21 @@ BooksService.prototype.postAllBooksToWebService = function() {
 			}
 		}
 	});
+}
+BooksService.guid = function() {
+    var S4 = function() {
+       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    };
+    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+}
+BooksService.prototype.cleanSerializedBooks = function(books) {
+	for(var i = 0; i < books.length; i++) {
+		books[i].hasBeenRead = this.cleanBoolean(books[i].hasBeenRead);
+		books[i].ownTheBook = this.cleanBoolean(books[i].ownTheBook);
+		books[i].ownTheEBook = this.cleanBoolean(books[i].ownTheEBook);
+	}
+	return books;
+}
+BooksService.prototype.cleanBoolean = function(bookBooleanProperty) {
+	return (bookBooleanProperty == 'true');
 }
