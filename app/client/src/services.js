@@ -46,7 +46,7 @@ BooksService.prototype.postAllBooksToWebService = function() {
 		url: '/books',
 		data: { books: this.books },
 		success: function(newBooks) {
-			booksService.books = newBooks;
+			booksService.books = booksService.cleanSerializedBooks(newBooks);
 		},
 		complete: function(jqXHR, textStatus) {
 			if (textStatus == "success") {

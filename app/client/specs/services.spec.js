@@ -64,7 +64,6 @@ describe("BooksService", function() {
 				expect(booksService.getAll()).toEqual(returnedBooks);
 			});
 			
-			
 			describe("should 'clean' the received serialized books", function() {
 				beforeEach(function() {
 					var returnedBooks = [BookFactory.createSerializedBook()];
@@ -179,13 +178,33 @@ describe("BooksService", function() {
 				expect(mockStatusWidget.displayError).toHaveBeenCalled();
 			});
 			
-			it("should replace old books with received books when successful", function() {
-				var returnedBooks = [newBook];
-				booksService.save(newBook);
+			describe("on success", function() {
+				var returnedBooks;
 				
-				mockAjaxHandler.mostRecentCall.args[0].success(returnedBooks);
+				beforeEach(function() {
+					returnedBooks = [BookFactory.createSerializedBook()];
+					booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
+					booksService.save(newBook);
+					mockAjaxHandler.mostRecentCall.args[0].success(returnedBooks);
+				});
 				
-				expect(booksService.getAll()).toEqual(returnedBooks);
+				it("should replace old books with received books when successful", function() {
+					expect(booksService.getAll()).toEqual(returnedBooks);
+				});
+				
+				describe("should 'clean' the received serialized books", function() {
+					it("be converting hasBeenRead to boolean", function() {
+						expect(booksService.getAll()[0].hasBeenRead).toEqual(true);
+					});
+
+					it("be converting ownTheBook to boolean", function() {
+						expect(booksService.getAll()[0].ownTheBook).toEqual(true);
+					});
+
+					it("be converting ownTheEBook to boolean", function() {
+						expect(booksService.getAll()[0].ownTheEBook).toEqual(false);
+					});
+				});
 			});
 		});
 	});
