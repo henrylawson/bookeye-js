@@ -8,6 +8,7 @@
 	<script type="text/javascript" src="src/controllers.js"></script>
 	<script type="text/javascript" src="src/views.js"></script>
 	<script type="text/javascript" src="src/services.js"></script>
+	<script type="text/javascript" src="src/repositories.js"></script>
 	<script type="text/javascript" src="src/widgets.js"></script>
 	<link href="lib/bootstrap-2.0.3/css/bootstrap.css" rel="stylesheet">
 	<script type="text/javascript" src="lib/bootstrap-2.0.3/js/bootstrap.min.js"></script>
@@ -16,9 +17,11 @@
 		$(document).ready(function() {
 			var statusWidget = new StatusWidget($('#status'));
 			var booksService = new BooksService(statusWidget, $.ajax);
+			console.log(booksService);
+			var booksRepository = new BooksRepository(booksService);
 			var booksView = new BooksView();
 			
-			var booksController = new BooksController($('#content'), booksView, booksService);
+			var booksController = new BooksController($('#content'), booksView, booksRepository);
 			booksController.all();
 			
 			var navigationWidget = new NavigationWidget($('#navigation ul.items'));

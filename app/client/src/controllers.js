@@ -1,10 +1,10 @@
-var BooksController = function(displayElement, booksView, booksService) {
+var BooksController = function(displayElement, booksView, booksRepository) {
 	this.contentArea = displayElement;
 	this.booksView = booksView;
-	this.booksService = booksService;
+	this.booksRepository = booksRepository;
 }
 BooksController.prototype.all = function() {
-	var books = this.booksService.getAll();
+	var books = this.booksRepository.getAll();
 	var booksController = this;
 	this.booksView.all(this.contentArea, function(book) { 
 		booksController.edit(book) 
@@ -17,7 +17,7 @@ BooksController.prototype.edit = function(book) {
 	}, book);
 }
 BooksController.prototype.save = function(book) {
-	this.booksService.save(book);
+	this.booksRepository.save(book);
 	this.all();
 }
 BooksController.prototype.new = function() {

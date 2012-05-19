@@ -1,28 +1,30 @@
 describe("BooksController", function() {
 	var booksController;
-	var mockBooksService;
+	var mockBooksRepository;
 	var mockBooksView;
 
 	beforeEach(function() {
 		mockBooksView = new BooksView();
-		mockBooksService = new BooksService(new StatusWidget(), jasmine.createSpy('ajax handler'));
-		booksController = new BooksController($('<div></dv>'), mockBooksView, mockBooksService);
+		mockStatusWidget = new StatusWidget();
+		mockBooksService = new BooksService(mockStatusWidget, jasmine.createSpy('ajax service'));
+		mockBooksRepository = new BooksRepository(mockBooksService);
+		booksController = new BooksController($('<div></dv>'), mockBooksView, mockBooksRepository);
 	});
 	
-	describe("all", function() {
+	describe("all action", function() {
 		it("should render all books view", function() {
 			var books = BookFactory.createBooks();
 			spyOn(mockBooksView, 'all');
-			spyOn(mockBooksService, 'getAll').andReturn(books);
+			spyOn(mockBooksRepository, 'getAll').andReturn(books);
 		
 			booksController.all();
 			
 			expect(mockBooksView.all).toHaveBeenCalled();
-			expect(mockBooksService.getAll).toHaveBeenCalled();
+			expect(mockBooksRepository.getAll).toHaveBeenCalled();
 		});
 	});
 		
-	describe("edit", function() {
+	describe("edit action", function() {
 		it("should render edit view", function() {
 			var book = BookFactory.createBook();
 			spyOn(mockBooksView, 'form');
@@ -33,7 +35,7 @@ describe("BooksController", function() {
 		});
 	});
 
-	describe("new", function() {
+	describe("new action", function() {
 		it("should render new view", function() {
 			spyOn(mockBooksView, 'form');
 
@@ -43,7 +45,7 @@ describe("BooksController", function() {
 		});
 	});
 		
-	describe("save", function() {
+	describe("save action", function() {
 		var book;
 		
 		beforeEach(function() {
@@ -52,11 +54,11 @@ describe("BooksController", function() {
 		});
 		
 		it("should save book to service", function() {
-			spyOn(mockBooksService, 'save');
+			spyOn(mockBooksRepository, 'save');
 		
 			booksController.save(book);
 			
-			expect(mockBooksService.save).toHaveBeenCalledWith(book);
+			expect(mockBooksRepository.save).toHaveBeenCalledWith(book);
 		});
 		
 		it("should call all book view", function() {
