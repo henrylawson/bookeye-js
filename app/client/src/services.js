@@ -9,7 +9,6 @@ BooksService.prototype.getAll = function() {
 }
 BooksService.prototype.save = function(book) {
 	this.addBookIfNew(book);
-	this.statusWidget.displayMessage("Saving book...");
 	this.postAllBooksToWebService();
 	return book;
 }
@@ -20,39 +19,46 @@ BooksService.prototype.addBookIfNew = function(book) {
 	}
 }
 BooksService.prototype.getAllBooksFromWebService = function() {
-	this.statusWidget.displayMessage("Retrieving books...");
-	var booksService = this;
-	this.ajaxHandler({
-		type: 'GET',
-		url: '/books',
+	this.updateHttpService({
+		httpVerb: 'GET', 
+		action: '/books',	
 		async: false,
-		success: function(newBooks) {
-			booksService.books = booksService.cleanSerializedBooks(newBooks);
-		},
-		complete: function(jqXHR, textStatus) {
-			if (textStatus == "success") {
-				booksService.statusWidget.displaySuccess("Books retrieved!");
-			} else if (textStatus == "error") {
-				booksService.statusWidget.displayError("Error retrieving books from service");
-				booksService.books = [];
-			}
+		messages: {
+			started: 'Retrieving books...',
+			completeSuccess: 'Books retrieved!',
+			completeFailure: 'Error retrieving books from service',
 		}
 	});
 }
 BooksService.prototype.postAllBooksToWebService = function() {
-	var booksService = this;
-	this.ajaxHandler({
-		type: 'POST',
-		url: '/books',
+	this.updateHttpService({
+		httpVerb: 'POST', 
+		action: '/books',	
 		data: { books: this.books },
-		success: function(newBooks) {
-			booksService.books = booksService.cleanSerializedBooks(newBooks);
+		async: true,
+		messages: {
+			started: 'Updating...',
+			completeSuccess: 'Book saved!',
+			completeFailure: 'Error saving book to service',
+		}
+	});
+}
+BooksService.prototype.updateHttpService = function(options) {
+	var booksService = this;
+	this.statusWidget.displayMessage(options.messages.started);
+	this.ajaxHandler({
+		type: options.httpVerb,
+		url: options.action,
+		data: options.data,
+		async: options.async,
+		success: function(receivedBooks) {
+			booksService.books = booksService.cleanSerializedBooks(receivedBooks);
 		},
 		complete: function(jqXHR, textStatus) {
 			if (textStatus == "success") {
-				booksService.statusWidget.displaySuccess("Book saved!");
+				booksService.statusWidget.displaySuccess(options.messages.completeSuccess);
 			} else if (textStatus == "error") {
-				booksService.statusWidget.displayError("Error saving book to service");
+				booksService.statusWidget.displayError(options.messages.completeFailure);
 			}
 		}
 	});

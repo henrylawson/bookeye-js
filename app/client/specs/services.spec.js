@@ -9,81 +9,7 @@ describe("BooksService", function() {
 	});
 	
 	describe("instantiation", function() {
-		describe("getting books from web service", function() {
-			it("should set standard message before retrieving", function() {
-				spyOn(mockStatusWidget, "displayMessage");
-		
-				booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
-		
-				expect(mockStatusWidget.displayMessage).toHaveBeenCalled();
-			});
-	
-			it("should do a HTTP GET when retrieving", function() {
-				booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
-				
-				expect(mockAjaxHandler.mostRecentCall.args[0].type).toEqual("GET");
-			});
-	
-			it("should have correct URL when retrieving", function() {
-				booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
-				
-				expect(mockAjaxHandler.mostRecentCall.args[0].url).toEqual("/books");
-			});
-			
-			it("should do a synchronous call when retrieving", function() {
-				booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
-				
-				expect(mockAjaxHandler.mostRecentCall.args[0].async).toBeDefined();
-				expect(mockAjaxHandler.mostRecentCall.args[0].async).toBeFalsy();
-			});
-	
-			it("should set success message when retrieved successfully", function() {
-				spyOn(mockStatusWidget, "displaySuccess");
-		
-				booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
-				mockAjaxHandler.mostRecentCall.args[0].complete(null, "success");
-		
-				expect(mockStatusWidget.displaySuccess).toHaveBeenCalled();
-			});
-
-			it("should set failure message when retrieval has failed", function() {
-				spyOn(mockStatusWidget, "displayError");
-
-				booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
-				mockAjaxHandler.mostRecentCall.args[0].complete(null, "error");
-
-				expect(mockStatusWidget.displayError).toHaveBeenCalled();
-			});
-
-			it("should replace old books with received books when successful", function() {
-				var returnedBooks = [BookFactory.createBook()];
-				booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
-
-				mockAjaxHandler.mostRecentCall.args[0].success(returnedBooks);
-
-				expect(booksService.getAll()).toEqual(returnedBooks);
-			});
-			
-			describe("should 'clean' the received serialized books", function() {
-				beforeEach(function() {
-					var returnedBooks = [BookFactory.createSerializedBook()];
-					booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
-					mockAjaxHandler.mostRecentCall.args[0].success(returnedBooks);
-				});
-				
-				it("be converting hasBeenRead to boolean", function() {
-					expect(booksService.getAll()[0].hasBeenRead).toEqual(true);
-				});
-
-				it("be converting ownTheBook to boolean", function() {
-					expect(booksService.getAll()[0].ownTheBook).toEqual(true);
-				});
-
-				it("be converting ownTheEBook to boolean", function() {
-					expect(booksService.getAll()[0].ownTheEBook).toEqual(false);
-				});
-			});
-		});
+		// check web service is called..
 	});
 	
 	describe("getAll", function() {
@@ -133,77 +59,108 @@ describe("BooksService", function() {
 			expect(booksService.getAll()).toContain(newBook);
 		});
 		
-		describe("to web service", function() {
-			it("should set standard message before sending", function() {
-				spyOn(mockStatusWidget, "displayMessage");
-			
-				booksService.save(newBook);
-			
-				expect(mockStatusWidget.displayMessage).toHaveBeenCalled();
-			});
+		// check web service is called..
+	});
+	
+	describe("getAllBooksFromWebService", function() {
+		//  correct settings
+	});
+	
+	describe("postAllBooksToWebService", function() {
+		// correct settings
+	});
+	
+	describe("updateHttpService", function() {
+		var options;
 		
-			it("should do a HTTP POST when sending", function() {
-				booksService.save(newBook);
-			
-				expect(mockAjaxHandler.mostRecentCall.args[0].type).toEqual("POST");
-			});
+		beforeEach(function() {
+			options = {
+				httpVerb: 'POST', 
+				action: '/books',	
+				data: { books: 'data' },
+				async: true,
+				messages: {
+					started: 'Started!',
+					completeSuccess: 'Success!',
+					completeFailure: 'Error!',
+				}
+			};
+			booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
+		});
 		
-			it("should have correct URL when sending", function() {
-				booksService.save(newBook);
+		it("should set standard message before sending", function() {
+			spyOn(mockStatusWidget, "displayMessage");
 			
-				expect(mockAjaxHandler.mostRecentCall.args[0].url).toEqual("/books");
-			});
+			booksService.updateHttpService(options);
+			
+			expect(mockStatusWidget.displayMessage).toHaveBeenCalledWith('Started!');
+		});
+	
+		it("should do a HTTP POST when sending", function() {
+			spyOn(mockAjaxHandler, "mostRecentCall");
+			
+			booksService.updateHttpService(options);
 		
-			it("should send the list of all books as data", function() {
-				booksService.save(newBook);
+			expect(mockAjaxHandler.mostRecentCall.args[0].type).toEqual("POST");
+		});
+	
+		it("should have correct URL when sending", function() {
+			spyOn(mockAjaxHandler, "mostRecentCall");
 			
-				expect(mockAjaxHandler.mostRecentCall.args[0].data).toEqual({ books: [newBook] });
-			});
+			booksService.updateHttpService(options);
 		
-			it("should set success message when sent successfully", function() {
-				spyOn(mockStatusWidget, "displaySuccess");
+			expect(mockAjaxHandler.mostRecentCall.args[0].url).toEqual("/books");
+		});
+	
+		it("should send the list of all books as data", function() {
+			spyOn(mockAjaxHandler, "mostRecentCall");
 			
-				booksService.save(newBook);
-				mockAjaxHandler.mostRecentCall.args[0].complete(null, "success");
+			booksService.updateHttpService(options);
+		
+			expect(mockAjaxHandler.mostRecentCall.args[0].data).toEqual({ books: 'data' });
+		});
+	
+		it("should set success message when sent successfully", function() {
+			spyOn(mockStatusWidget, "displaySuccess");
 			
-				expect(mockStatusWidget.displaySuccess).toHaveBeenCalled();
-			});
+			booksService.updateHttpService(options);
+			mockAjaxHandler.mostRecentCall.args[0].complete(null, "success");
+		
+			expect(mockStatusWidget.displaySuccess).toHaveBeenCalledWith('Success!');
+		});
 
-			it("should set failure message when sending has failed", function() {
-				spyOn(mockStatusWidget, "displayError");
+		it("should set failure message when sending has failed", function() {
+			spyOn(mockStatusWidget, "displayError");
+			
+			booksService.updateHttpService(options);
+			mockAjaxHandler.mostRecentCall.args[0].complete(null, "error");
 
-				booksService.save(newBook);
-				mockAjaxHandler.mostRecentCall.args[0].complete(null, "error");
-
-				expect(mockStatusWidget.displayError).toHaveBeenCalled();
+			expect(mockStatusWidget.displayError).toHaveBeenCalledWith('Error!');
+		});
+		
+		describe("on success", function() {
+			var returnedBooks;
+			
+			beforeEach(function() {
+				returnedBooks = [BookFactory.createSerializedBook()];
+				mockAjaxHandler.mostRecentCall.args[0].success(returnedBooks);
 			});
 			
-			describe("on success", function() {
-				var returnedBooks;
-				
-				beforeEach(function() {
-					returnedBooks = [BookFactory.createSerializedBook()];
-					booksService = new BooksService(mockStatusWidget, mockAjaxHandler);
-					booksService.save(newBook);
-					mockAjaxHandler.mostRecentCall.args[0].success(returnedBooks);
+			it("should replace old books with received books when successful", function() {
+				expect(booksService.getAll()).toEqual(returnedBooks);
+			});
+			
+			describe("should 'clean' the received serialized books", function() {
+				it("by converting hasBeenRead to boolean", function() {
+					expect(booksService.getAll()[0].hasBeenRead).toEqual(true);
 				});
-				
-				it("should replace old books with received books when successful", function() {
-					expect(booksService.getAll()).toEqual(returnedBooks);
+
+				it("by converting ownTheBook to boolean", function() {
+					expect(booksService.getAll()[0].ownTheBook).toEqual(true);
 				});
-				
-				describe("should 'clean' the received serialized books", function() {
-					it("be converting hasBeenRead to boolean", function() {
-						expect(booksService.getAll()[0].hasBeenRead).toEqual(true);
-					});
 
-					it("be converting ownTheBook to boolean", function() {
-						expect(booksService.getAll()[0].ownTheBook).toEqual(true);
-					});
-
-					it("be converting ownTheEBook to boolean", function() {
-						expect(booksService.getAll()[0].ownTheEBook).toEqual(false);
-					});
+				it("by converting ownTheEBook to boolean", function() {
+					expect(booksService.getAll()[0].ownTheEBook).toEqual(false);
 				});
 			});
 		});
