@@ -6,11 +6,17 @@ BooksView.prototype.all = function(options) {
 		var view = this;
 		$.each(options.books, function(i, book) {
 			var bookHtml = $(template(book));
-			bookHtml.find('div.edit').click(function() {
+			bookHtml.find('.edit').click(function() {
 				options.callbacks.edit(book);
 			});
-			bookHtml.find('div.delete').click(function() {
+			bookHtml.find('.delete').click(function() {
 				options.callbacks.delete(book);
+			});
+			bookHtml.find('.move-up').click(function() {
+				options.callbacks.move(true, book);
+			});
+			bookHtml.find('.move-down').click(function() {
+				options.callbacks.move(false, book);
 			});
 			element.append(bookHtml);
 		});

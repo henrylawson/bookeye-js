@@ -1,11 +1,11 @@
 var BooksController = function(options) {
 	this.options = options;
-	this.allStateDetails = null;
+	this.stateDetails = null;
 }
 BooksController.prototype.all = function(details) {
-	this.allStateDetails = details || this.allStateDetails;
-	this.options.widgets.title.display(this.allStateDetails);
-	var books = this.options.repository.getAll(this.allStateDetails.filter);
+	this.stateDetails = details || this.stateDetails;
+	this.options.widgets.title.display(this.stateDetails);
+	var books = this.options.repository.getAll(this.stateDetails.filter);
 	var booksController = this;
 	this.options.view.all({
 		displayElement: this.options.displayElements.all, 
@@ -16,6 +16,9 @@ BooksController.prototype.all = function(details) {
 			delete: function(book) {
 				booksController.deleteConfirm(book);
 			},
+			move: function(isUpMove, book) {
+				booksController.move(isUpMove, book);
+			}
 		},
 		books: books
 	});
@@ -33,6 +36,11 @@ BooksController.prototype.deleteConfirm = function(book) {
 		}, 
 		book: book
 	});
+}
+BooksController.prototype.move = function(isUpMove, book) {
+	console.log("Move:");
+	console.log(isUpMove);
+	console.log(book);
 }
 BooksController.prototype.edit = function(book) {
 	var booksController = this;

@@ -16,6 +16,7 @@ describe("BooksView", function() {
 				callbacks: {
 					edit: jasmine.createSpy('edit callback'),
 					delete: jasmine.createSpy('delete callback'),
+					move: jasmine.createSpy('move callback'),
 				},
 				books: BookFactory.createBooks()
 			};
@@ -89,16 +90,30 @@ describe("BooksView", function() {
 	
 		it("should execute edit callback with book when edit button is clicked", function() {
 			booksView.all(options);
-			displayElement.find('div.edit').first().click();
+			displayElement.find('.edit').first().click();
 		
 			expect(options.callbacks.edit).toHaveBeenCalledWith(options.books[0]);
 		});
 		
 		it("should execute delete callback with book when delete button is clicked", function() {
 			booksView.all(options);
-			displayElement.find('div.delete').first().click();
+			displayElement.find('.delete').first().click();
 
 			expect(options.callbacks.delete).toHaveBeenCalledWith(options.books[0]);
+		});
+		
+		it("should execute move callback with book when move-up button is clicked", function() {
+			booksView.all(options);
+			displayElement.find('.move-up').first().click();
+
+			expect(options.callbacks.move).toHaveBeenCalledWith(true, options.books[0]);
+		});
+		
+		it("should execute move callback with book when move-down button is clicked", function() {
+			booksView.all(options);
+			displayElement.find('.move-down').first().click();
+
+			expect(options.callbacks.move).toHaveBeenCalledWith(false, options.books[0]);
 		});
 	});
 	

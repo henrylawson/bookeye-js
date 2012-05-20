@@ -90,6 +90,24 @@ describe("BooksController", function() {
 
 					expect(booksController.deleteConfirm).toHaveBeenCalledWith(books[0]);
 				});
+
+				it("moveUp callback should execute move action with up set true", function() {
+					spyOn(booksController, 'move');
+
+					booksController.all();
+					mockBooksView.all.mostRecentCall.args[0].callbacks.move(true, books[0])
+
+					expect(booksController.move).toHaveBeenCalledWith(true, books[0]);
+				});
+				
+				it("moveDown callback should execute move action with up set false", function() {
+					spyOn(booksController, 'move');
+
+					booksController.all();
+					mockBooksView.all.mostRecentCall.args[0].callbacks.move(false, books[0])
+
+					expect(booksController.move).toHaveBeenCalledWith(false, books[0]);
+				});
 			});
 		});
 	});
