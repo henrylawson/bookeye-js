@@ -16,6 +16,12 @@ describe("NavigationWidget", function() {
 			expect(displayElement.html()).toContain(itemName);
 		});
 		
+		it("should allow alternative template", function() {
+			navigationWidget.add("New Item", function() {}, '#navigation-widget-item-add');
+
+			expect(displayElement.find('.icon-plus-sign')).toBeDefined();
+		});
+		
 		it("should add callback for click on display element", function() {
 			var navigationItemClickedCallback = jasmine.createSpy("navigation item clicked callbck");
 			

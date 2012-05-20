@@ -1,8 +1,9 @@
 var NavigationWidget = function(displayElement) {
 	this.displayElement = displayElement;
 }
-NavigationWidget.prototype.add = function(itemName, itemCallback) {
-	var template = Handlebars.compile($('#navigation-widget-item').html());
+NavigationWidget.prototype.add = function(itemName, itemCallback, templateName) {
+	var chosenTemplateName = templateName || '#navigation-widget-item';
+	var template = Handlebars.compile($(chosenTemplateName).html());
 	var navigationItemElement = $(template({ name: itemName}));
 	navigationItemElement.click(function() {
 		itemCallback();
