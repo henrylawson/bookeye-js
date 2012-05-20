@@ -38,17 +38,20 @@ describe("BooksController", function() {
 				subtext: 'subtext',
 				filter: BookFilter.all
 			};
+			booksController.all(details);
 		});
 		
 		it("should get all the books from the repository", function() {
-			booksController.all(details);
-				
 			expect(mockBooksRepository.getAll).toHaveBeenCalledWith(details.filter);
 		});
 		
 		it("should get all the books from the repository", function() {
-			booksController.all(details);
-
+			expect(mockTitleWidget.display).toHaveBeenCalledWith(details);
+		});
+		
+		it("should use previously set details when non are provided", function() {
+			booksController.all();
+			
 			expect(mockTitleWidget.display).toHaveBeenCalledWith(details);
 		});
 		
@@ -195,6 +198,7 @@ describe("BooksController", function() {
 		var book;
 
 		beforeEach(function() {
+			spyOn(booksController, 'all');
 			book = BookFactory.createBook();
 			booksController.save(book);
 		});
@@ -208,8 +212,6 @@ describe("BooksController", function() {
 		});
 
 		it("should call all action after delete", function() {
-			spyOn(booksController, 'all');
-		
 			booksController.delete(book);
 	
 			expect(booksController.all).toHaveBeenCalled();
@@ -220,6 +222,7 @@ describe("BooksController", function() {
 		var book;
 		
 		beforeEach(function() {
+			spyOn(booksController, 'all');
 			book = BookFactory.createBook();
 		});
 		
@@ -232,8 +235,6 @@ describe("BooksController", function() {
 		});
 		
 		it("should call all action after save", function() {
-			spyOn(booksController, 'all');
-		
 			booksController.save(book);
 			
 			expect(booksController.all).toHaveBeenCalled();

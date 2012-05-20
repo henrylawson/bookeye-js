@@ -1,14 +1,11 @@
 var BooksController = function(options) {
 	this.options = options;
+	this.allStateDetails = null;
 }
 BooksController.prototype.all = function(details) {
-	details = details || { 
-		title: "All books", 
-		subtext: "Everythang!",
-		filter: BookFilter.all
-	};
-	this.options.widgets.title.display(details);
-	var books = this.options.repository.getAll(details.filter);
+	this.allStateDetails = details || this.allStateDetails;
+	this.options.widgets.title.display(this.allStateDetails);
+	var books = this.options.repository.getAll(this.allStateDetails.filter);
 	var booksController = this;
 	this.options.view.all({
 		displayElement: this.options.displayElements.all, 

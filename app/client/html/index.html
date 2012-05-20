@@ -34,10 +34,17 @@
 					title: titleWidget
 				}
 			});
-			booksController.all();
+			
+			var defaultAction = function() { 
+				booksController.all({ 
+					title: "All", 
+					subtext: "Everythang, all the books!",
+					filter: BookFilter.all 
+				});
+			};
 			
 			var navigationWidget = new NavigationWidget($('#navigation ul.items'));
-			navigationWidget.add("All", function() { booksController.all() });
+			navigationWidget.add("All", defaultAction);
 			navigationWidget.add("Upcoming", function() { booksController.all({ 
 				title: "Upcoming", 
 				subtext: "Must read soon!", 
@@ -45,7 +52,7 @@
 			});
 			navigationWidget.add("Wishlist", function() { booksController.all({ 
 				title: "Wishlist", 
-				subtext: "Got to get them to read them!",
+				subtext: "Gotta get em to read em!",
 				filter: BookFilter.wishlist }) 
 			});
 			navigationWidget.add("Read", function() { booksController.all({ 
@@ -53,8 +60,11 @@
 				subtext: "All done!", 
 				filter: BookFilter.read }) 
 			});
+			
 			var rightNavigationWidget = new NavigationWidget($('#navigation ul.right-items'));
 			rightNavigationWidget.add("Add Book", function() { booksController.new() }, '#navigation-widget-item-add');
+			
+			defaultAction();
 		});
 	</script>
 	<link href="css/styles.css" rel="stylesheet">
