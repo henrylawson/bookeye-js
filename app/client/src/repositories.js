@@ -13,6 +13,11 @@ BooksRepository.prototype.getAll = function(options) {
 	var filteredBooks = BookFilter.filterAllBy(this.books, filter);
 	this.bookSorter.setKey(key);
 	filteredBooks.sort(this.bookSorter.sort);
+	this.bookSorter.setPriortiesForCurrentOrder(filteredBooks);
+	for(var i = 0; i < filteredBooks.length; i++) {
+		this.addOrUpdate(filteredBooks[i]);
+	}
+	this.updateWebService();
 	return filteredBooks;
 }
 BooksRepository.prototype.determineKey = function(options) {
@@ -35,7 +40,7 @@ BooksRepository.prototype.move = function(isMoveUp, book, options) {
 	console.log(options);
 }
 BooksRepository.prototype.save = function(book) {
-	this.addBookIfNew(book);
+	this.addOrUpdate(book);
 	this.updateWebService();
 	return book;
 }
@@ -54,9 +59,9 @@ BooksRepository.prototype.updateWebService = function() {
 	var booksRepository = this;
 	this.booksService.postAllBooksToWebService(function(books) {
 		booksRepository.books = books;
-	}, booksRepository.books);
+	}, this.books);
 }
-BooksRepository.prototype.addBookIfNew = function(book) {
+BooksRepository.prototype.addOrUpdate = function(book) {
 	BooksRepository.setIdIfMissing(book);
 	for(var i = 0; i < this.books.length; i++) {
 		if (this.books[i].id == book.id) {

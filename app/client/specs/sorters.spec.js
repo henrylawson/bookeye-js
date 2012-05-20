@@ -95,5 +95,14 @@ describe("BookSorter", function() {
 			expect(books[1].priority[key]).toEqual(2);
 			expect(books[2].priority[key]).toEqual(1);
 		});
+		
+		it("should not remove existing priorities", function() {
+			books[0].priority = {};
+			books[0].priority['other'] = 99; 
+			bookSorter.setPriortiesForCurrentOrder(books);
+			
+			expect(books[0].priority[key]).toEqual(3);
+			expect(books[0].priority['other']).toEqual(99);
+		});
 	});
 });

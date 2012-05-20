@@ -82,6 +82,16 @@ describe("BooksRepository", function() {
 			
 			expect(filteredBooks.sort).toHaveBeenCalledWith(mockBookSorter.sort);
 		});
+		
+		it("should reset the priorities for the sorted and filtered books", function() {
+			var expectedBooks = BookFactory.createBooks();
+			spyOn(BookFilter, 'filterAllBy').andReturn(expectedBooks);
+			spyOn(mockBookSorter, 'setPriortiesForCurrentOrder');
+
+			booksRepository.getAll();
+
+			expect(mockBookSorter.setPriortiesForCurrentOrder).toHaveBeenCalledWith(expectedBooks);
+		});
 	});
 	
 	describe("determineFilter", function() {

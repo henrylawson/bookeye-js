@@ -17,7 +17,9 @@ BookSorter.prototype.sort = function(first, second) {
 BookSorter.prototype.setPriortiesForCurrentOrder = function(books) {
 	var priority = books.length;
 	for(var i = 0; i < books.length; i++) {
-		books[i].priority = [];
+		if (typeof books[i].priority === 'undefined') {
+			books[i].priority = {};
+		}
 		books[i].priority[BookSorter._key] = priority;
 		priority--;
 	}
