@@ -4,7 +4,7 @@ var BookFactory = function() {
 BookFactory.createBooks = function() {
 	return [
 		{ 
-			id: 5, 
+			id: null, 
 			title: "Awesome book", 
 			author: "Henry",
 			year: "2009",
@@ -14,7 +14,7 @@ BookFactory.createBooks = function() {
 			ownTheEBook: true
 		},
 		{ 
-			id: 9, 
+			id: null, 
 			title: "Awesomer book", 
 			author: "Tomo",
 			year: "2007",
@@ -27,7 +27,7 @@ BookFactory.createBooks = function() {
 }
 BookFactory.createBook = function() {
 	return { 
-		id: 5, 
+		id: null, 
 		title: "Awesomest book", 
 		author: "Henry",
 		year: "2009",
@@ -39,7 +39,7 @@ BookFactory.createBook = function() {
 }
 BookFactory.createSerializedBook = function() {
 	return { 
-		id: 5, 
+		id: BooksRepository.guid(), 
 		title: "Awesomest book", 
 		author: "Henry",
 		year: "2009",

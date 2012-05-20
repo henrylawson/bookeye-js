@@ -36,13 +36,26 @@ describe("BooksRepository", function() {
 	});
 	
 	describe("getAll", function() {
-		it("should return all books", function() {
-			booksRepository.save({});
-			booksRepository.save({});
+		it("should return all books for default filter", function() {
+			booksRepository.save(BookFactory.createBook());
+			booksRepository.save(BookFactory.createBook());
 			
 			var books = booksRepository.getAll();
 		
 			expect(books.length).toEqual(2);
+		});
+		
+		it("should return read books for read filter", function() {
+			var book1 = BookFactory.createBook();
+			book1.hasBeenRead = false;
+			booksRepository.save(book1);
+			var book2 = BookFactory.createBook();
+			book2.hasBeenRead = true;
+			booksRepository.save(book2);
+
+			var books = booksRepository.getAll(BookFilter.read);
+
+			expect(books.length).toEqual(1);
 		});
 	});
 	

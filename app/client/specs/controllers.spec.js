@@ -30,9 +30,11 @@ describe("BooksController", function() {
 		});
 		
 		it("should get all the books from the repository", function() {
-			booksController.all();
+			var filter = BookFilter.all;
+			
+			booksController.all(filter);
 				
-			expect(mockBooksRepository.getAll).toHaveBeenCalled();
+			expect(mockBooksRepository.getAll).toHaveBeenCalledWith(filter);
 		});
 		
 		describe("should render all view", function() {

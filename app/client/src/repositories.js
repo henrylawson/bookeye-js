@@ -6,8 +6,15 @@ var BooksRepository = function(booksService) {
 		booksRepository.books = books;
 	});
 }
-BooksRepository.prototype.getAll = function() {
-	return this.books;
+BooksRepository.prototype.getAll = function(filter) {
+	filter = filter || BookFilter.all;
+	var filteredBooks = [];
+	for(var i = 0; i < this.books.length; i++) {
+		if (filter(this.books[i]) === true) {
+			filteredBooks.push(this.books[i]);
+		}
+	}
+	return filteredBooks;
 }
 BooksRepository.prototype.save = function(book) {
 	this.addBookIfNew(book);

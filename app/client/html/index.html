@@ -34,9 +34,9 @@
 			
 			var navigationWidget = new NavigationWidget($('#navigation ul.items'));
 			navigationWidget.add("All", function() { booksController.all() });
-			navigationWidget.add("Upcoming", function() { booksController.all() });
-			navigationWidget.add("Wishlist", function() { booksController.all() });
-			navigationWidget.add("Read", function() { booksController.all() });
+			navigationWidget.add("Upcoming", function() { booksController.all(BookFilter.upcoming) });
+			navigationWidget.add("Wishlist", function() { booksController.all(BookFilter.wishlist) });
+			navigationWidget.add("Read", function() { booksController.all(BookFilter.read) });
 			var rightNavigationWidget = new NavigationWidget($('#navigation ul.right-items'));
 			rightNavigationWidget.add("Add Book", function() { booksController.new() }, '#navigation-widget-item-add');
 		});

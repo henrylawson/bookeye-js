@@ -5,8 +5,8 @@ var BooksController = function(options) {
 	this.booksView = options.view;
 	this.booksRepository = options.repository;
 }
-BooksController.prototype.all = function() {
-	var books = this.booksRepository.getAll();
+BooksController.prototype.all = function(filter) {
+	var books = this.booksRepository.getAll(filter);
 	var booksController = this;
 	this.booksView.all({
 		displayElement: this.allDisplayElement, 

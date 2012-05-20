@@ -42,7 +42,7 @@ BooksService.prototype.getAllBooksFromWebService = function(successCallback) {
 		messages: {
 			started: 'Retrieving books...',
 			completeSuccess: 'Books retrieved!',
-			completeFailure: 'Error retrieving books from service',
+			completeFailure: 'Error retrieving books from the service',
 		},
 		callbacks: {
 			success: successCallback
@@ -58,8 +58,8 @@ BooksService.prototype.postAllBooksToWebService = function(successCallback, allB
 		async: true,
 		messages: {
 			started: 'Updating...',
-			completeSuccess: 'Book updated!',
-			completeFailure: 'Error saving book to service',
+			completeSuccess: 'Books updated!',
+			completeFailure: 'Error updating books to the service',
 		},
 		callbacks: {
 			success: successCallback
