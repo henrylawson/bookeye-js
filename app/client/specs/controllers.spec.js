@@ -27,33 +27,37 @@ describe("BooksController", function() {
 	
 	describe("all action", function() {
 		var books;
-		var details;
+		var actionOptions;
 		
 		beforeEach(function() {
 			books = BookFactory.createBooks();
 			spyOn(mockBooksRepository, 'getAll').andReturn(books);
 			spyOn(mockTitleWidget, 'display');
-			details = { 
-				title: 'Title', 
-				subtext: 'subtext',
-				key: 'default',
-				filter: BookFilter.all
+			actionOptions = { 
+				title: {
+					title: 'Title', 
+					subtext: 'subtext',
+				},
+				repository: {
+					key: 'default',
+					filter: BookFilter.all
+				}
 			};
-			booksController.all(details);
+			booksController.all(actionOptions);
 		});
 		
 		it("should get all the books from the repository", function() {
-			expect(mockBooksRepository.getAll).toHaveBeenCalledWith(details.filter);
+			expect(mockBooksRepository.getAll).toHaveBeenCalledWith(actionOptions.repository);
 		});
 		
 		it("should get all the books from the repository", function() {
-			expect(mockTitleWidget.display).toHaveBeenCalledWith(details);
+			expect(mockTitleWidget.display).toHaveBeenCalledWith(actionOptions.title);
 		});
 		
 		it("should use previously set details when non are provided", function() {
 			booksController.all();
 			
-			expect(mockTitleWidget.display).toHaveBeenCalledWith(details);
+			expect(mockTitleWidget.display).toHaveBeenCalledWith(actionOptions.title);
 		});
 		
 		describe("should render all view", function() {
@@ -219,10 +223,16 @@ describe("BooksController", function() {
 
 		beforeEach(function() {
 			book = BookFactory.createBook();
-			details = {
-				key: 'all',
-			}
-			booksController.all(details);							
+			options = {
+				title: {
+					title: "Test",
+					subtext: "Yo",
+				},
+				repository: {
+					key: 'all',
+				}
+			};
+			booksController.all(options);							
 			spyOn(booksController, 'all');
 		});
 
@@ -231,7 +241,7 @@ describe("BooksController", function() {
 
 			booksController.move(true, book);
 	
-			expect(mockBooksRepository.move).toHaveBeenCalledWith(true, book, details);
+			expect(mockBooksRepository.move).toHaveBeenCalledWith(true, book, options.repository);
 		});
 
 		it("should delegate down move to repository", function() {
@@ -239,11 +249,11 @@ describe("BooksController", function() {
 
 			booksController.move(false, book);
 
-			expect(mockBooksRepository.move).toHaveBeenCalledWith(false, book, details);
+			expect(mockBooksRepository.move).toHaveBeenCalledWith(false, book, options.repository);
 		});
 
 		it("should call all action after move", function() {
-			booksController.move(book);
+			booksController.move(false, book);
 	
 			expect(booksController.all).toHaveBeenCalled();
 		});

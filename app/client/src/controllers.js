@@ -1,11 +1,11 @@
 var BooksController = function(options) {
 	this.options = options;
-	this.stateDetails = null;
+	this.stateOptions = null;
 }
-BooksController.prototype.all = function(details) {
-	this.stateDetails = details || this.stateDetails;
-	this.options.widgets.title.display(this.stateDetails);
-	var books = this.options.repository.getAll(this.stateDetails.filter);
+BooksController.prototype.all = function(options) {
+	this.stateOptions = options || this.stateOptions;
+	this.options.widgets.title.display(this.stateOptions.title);
+	var books = this.options.repository.getAll(this.stateOptions.repository);
 	var booksController = this;
 	this.options.view.all({
 		displayElement: this.options.displayElements.all, 
@@ -65,7 +65,7 @@ BooksController.prototype.new = function() {
 	});
 }
 BooksController.prototype.move = function(isUpMove, book) {
-	this.options.repository.move(isUpMove, book, this.stateDetails);
+	this.options.repository.move(isUpMove, book, this.stateOptions.repository);
 	this.all();
 }
 BooksController.prototype.delete = function(book) {

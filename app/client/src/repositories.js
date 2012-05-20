@@ -6,11 +6,14 @@ var BooksRepository = function(booksService) {
 		booksRepository.books = books;
 	});
 }
-BooksRepository.prototype.getAll = function(filter) {
-	return this.filterAll(filter);
+BooksRepository.prototype.getAll = function(options) {
+	var filter = BookFilter.all;
+	if (options) {
+		filter = options.filter || BookFilter.all;
+	}
+	return this.filterAllBy(filter);
 }
-BooksRepository.prototype.filterAll = function(filter) {
-	filter = filter || BookFilter.all;
+BooksRepository.prototype.filterAllBy = function(filter) {
 	var filteredBooks = [];
 	for(var i = 0; i < this.books.length; i++) {
 		if (filter(this.books[i]) === true) {
@@ -19,8 +22,10 @@ BooksRepository.prototype.filterAll = function(filter) {
 	}
 	return filteredBooks;
 }
-BooksRepository.prototype.move = function(isUpMove, book, stateDetails) {
-	
+BooksRepository.prototype.move = function(isMoveUp, book, options) {
+	console.log(book);
+	console.log(isMoveUp);
+	console.log(options);
 }
 BooksRepository.prototype.save = function(book) {
 	this.addBookIfNew(book);

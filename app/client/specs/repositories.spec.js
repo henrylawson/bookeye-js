@@ -53,7 +53,7 @@ describe("BooksRepository", function() {
 			book2.hasBeenRead = true;
 			booksRepository.save(book2);
 
-			var books = booksRepository.getAll(BookFilter.read);
+			var books = booksRepository.getAll({ filter: BookFilter.read });
 
 			expect(books.length).toEqual(1);
 		});
