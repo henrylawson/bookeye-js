@@ -167,21 +167,14 @@ describe("BooksRepository", function() {
 		});
 	});
 	
-	describe("save", function() {
+	describe("addOrUpdate", function() {
 		var newBook;
 		
 		beforeEach(function() {
 			newBook = BookFactory.createBook();
-			newBook.id = null;
 		});
 		
-		it("should save a book and return it", function() {
-			var returnedBook = booksRepository.save(newBook);
-		
-			expect(returnedBook.name).toEqual(newBook.name);
-		});
-		
-		it("should save a book and it should be available in getAll", function() {
+		it("should add a book and it should be available in getAll", function() {
 			booksRepository.save(newBook);
 			
 			expect(booksRepository.getAll()).toContain(newBook);
@@ -208,27 +201,60 @@ describe("BooksRepository", function() {
 			expect(booksRepository.getAll()).not.toContain(originalBook);
 			expect(booksRepository.getAll()).toContain(updatedBook);
 		});
+	})
+	
+	describe("save", function() {
+		var newBook;
 		
-		describe("should post the books to the web service", function() {
-			var mostRecentCallArguments;
+		beforeEach(function() {
+			newBook = BookFactory.createBook();
+		});
+		
+		it("should save a book and return it", function() {
+			var returnedBook = booksRepository.save(newBook);
+		
+			expect(returnedBook.name).toEqual(newBook.name);
+		});
+		
+		
+		it("should call addOrUpdate for the book", function() {
+			spyOn(booksRepository, "addOrUpdate");
 			
-			beforeEach(function() {
-				mockBooksService.postAllBooksToWebService = jasmine.createSpy("post to web service");
-				booksRepository.save(newBook);
-				mostRecentCallArguments = mockBooksService.postAllBooksToWebService.mostRecentCall.args; 
-			});
+			booksRepository.save(newBook);
 			
-			it("with all the books", function() {
-				expect(mostRecentCallArguments[1]).toEqual([newBook]);
-			});
+			expect(booksRepository.addOrUpdate).toHaveBeenCalledWith(newBook);
+		});
 			
-			it("and on success, update the repository", function() {
-				var serviceReturnedBooks = BookFactory.createBooks();
-				
-				mostRecentCallArguments[0](serviceReturnedBooks);
-				
-				expect(booksRepository.getAll()).toEqual(serviceReturnedBooks);
-			});
+		it("should call updateWebService", function() {
+			spyOn(booksRepository, "updateWebService");
+
+			booksRepository.save(newBook);
+
+			expect(booksRepository.updateWebService).toHaveBeenCalled();
+		});
+	});
+	
+	describe("updateWebService", function() {
+		var newBook;
+		var mostRecentCallArguments;
+		
+		beforeEach(function() {
+			newBook = BookFactory.createBook();
+			mockBooksService.postAllBooksToWebService = jasmine.createSpy("post to web service");
+			booksRepository.save(newBook);
+			mostRecentCallArguments = mockBooksService.postAllBooksToWebService.mostRecentCall.args; 
+		});
+		
+		it("should post with all the books", function() {
+			expect(mostRecentCallArguments[1]).toEqual([newBook]);
+		});
+		
+		it("should update the books list on success", function() {
+			var serviceReturnedBooks = BookFactory.createBooks();
+			
+			mostRecentCallArguments[0](serviceReturnedBooks);
+			
+			expect(booksRepository.getAll()).toEqual(serviceReturnedBooks);
 		});
 	});
 	
@@ -298,27 +324,13 @@ describe("BooksRepository", function() {
 			
 			expect(booksRepository.getAll()).not.toContain(books[0]);
 		});
+			
+		it("should call updateWebService", function() {
+			spyOn(booksRepository, "updateWebService");
 
-		describe("should post the books to the web service", function() {
-			var mostRecentCallArguments;
+			booksRepository.delete(books[0]);
 
-			beforeEach(function() {
-				mockBooksService.postAllBooksToWebService = jasmine.createSpy("post to web service");
-				booksRepository.delete(books[1]);
-				mostRecentCallArguments = mockBooksService.postAllBooksToWebService.mostRecentCall.args; 
-			});
-
-			it("with all the books", function() {
-				expect(mostRecentCallArguments[1]).toEqual([books[0]]);
-			});
-
-			it("and on success, update the repository", function() {
-				var serviceReturnedBooks = BookFactory.createBooks();
-
-				mostRecentCallArguments[0](serviceReturnedBooks);
-
-				expect(booksRepository.getAll()).toEqual(serviceReturnedBooks);
-			});
+			expect(booksRepository.updateWebService).toHaveBeenCalled();
 		});
 	});
 });
