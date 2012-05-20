@@ -9,7 +9,7 @@ describe("BooksController", function() {
 		mockStatusWidget = new StatusWidget($('<div></div>'));
 		mockBooksService = new BooksService(mockStatusWidget, jasmine.createSpy('ajax service'));
 		mockBooksRepository = new BooksRepository(mockBooksService);
-		booksController = new BooksController({
+		options = {
 			displayElements: {
 				all: $('<div></dv>'),
 				form: $('<div></dv>'),
@@ -17,7 +17,8 @@ describe("BooksController", function() {
 			},
 			view: mockBooksView,
 			repository: mockBooksRepository,
-		});
+		};
+		booksController = new BooksController(options);
 	});
 	
 	describe("all action", function() {
@@ -45,7 +46,13 @@ describe("BooksController", function() {
 				expect(mockBooksView.all.mostRecentCall.args[0].books).toEqual(books);
 			});
 			
-			describe("with correct call backs", function() {
+			it("with the all display element", function() {
+				booksController.all();
+
+				expect(mockBooksView.all.mostRecentCall.args[0].displayElement).toEqual(options.displayElements.all);
+			});
+			
+			describe("with the correct call backs", function() {
 				it("edit callback should execute edit action", function() {
 					spyOn(booksController, 'edit');
 					
@@ -68,34 +75,102 @@ describe("BooksController", function() {
 	});
 		
 	describe("edit action", function() {
-		it("should render edit view", function() {
-			var book = BookFactory.createBook();
-			spyOn(mockBooksView, 'form');
-		
-			booksController.edit(book);
+		describe("should render form view", function() {
+			var book;
 			
-			expect(mockBooksView.form).toHaveBeenCalled();
+			beforeEach(function() {
+				book = BookFactory.createBook();
+				spyOn(mockBooksView, 'form');
+			});
+			
+			it("with the book passed in", function() {
+				booksController.edit(book);
+
+				expect(mockBooksView.form.mostRecentCall.args[0].book).toEqual(book);
+			});
+			
+			it("with the form display element", function() {
+				booksController.edit(book);
+
+				expect(mockBooksView.form.mostRecentCall.args[0].displayElement).toEqual(options.displayElements.form);
+			});
+			
+			describe("with the correct call backs", function() {
+				it("save callback should execute save action", function() {
+					spyOn(booksController, 'save');
+					
+					booksController.edit(book);
+					mockBooksView.form.mostRecentCall.args[0].callbacks.save(book);
+
+					expect(booksController.save).toHaveBeenCalled();
+				});
+			});
 		});
 	});
 	
 	describe("deleteConfirm action", function() {
-		it("should render delete confirm view", function() {
-			var book = BookFactory.createBook();
-			spyOn(mockBooksView, 'deleteConfirm');
-	
-			booksController.deleteConfirm(book);
-		
-			expect(mockBooksView.deleteConfirm).toHaveBeenCalled();
+		describe("should render delete confirm view", function() {
+			var book;
+			
+			beforeEach(function() {
+				book = BookFactory.createBook();
+				spyOn(mockBooksView, 'deleteConfirm');
+			});
+			
+			it("with the book passed in", function() {
+				booksController.deleteConfirm(book);
+
+				expect(mockBooksView.deleteConfirm.mostRecentCall.args[0].book).toEqual(book);
+			});
+			
+			it("with the deleteConfirm display element", function() {
+				booksController.deleteConfirm(book);
+
+				expect(mockBooksView.deleteConfirm.mostRecentCall.args[0].displayElement).toEqual(options.displayElements.deleteConfirm);
+			});
+			
+			describe("with the correct call backs", function() {
+				it("save callback should execute save action", function() {
+					spyOn(booksController, 'delete');
+					
+					booksController.deleteConfirm(book);
+					mockBooksView.deleteConfirm.mostRecentCall.args[0].callbacks.delete(book);
+
+					expect(booksController.delete).toHaveBeenCalled();
+				});
+			});
 		});
 	});
 
 	describe("new action", function() {
-		it("should render new view", function() {
-			spyOn(mockBooksView, 'form');
+		describe("should render form view", function() {
+			beforeEach(function() {
+				spyOn(mockBooksView, 'form');
+			});
+			
+			it("with no book passed in", function() {
+				booksController.new();
 
-			booksController.new();
+				expect(mockBooksView.form.mostRecentCall.args[0].book).not.toBeDefined();
+			});
+			
+			it("with the form display element", function() {
+				booksController.new();
 
-			expect(mockBooksView.form).toHaveBeenCalled();
+				expect(mockBooksView.form.mostRecentCall.args[0].displayElement).toEqual(options.displayElements.form);
+			});
+			
+			describe("with correct call backs", function() {
+				it("save the callback should execute save action", function() {
+					var book = BookFactory.createBook();
+					spyOn(booksController, 'save');
+					
+					booksController.new();
+					mockBooksView.form.mostRecentCall.args[0].callbacks.save(book);
+
+					expect(booksController.save).toHaveBeenCalled();
+				});
+			});
 		});
 	});
 	
