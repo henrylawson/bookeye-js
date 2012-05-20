@@ -37,11 +37,6 @@ BooksController.prototype.deleteConfirm = function(book) {
 		book: book
 	});
 }
-BooksController.prototype.move = function(isUpMove, book) {
-	console.log("Move:");
-	console.log(isUpMove);
-	console.log(book);
-}
 BooksController.prototype.edit = function(book) {
 	var booksController = this;
 	this.options.view.form({
@@ -68,6 +63,10 @@ BooksController.prototype.new = function() {
 			}
 		}
 	});
+}
+BooksController.prototype.move = function(isUpMove, book) {
+	this.options.repository.move(isUpMove, book, this.stateDetails);
+	this.all();
 }
 BooksController.prototype.delete = function(book) {
 	this.options.repository.delete(book);

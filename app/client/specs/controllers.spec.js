@@ -36,6 +36,7 @@ describe("BooksController", function() {
 			details = { 
 				title: 'Title', 
 				subtext: 'subtext',
+				key: 'default',
 				filter: BookFilter.all
 			};
 			booksController.all(details);
@@ -212,6 +213,42 @@ describe("BooksController", function() {
 		});
 	});
 	
+	describe("move action", function() {
+		var book;
+		var details;
+
+		beforeEach(function() {
+			book = BookFactory.createBook();
+			details = {
+				key: 'all',
+			}
+			booksController.all(details);							
+			spyOn(booksController, 'all');
+		});
+
+		it("should delegate up move to repository", function() {
+			spyOn(mockBooksRepository, 'move');
+
+			booksController.move(true, book);
+	
+			expect(mockBooksRepository.move).toHaveBeenCalledWith(true, book, details);
+		});
+
+		it("should delegate down move to repository", function() {
+			spyOn(mockBooksRepository, 'move');
+
+			booksController.move(false, book);
+
+			expect(mockBooksRepository.move).toHaveBeenCalledWith(false, book, details);
+		});
+
+		it("should call all action after move", function() {
+			booksController.move(book);
+	
+			expect(booksController.all).toHaveBeenCalled();
+		});
+	});
+	
 	describe("delete action", function() {
 		var book;
 
@@ -221,7 +258,7 @@ describe("BooksController", function() {
 			booksController.save(book);
 		});
 
-		it("should save book to service", function() {
+		it("should save book to repository", function() {
 			spyOn(mockBooksRepository, 'delete');
 
 			booksController.delete(book);
@@ -244,7 +281,7 @@ describe("BooksController", function() {
 			book = BookFactory.createBook();
 		});
 		
-		it("should save book to service", function() {
+		it("should save book to repository", function() {
 			spyOn(mockBooksRepository, 'save');
 		
 			booksController.save(book);

@@ -7,6 +7,9 @@ var BooksRepository = function(booksService) {
 	});
 }
 BooksRepository.prototype.getAll = function(filter) {
+	return this.filterAll(filter);
+}
+BooksRepository.prototype.filterAll = function(filter) {
 	filter = filter || BookFilter.all;
 	var filteredBooks = [];
 	for(var i = 0; i < this.books.length; i++) {
@@ -15,6 +18,9 @@ BooksRepository.prototype.getAll = function(filter) {
 		}
 	}
 	return filteredBooks;
+}
+BooksRepository.prototype.move = function(isUpMove, book, stateDetails) {
+	
 }
 BooksRepository.prototype.save = function(book) {
 	this.addBookIfNew(book);
