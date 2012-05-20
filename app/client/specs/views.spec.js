@@ -189,10 +189,8 @@ describe("BooksView", function() {
 			var actualBook;
 			
 			beforeEach(function() {
-				options.callbacks.save = function(book) {
-					actualBook = book;
-				};
 				booksView.form(options);
+				mostRecentSaveCall = options.callbacks.save.mostRecentCall;
 			});
 
 			it("with modified title", function() {
@@ -201,7 +199,7 @@ describe("BooksView", function() {
 				
 				displayElement.find('div.save').click();
 				
-				expect(actualBook.title).toEqual(title);
+				expect(mostRecentSaveCall.args[0].title).toEqual(title);
 			});
 			
 			it("with modified author", function() {
@@ -210,7 +208,7 @@ describe("BooksView", function() {
 				
 				displayElement.find('div.save').click();
 				
-				expect(actualBook.author).toEqual(author);
+				expect(mostRecentSaveCall.args[0].author).toEqual(author);
 			});
 			
 			it("with modified year", function() {
@@ -219,7 +217,7 @@ describe("BooksView", function() {
 				
 				displayElement.find('div.save').click();
 				
-				expect(actualBook.year).toEqual(year);
+				expect(mostRecentSaveCall.args[0].year).toEqual(year);
 			});
 			
 			it("with modified cover", function() {
@@ -228,7 +226,7 @@ describe("BooksView", function() {
 				
 				displayElement.find('div.save').click();
 				
-				expect(actualBook.cover).toEqual(cover);
+				expect(mostRecentSaveCall.args[0].cover).toEqual(cover);
 			});
 			
 			it("with 'has been read' modified", function() {
@@ -236,7 +234,7 @@ describe("BooksView", function() {
 				
 				displayElement.find('div.save').click();
 				
-				expect(actualBook.hasBeenRead).toBeFalsy();
+				expect(mostRecentSaveCall.args[0].hasBeenRead).toBeFalsy();
 			});
 			
 			it("with 'own the book' modified", function() {
@@ -244,7 +242,7 @@ describe("BooksView", function() {
 				
 				displayElement.find('div.save').click();
 				
-				expect(actualBook.ownTheBook).toBeFalsy();
+				expect(mostRecentSaveCall.args[0].ownTheBook).toBeFalsy();
 			});
 			
 			it("with 'own the ebook' modified", function() {
@@ -252,15 +250,11 @@ describe("BooksView", function() {
 				
 				displayElement.find('div.save').click();
 				
-				expect(actualBook.ownTheEBook).toBeTruthy();
+				expect(mostRecentSaveCall.args[0].ownTheEBook).toBeTruthy();
 			});
 		});
 		
 		it("should pass book to callback with values set when book is not provided", function() {
-			var actualBook;
-			options.callbacks.save = function(book) {
-				actualBook = book;
-			}
 			options.book = null;
 			var newTitle = "New title";
 
@@ -268,7 +262,7 @@ describe("BooksView", function() {
 			displayElement.find('input.title').val(newTitle);
 			displayElement.find('div.save').click();
 
-			expect(actualBook.title).toEqual(newTitle);
+			expect(options.callbacks.save.mostRecentCall.args[0].title).toEqual(newTitle);
 		});
 	});
 	
@@ -288,8 +282,6 @@ describe("BooksView", function() {
 		
 		it("should clear any data in display element before rendering", function() {
 			options.displayElement.append("REMOVE ME");
-			
-			console.log(options.displayElement.html());
 			
 			booksView.deleteConfirm(options);
 				

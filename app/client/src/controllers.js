@@ -49,14 +49,6 @@ BooksController.prototype.edit = function(book) {
 		book: book
 	});
 }
-BooksController.prototype.delete = function(book) {
-	this.booksRepository.delete(book);
-	this.all();
-}
-BooksController.prototype.save = function(book) {
-	this.booksRepository.save(book);
-	this.all();
-}
 BooksController.prototype.new = function() {
 	var booksController = this;
 	this.booksView.form({
@@ -69,4 +61,12 @@ BooksController.prototype.new = function() {
 			}
 		}
 	});
+}
+BooksController.prototype.delete = function(book) {
+	this.booksRepository.delete(book);
+	this.all();
+}
+BooksController.prototype.save = function(book) {
+	this.booksRepository.save(book);
+	this.all();
 }
