@@ -106,14 +106,14 @@ describe("BooksView", function() {
 			booksView.all(options);
 			displayElement.find('.move-up').first().click();
 
-			expect(options.callbacks.move).toHaveBeenCalledWith(true, options.books[0]);
+			expect(options.callbacks.move).toHaveBeenCalledWith(undefined, options.books[0]);
 		});
 		
 		it("should execute move callback with book when move-down button is clicked", function() {
 			booksView.all(options);
 			displayElement.find('.move-down').first().click();
 
-			expect(options.callbacks.move).toHaveBeenCalledWith(false, options.books[0]);
+			expect(options.callbacks.move).toHaveBeenCalledWith(options.books[1], options.books[0]);
 		});
 	});
 	

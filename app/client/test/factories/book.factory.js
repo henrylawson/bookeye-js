@@ -11,7 +11,10 @@ BookFactory.createBooks = function() {
 			cover: "http://bks9.books.google.co.in/books?id=KjmXSQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
 			hasBeenRead: true,
 			ownTheBook: true,
-			ownTheEBook: true
+			ownTheEBook: true,
+			priority: {
+				all: 1
+			},
 		},
 		{ 
 			id: null, 
@@ -21,7 +24,10 @@ BookFactory.createBooks = function() {
 			cover: "http://bks9.books.google.co.in/books?id=KjmXSQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
 			hasBeenRead: false,
 			ownTheBook: false,
-			ownTheEBook: false
+			ownTheEBook: false,
+			priority: {
+				all: 1
+			},
 		},
 	];
 }
@@ -34,7 +40,10 @@ BookFactory.createBook = function() {
 		cover: "http://bks9.books.google.co.in/books?id=KjmXSQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
 		hasBeenRead: true,
 		ownTheBook: true,
-		ownTheEBook: true
+		ownTheEBook: true,
+		priority: {
+			all: 1
+		},
 	};
 }
 BookFactory.createBookWithGuid = function() {
@@ -51,6 +60,9 @@ BookFactory.createSerializedBook = function() {
 		cover: "http://bks9.books.google.co.in/books?id=KjmXSQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
 		hasBeenRead: 'true',
 		ownTheBook: 'true',
-		ownTheEBook: 'false'
+		ownTheEBook: 'false',
+		priority: {
+			all: '1'
+		},
 	};
 }

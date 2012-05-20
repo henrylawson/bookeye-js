@@ -6,6 +6,14 @@ BooksView.prototype.all = function(options) {
 		var view = this;
 		$.each(options.books, function(i, book) {
 			var bookHtml = $(template(book));
+			var bookAbove = options.books[i-1];
+			var bookBelow = options.books[i+1];
+			if (typeof bookAbove === 'undefined') {
+				bookHtml.find('.move-up').hide();
+			}
+			if (typeof bookBelow === 'undefined') {
+				bookHtml.find('.move-down').hide();
+			}
 			bookHtml.find('.edit').click(function() {
 				options.callbacks.edit(book);
 			});
@@ -13,10 +21,10 @@ BooksView.prototype.all = function(options) {
 				options.callbacks.delete(book);
 			});
 			bookHtml.find('.move-up').click(function() {
-				options.callbacks.move(true, book);
+				options.callbacks.move(bookAbove, book);
 			});
 			bookHtml.find('.move-down').click(function() {
-				options.callbacks.move(false, book);
+				options.callbacks.move(bookBelow, book);
 			});
 			element.append(bookHtml);
 		});

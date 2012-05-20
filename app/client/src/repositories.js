@@ -32,10 +32,16 @@ BooksRepository.prototype.determineFilter = function(options) {
 	}
 	return filter;
 }
-BooksRepository.prototype.move = function(isMoveUp, book, options) {
-	console.log(book);
-	console.log(isMoveUp);
-	console.log(options);
+BooksRepository.prototype.move = function(bookToSwap, book, key) {
+	if (typeof bookToSwap !== 'undefined') {
+		var booksPriority = book.priority[key];
+		var bookToSwapsPriority = bookToSwap.priority[key];
+		book.priority[key] = bookToSwapsPriority;
+		bookToSwap.priority[key] = booksPriority;
+		this.addOrUpdate(book);
+		this.addOrUpdate(bookToSwap);
+		this.updateWebService();
+	}
 }
 BooksRepository.prototype.saveMultiple = function(books) {
 	for(var i = 0; i < books.length; i++) {

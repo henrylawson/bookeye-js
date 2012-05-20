@@ -236,24 +236,16 @@ describe("BooksController", function() {
 			spyOn(booksController, 'all');
 		});
 
-		it("should delegate up move to repository", function() {
+		it("should delegate move to repository", function() {
 			spyOn(mockBooksRepository, 'move');
 
-			booksController.move(true, book);
+			booksController.move(book, book);
 	
-			expect(mockBooksRepository.move).toHaveBeenCalledWith(true, book, options.repository);
-		});
-
-		it("should delegate down move to repository", function() {
-			spyOn(mockBooksRepository, 'move');
-
-			booksController.move(false, book);
-
-			expect(mockBooksRepository.move).toHaveBeenCalledWith(false, book, options.repository);
+			expect(mockBooksRepository.move).toHaveBeenCalledWith(book, book, options.repository.key);
 		});
 
 		it("should call all action after move", function() {
-			booksController.move(false, book);
+			booksController.move(book, book);
 	
 			expect(booksController.all).toHaveBeenCalled();
 		});

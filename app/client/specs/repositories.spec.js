@@ -142,6 +142,31 @@ describe("BooksRepository", function() {
 		});
 	});
 	
+	describe("saveMultiple", function() {
+		var books;
+		
+		beforeEach(function() {
+			books = BookFactory.createBooks();
+		});
+		
+		it("should call addOrUpdate for each book", function() {
+			spyOn(booksRepository, "addOrUpdate");
+			
+			booksRepository.saveMultiple(books);
+			
+			expect(booksRepository.addOrUpdate.argsForCall[0][0]).toEqual(books[0]);
+			expect(booksRepository.addOrUpdate.argsForCall[1][0]).toEqual(books[1]);
+		});
+			
+		it("should call updateWebService", function() {
+			spyOn(booksRepository, "updateWebService");
+
+			booksRepository.saveMultiple(books);
+
+			expect(booksRepository.updateWebService).toHaveBeenCalled();
+		});
+	});
+	
 	describe("save", function() {
 		var newBook;
 		
@@ -204,6 +229,58 @@ describe("BooksRepository", function() {
 				
 				expect(booksRepository.getAll()).toEqual(serviceReturnedBooks);
 			});
+		});
+	});
+	
+	describe("move", function() {
+		var bookToSwap;
+		var book;
+		var key;
+		
+		beforeEach(function() {
+			key = 'all';
+			bookToSwap = BookFactory.createBook();
+			book = BookFactory.createBook();
+			bookToSwap.priority[key] = 99;
+			book.priority[key] = 20;
+		});
+		
+		it("should not change books priority if bookToSwap is undefined", function() {
+			booksRepository.move(undefined, book, key);
+			
+			expect(book.priority[key]).toEqual(20);
+		});
+		
+		it("should swap the priorities of both books for the given key", function() {
+			booksRepository.move(bookToSwap, book, key);
+			
+			expect(bookToSwap.priority[key]).toEqual(20);
+			expect(book.priority[key]).toEqual(99);
+		});
+		
+		it("should call addOrUpdate for both books", function() {
+			spyOn(booksRepository, "addOrUpdate");
+
+			booksRepository.move(bookToSwap, book, key);
+
+			expect(booksRepository.addOrUpdate).toHaveBeenCalledWith(book);
+			expect(booksRepository.addOrUpdate).toHaveBeenCalledWith(bookToSwap);
+		});
+
+		it("should call updateWebService on successful move", function() {
+			spyOn(booksRepository, "updateWebService");
+
+			booksRepository.move(bookToSwap, book, key);
+
+			expect(booksRepository.updateWebService).toHaveBeenCalled();
+		});
+		
+		it("should not call updateWebService on unsuccessful move", function() {
+			spyOn(booksRepository, "updateWebService");
+
+			booksRepository.move(undefined, book, key);
+
+			expect(booksRepository.updateWebService).not.toHaveBeenCalled();
 		});
 	});
 

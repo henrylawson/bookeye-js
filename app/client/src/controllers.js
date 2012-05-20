@@ -16,8 +16,8 @@ BooksController.prototype.all = function(options) {
 			delete: function(book) {
 				booksController.deleteConfirm(book);
 			},
-			move: function(isUpMove, book) {
-				booksController.move(isUpMove, book);
+			move: function(bookToSwapWith, book) {
+				booksController.move(bookToSwapWith, book);
 			}
 		},
 		books: books
@@ -64,8 +64,8 @@ BooksController.prototype.new = function() {
 		}
 	});
 }
-BooksController.prototype.move = function(isUpMove, book) {
-	this.options.repository.move(isUpMove, book, this.stateOptions.repository);
+BooksController.prototype.move = function(bookToSwapWith, book) {
+	this.options.repository.move(bookToSwapWith, book, this.stateOptions.repository.key);
 	this.all();
 }
 BooksController.prototype.delete = function(book) {
