@@ -1,6 +1,7 @@
 var BooksController = function(options) {
 	this.allDisplayElement = options.displayElements.all;
 	this.formDisplayElement = options.displayElements.form;
+	this.deleteDisplayElement = options.displayElements.deleteConfirm;
 	this.booksView = options.view;
 	this.booksRepository = options.repository;
 }
@@ -14,11 +15,25 @@ BooksController.prototype.all = function() {
 				booksController.edit(book) 
 			},
 			delete: function(book) {
-				booksController.booksRepository.delete(book);
-				booksController.all();
+				booksController.deleteConfirm(book);
 			},
 		},
 		books: books
+	});
+}
+BooksController.prototype.deleteConfirm = function(book) {
+	var booksController = this;
+	this.booksView.deleteConfirm({
+		displayElement: this.deleteDisplayElement, 
+		callbacks: {
+			delete: function(book) { 
+				booksController.booksRepository.delete(book);
+				booksController.all();
+			},
+			cancel: function() {
+			}
+		}, 
+		book: book
 	});
 }
 BooksController.prototype.edit = function(book) {

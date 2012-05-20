@@ -7,22 +7,14 @@ div.page-container {
 }
 .cover-container {
 	display:none;
-	background:#fafafa;
-	font-style:italic;
 }
-.cover-container img.cover {
-	width:100%;
-	border:0;
+.modal-backdrop {
+	opacity:0.2;
 }
-.book .properties {
-	text-align:right;
-	margin-bottom:10px;
-}
-.book .content {
-	position:relative;
-}
-.book .actions {
+#status {
 	position:absolute;
-	bottom:0;
-	right:0;
+	bottom:0px;
+	right:0px;
+	width:200px;
+	margin-right:15px;
 }

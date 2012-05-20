@@ -271,4 +271,52 @@ describe("BooksView", function() {
 			expect(actualBook.title).toEqual(newTitle);
 		});
 	});
+	
+	describe("delete-confirm", function() {
+		var options;
+		
+		beforeEach(function() {
+			options = {
+				displayElement: $("<div></div>"),
+				callbacks: {
+					delete: jasmine.createSpy("delete callback"),
+					cancel: jasmine.createSpy("cancel callback")
+				},
+				book: BookFactory.createBook(),
+			};
+		});
+		
+		it("should clear any data in display element before rendering", function() {
+			options.displayElement.append("REMOVE ME");
+			
+			console.log(options.displayElement.html());
+			
+			booksView.deleteConfirm(options);
+				
+			expect(options.displayElement.html()).not.toContain("REMOVE ME");
+		});
+		
+		it("should render the book title in the display element", function() {
+			booksView.deleteConfirm(options);
+			
+			expect(options.displayElement.html()).toContain(options.book.title);
+		});
+		
+		it("should execute delete callback on delete button click", function() {
+			booksView.deleteConfirm(options);
+			
+			options.displayElement.find('.delete').click();
+			
+			expect(options.callbacks.delete).toHaveBeenCalledWith(options.book);
+		});
+		
+		
+		it("should execute cancel callback on cancel button click", function() {
+			booksView.deleteConfirm(options);
+			
+			options.displayElement.find('.cancel').click();
+			
+			expect(options.callbacks.cancel).toHaveBeenCalled();
+		});
+	});
 });

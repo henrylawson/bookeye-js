@@ -46,3 +46,19 @@ BooksView.prototype.form = function(options) {
 	});
 	element.append(editHtml);
 }
+BooksView.prototype.deleteConfirm = function(options) {
+	var book = options.book || {};
+	var element = $(options.displayElement).empty();
+	var template = Handlebars.compile($('#books-view-delete-confirm').html());
+	var deleteConfirmHtml = $(template(book));
+	deleteConfirmHtml.find('.delete').click(function() {
+		deleteConfirmHtml.alert('close');
+		options.callbacks.delete(book);
+	});
+	deleteConfirmHtml.find('.cancel').click(function() {
+		deleteConfirmHtml.alert('close');
+		options.callbacks.cancel();
+	});
+	element.append(deleteConfirmHtml);
+	deleteConfirmHtml.alert();
+}

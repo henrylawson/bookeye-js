@@ -13,6 +13,7 @@ describe("BooksController", function() {
 			displayElements: {
 				all: $('<div></dv>'),
 				form: $('<div></dv>'),
+				deleteConfirm: $('<div></dv>'),
 			},
 			view: mockBooksView,
 			repository: mockBooksRepository,
@@ -40,6 +41,17 @@ describe("BooksController", function() {
 			booksController.edit(book);
 			
 			expect(mockBooksView.form).toHaveBeenCalled();
+		});
+	});
+	
+	describe("deleteConfirm action", function() {
+		it("should render delete confirm view", function() {
+			var book = BookFactory.createBook();
+			spyOn(mockBooksView, 'deleteConfirm');
+	
+			booksController.deleteConfirm(book);
+		
+			expect(mockBooksView.deleteConfirm).toHaveBeenCalled();
 		});
 	});
 
