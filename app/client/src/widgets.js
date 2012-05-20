@@ -22,7 +22,7 @@ StatusWidget.prototype.display = function(statusMessage, templateId) {
 		messageElement.fadeOut(1000, function() {
 			messageElement.remove();
 		})
-	}, 1000 * childrenCount);
+	}, 500 * childrenCount);
 }
 StatusWidget.prototype.displaySuccess = function(statusMessage) {
 	this.display(statusMessage, '#status-widget-message-success');
