@@ -27,8 +27,7 @@ BooksController.prototype.deleteConfirm = function(book) {
 		displayElement: this.deleteDisplayElement, 
 		callbacks: {
 			delete: function(book) { 
-				booksController.booksRepository.delete(book);
-				booksController.all();
+				booksController.delete(book);
 			},
 			cancel: function() {
 			}
@@ -49,6 +48,10 @@ BooksController.prototype.edit = function(book) {
 		}, 
 		book: book
 	});
+}
+BooksController.prototype.delete = function(book) {
+	this.booksRepository.delete(book);
+	this.all();
 }
 BooksController.prototype.save = function(book) {
 	this.booksRepository.save(book);

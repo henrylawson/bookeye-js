@@ -64,13 +64,37 @@ describe("BooksController", function() {
 			expect(mockBooksView.form).toHaveBeenCalled();
 		});
 	});
+	
+	describe("delete action", function() {
+		var book;
+
+		beforeEach(function() {
+			book = BookFactory.createBook();
+			booksController.save(book);
+		});
+
+		it("should save book to service", function() {
+			spyOn(mockBooksRepository, 'delete');
+
+			booksController.delete(book);
+	
+			expect(mockBooksRepository.delete).toHaveBeenCalledWith(book);
+		});
+
+		it("should call all book view", function() {
+			spyOn(mockBooksView, 'all');
+		
+			booksController.delete(book);
+	
+			expect(mockBooksView.all).toHaveBeenCalled();
+		});
+	});
 		
 	describe("save action", function() {
 		var book;
 		
 		beforeEach(function() {
 			book = BookFactory.createBook();
-			spyOn(mockBooksView, 'all');
 		});
 		
 		it("should save book to service", function() {
@@ -82,6 +106,8 @@ describe("BooksController", function() {
 		});
 		
 		it("should call all book view", function() {
+			spyOn(mockBooksView, 'all');
+		
 			booksController.save(book);
 			
 			expect(mockBooksView.all).toHaveBeenCalled();
