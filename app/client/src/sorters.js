@@ -1,4 +1,6 @@
-var BookSorter = function(key) {
+var BookSorter = function() {
+}
+BookSorter.prototype.setKey = function(key) {
 	BookSorter._key = key;
 }
 BookSorter.prototype.sort = function(first, second) {

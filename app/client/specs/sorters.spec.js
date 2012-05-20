@@ -3,7 +3,8 @@ describe("BookSorter", function() {
 	var key;
 	
 	beforeEach(function() {
-		bookSorter = new BookSorter(key);
+		bookSorter = new BookSorter();
+		bookSorter.setKey(key);
 	});
 	
 	describe("determinePriority", function() {

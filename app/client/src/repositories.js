@@ -1,5 +1,6 @@
-var BooksRepository = function(booksService) {
+var BooksRepository = function(booksService, bookSorter) {
 	this.booksService = booksService;
+	this.bookSorter = bookSorter;
 	this.books = [];
 	var booksRepository = this;
 	this.booksService.getAllBooksFromWebService(function(books) {
@@ -7,9 +8,19 @@ var BooksRepository = function(booksService) {
 	});
 }
 BooksRepository.prototype.getAll = function(options) {
+	var key = this.determineKey(options);
 	var filter = this.determineFilter(options);
 	var filteredBooks = BookFilter.filterAllBy(this.books, filter);
+	this.bookSorter.setKey(key);
+	filteredBooks.sort(this.bookSorter.sort);
 	return filteredBooks;
+}
+BooksRepository.prototype.determineKey = function(options) {
+	var key = 'all';
+	if (options) {
+		key = options.key || 'all';
+	}
+	return key;
 }
 BooksRepository.prototype.determineFilter = function(options) {
 	var filter = BookFilter.all;

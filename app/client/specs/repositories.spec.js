@@ -2,11 +2,13 @@ describe("BooksRepository", function() {
 	var booksRepository;
 	var mockStatusWidget;
 	var mockAjaxHandler;
+	var mockBookSorter;
 	
 	beforeEach(function() {
 		mockStatusWidget = new StatusWidget($('<div></div>'));
+		mockBookSorter = new BookSorter();
 		mockBooksService = new BooksService(mockStatusWidget, jasmine.createSpy('ajax service'));
-		booksRepository = new BooksRepository(mockBooksService);
+		booksRepository = new BooksRepository(mockBooksService, mockBookSorter);
 	});
 	
 	describe("instantiation", function() {
@@ -21,7 +23,7 @@ describe("BooksRepository", function() {
 			
 			beforeEach(function() {
 				mockBooksService.getAllBooksFromWebService = jasmine.createSpy("get from web service");
-				booksRepository = new BooksRepository(mockBooksService);
+				booksRepository = new BooksRepository(mockBooksService, mockBookSorter);
 				mostRecentCallArguments = mockBooksService.getAllBooksFromWebService.mostRecentCall.args; 
 			});
 			
@@ -57,10 +59,28 @@ describe("BooksRepository", function() {
 			var expectedBooks = BookFactory.createBooks();
 			spyOn(BookFilter, 'filterAllBy').andReturn(expectedBooks);
 			
-			var actualBooks = booksRepository.getAll();
+			var actualBooks = booksRepository.getAll(options);
 
 			expect(actualBooks).toBeDefined();
 			expect(actualBooks).toEqual(expectedBooks);
+		});
+		
+		it("should call setKey on book sorter", function() {
+			spyOn(mockBookSorter, 'setKey');
+			
+			var actualBooks = booksRepository.getAll();
+			
+			expect(mockBookSorter.setKey).toHaveBeenCalledWith(options.key);
+		});
+		
+		it("should call sort on filtered books with book sorter sort method", function() {
+			var filteredBooks = BookFactory.createBooks();
+			spyOn(filteredBooks, 'sort');
+			spyOn(BookFilter, 'filterAllBy').andReturn(filteredBooks);
+			
+			var actualBooks = booksRepository.getAll();
+			
+			expect(filteredBooks.sort).toHaveBeenCalledWith(mockBookSorter.sort);
 		});
 	});
 	
@@ -85,6 +105,30 @@ describe("BooksRepository", function() {
 		
 		it("should use the provided filter when set", function() {
 			expect(booksRepository.determineFilter(options)).toEqual(BookFilter.upcoming);
+		});
+	});
+	
+	describe("determineKey", function() {
+		var options;
+		
+		beforeEach(function() {
+			options = {
+				key: 'upcoming',
+			};
+		});
+		
+		it("should use default when nothing is provided", function() {
+			expect(booksRepository.determineKey()).toEqual('all');
+		});
+		
+		it("should use default when nothing is provided for key in options", function() {
+			options.key = null;
+			
+			expect(booksRepository.determineKey(options)).toEqual('all');
+		});
+		
+		it("should use the provided key when set", function() {
+			expect(booksRepository.determineKey(options)).toEqual('upcoming');
 		});
 	});
 	
