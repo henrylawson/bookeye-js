@@ -71,3 +71,37 @@ describe("StatusWidget", function() {
 		});
 	});
 });
+
+describe("TitleWidget", function() {
+	var titleWidget;
+	var displayElement;
+	
+	beforeEach(function() {
+		displayElement = $('<div>Dummy text</div>');
+		titleWidget = new TitleWidget(displayElement);
+	});
+	
+	describe("display", function() {
+		var title;
+	
+		beforeEach(function() {
+			options = {
+				title: "The title",
+				subtext: "Some sub text"
+			};
+			titleWidget.display(options);
+		});
+		
+		it("should render the title", function() {
+			expect(displayElement.html()).not.toContain("Dummy text");
+		});
+		
+		it("should render the title", function() {
+			expect(displayElement.html()).toContain(options.title);
+		});
+		
+		it("should render the subtext", function() {
+			expect(displayElement.html()).toContain(options.subtext);
+		});
+	})
+});

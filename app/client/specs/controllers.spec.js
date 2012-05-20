@@ -7,6 +7,7 @@ describe("BooksController", function() {
 	beforeEach(function() {
 		mockBooksView = new BooksView();
 		mockStatusWidget = new StatusWidget($('<div></div>'));
+		mockTitleWidget = new TitleWidget($('<div></div>'));
 		mockBooksService = new BooksService(mockStatusWidget, jasmine.createSpy('ajax service'));
 		mockBooksRepository = new BooksRepository(mockBooksService);
 		options = {
@@ -17,24 +18,38 @@ describe("BooksController", function() {
 			},
 			view: mockBooksView,
 			repository: mockBooksRepository,
+			widgets: {
+				title: mockTitleWidget
+			}
 		};
 		booksController = new BooksController(options);
 	});
 	
 	describe("all action", function() {
 		var books;
+		var details;
 		
 		beforeEach(function() {
 			books = BookFactory.createBooks();
 			spyOn(mockBooksRepository, 'getAll').andReturn(books);
+			spyOn(mockTitleWidget, 'display');
+			details = { 
+				title: 'Title', 
+				subtext: 'subtext',
+				filter: BookFilter.all
+			};
 		});
 		
 		it("should get all the books from the repository", function() {
-			var filter = BookFilter.all;
-			
-			booksController.all(filter);
+			booksController.all(details);
 				
-			expect(mockBooksRepository.getAll).toHaveBeenCalledWith(filter);
+			expect(mockBooksRepository.getAll).toHaveBeenCalledWith(details.filter);
+		});
+		
+		it("should get all the books from the repository", function() {
+			booksController.all(details);
+
+			expect(mockTitleWidget.display).toHaveBeenCalledWith(details);
 		});
 		
 		describe("should render all view", function() {

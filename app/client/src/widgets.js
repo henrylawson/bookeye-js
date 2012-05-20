@@ -32,3 +32,13 @@ StatusWidget.prototype.displayError = function(statusMessage) {
 	this.display(statusMessage, '#status-widget-message-error');
 }
 
+var TitleWidget = function(displayElement) {
+	this.displayElement = displayElement;
+}
+TitleWidget.prototype.display = function(titleDetails) {
+	var template = Handlebars.compile($('#title-widget-display').html());
+	var titleHtml = $(template(titleDetails));
+	this.displayElement.empty();
+	this.displayElement.append(titleHtml);
+}
+

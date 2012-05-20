@@ -18,6 +18,7 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var statusWidget = new StatusWidget($('#status'));
+			var titleWidget = new TitleWidget($('#title'));
 			var booksService = new BooksService(statusWidget, $.ajax);
 			var booksRepository = new BooksRepository(booksService);
 			var booksView = new BooksView();
@@ -28,15 +29,30 @@
 					deleteConfirm: $('#confirm'),
 				},
 				view: booksView,
-				repository: booksRepository
+				repository: booksRepository,
+				widgets: {
+					title: titleWidget
+				}
 			});
 			booksController.all();
 			
 			var navigationWidget = new NavigationWidget($('#navigation ul.items'));
 			navigationWidget.add("All", function() { booksController.all() });
-			navigationWidget.add("Upcoming", function() { booksController.all(BookFilter.upcoming) });
-			navigationWidget.add("Wishlist", function() { booksController.all(BookFilter.wishlist) });
-			navigationWidget.add("Read", function() { booksController.all(BookFilter.read) });
+			navigationWidget.add("Upcoming", function() { booksController.all({ 
+				title: "Upcoming", 
+				subtext: "Must read soon!", 
+				filter: BookFilter.upcoming }) 
+			});
+			navigationWidget.add("Wishlist", function() { booksController.all({ 
+				title: "Wishlist", 
+				subtext: "Got to get them to read them!",
+				filter: BookFilter.wishlist }) 
+			});
+			navigationWidget.add("Read", function() { booksController.all({ 
+				title: "Read", 
+				subtext: "All done!", 
+				filter: BookFilter.read }) 
+			});
 			var rightNavigationWidget = new NavigationWidget($('#navigation ul.right-items'));
 			rightNavigationWidget.add("Add Book", function() { booksController.new() }, '#navigation-widget-item-add');
 		});
@@ -63,8 +79,7 @@
 		</div>
 		<div id="confirm">
 		</div>
-		<div class="page-header">
-			<h1>All books <small>Everythang!</small></h1>
+		<div id="title" class="page-header">
 		</div>
 		<table class="table table-striped table-condensed">
 			<thead>

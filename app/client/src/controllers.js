@@ -1,15 +1,17 @@
 var BooksController = function(options) {
-	this.allDisplayElement = options.displayElements.all;
-	this.formDisplayElement = options.displayElements.form;
-	this.deleteDisplayElement = options.displayElements.deleteConfirm;
-	this.booksView = options.view;
-	this.booksRepository = options.repository;
+	this.options = options;
 }
-BooksController.prototype.all = function(filter) {
-	var books = this.booksRepository.getAll(filter);
+BooksController.prototype.all = function(details) {
+	details = details || { 
+		title: "All books", 
+		subtext: "Everythang!",
+		filter: BookFilter.all
+	};
+	this.options.widgets.title.display(details);
+	var books = this.options.repository.getAll(details.filter);
 	var booksController = this;
-	this.booksView.all({
-		displayElement: this.allDisplayElement, 
+	this.options.view.all({
+		displayElement: this.options.displayElements.all, 
 		callbacks: {
 			edit: function(book) { 
 				booksController.edit(book) 
@@ -23,8 +25,8 @@ BooksController.prototype.all = function(filter) {
 }
 BooksController.prototype.deleteConfirm = function(book) {
 	var booksController = this;
-	this.booksView.deleteConfirm({
-		displayElement: this.deleteDisplayElement, 
+	this.options.view.deleteConfirm({
+		displayElement: this.options.displayElements.deleteConfirm, 
 		callbacks: {
 			delete: function(book) { 
 				booksController.delete(book);
@@ -37,8 +39,8 @@ BooksController.prototype.deleteConfirm = function(book) {
 }
 BooksController.prototype.edit = function(book) {
 	var booksController = this;
-	this.booksView.form({
-		displayElement: this.formDisplayElement, 
+	this.options.view.form({
+		displayElement: this.options.displayElements.form, 
 		callbacks: {
 			save: function(book) { 
 				booksController.save(book) 
@@ -51,8 +53,8 @@ BooksController.prototype.edit = function(book) {
 }
 BooksController.prototype.new = function() {
 	var booksController = this;
-	this.booksView.form({
-		displayElement: this.formDisplayElement, 
+	this.options.view.form({
+		displayElement: this.options.displayElements.form, 
 		callbacks: {
 			save: function(book) { 
 				booksController.save(book) 
@@ -63,10 +65,10 @@ BooksController.prototype.new = function() {
 	});
 }
 BooksController.prototype.delete = function(book) {
-	this.booksRepository.delete(book);
+	this.options.repository.delete(book);
 	this.all();
 }
 BooksController.prototype.save = function(book) {
-	this.booksRepository.save(book);
+	this.options.repository.save(book);
 	this.all();
 }
