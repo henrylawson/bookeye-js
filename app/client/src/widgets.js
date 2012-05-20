@@ -19,7 +19,9 @@ StatusWidget.prototype.display = function(statusMessage, templateId) {
 	this.displayElement.append(messageElement);
 	var childrenCount = this.displayElement.children().length;
 	setTimeout(function() {
-		messageElement.fadeOut(1000);
+		messageElement.fadeOut(1000, function() {
+			messageElement.remove();
+		})
 	}, 1000 * childrenCount);
 }
 StatusWidget.prototype.displaySuccess = function(statusMessage) {
