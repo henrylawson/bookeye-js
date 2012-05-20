@@ -15,14 +15,19 @@ BookSorter.prototype.sort = function(first, second) {
 	}
 }
 BookSorter.prototype.setPriortiesForCurrentOrder = function(books) {
+	var updated = false;
 	var priority = books.length;
 	for(var i = 0; i < books.length; i++) {
 		if (typeof books[i].priority === 'undefined') {
 			books[i].priority = {};
 		}
-		books[i].priority[BookSorter._key] = priority;
+		if (books[i].priority[BookSorter._key] != priority) {
+			books[i].priority[BookSorter._key] = priority;
+			updated = true;
+		}
 		priority--;
 	}
+	return updated;
 }
 BookSorter.determinePriority = function(book) {
 	if (typeof book.priority === 'undefined' || book.priority == null) {

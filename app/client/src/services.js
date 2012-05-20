@@ -51,7 +51,6 @@ BooksService.prototype.getAllBooksFromWebService = function(successCallback) {
 }
 BooksService.prototype.postAllBooksToWebService = function(successCallback, allBooks) {
 	var booksRepository = this;
-	console.log(allBooks);
 	this.updateHttpService({
 		httpVerb: 'POST', 
 		action: '/books',	
