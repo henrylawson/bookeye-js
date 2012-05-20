@@ -37,6 +37,11 @@ BookFactory.createBook = function() {
 		ownTheEBook: true
 	};
 }
+BookFactory.createBookWithGuid = function() {
+	var book = BookFactory.createBook();
+	book.id = BooksRepository.guid();
+	return book;
+}
 BookFactory.createSerializedBook = function() {
 	return { 
 		id: BooksRepository.guid(), 
