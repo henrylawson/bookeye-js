@@ -76,4 +76,23 @@ describe("BookSorter", function() {
 			expect(books[2].title).toEqual("Book 0");
 		});
 	});
+	
+	describe("setPriortiesForCurrentOrder", function() {
+		var books;
+
+		beforeEach(function() {
+			books = [];
+			books.push(BookFactory.createBookWithGuid());
+			books.push(BookFactory.createBookWithGuid());
+			books.push(BookFactory.createBookWithGuid());
+		});
+		
+		it("should set priority from high to low from index 0", function() {
+			bookSorter.setPriortiesForCurrentOrder(books);
+			
+			expect(books[0].priority[key]).toEqual(3);
+			expect(books[1].priority[key]).toEqual(2);
+			expect(books[2].priority[key]).toEqual(1);
+		});
+	});
 });
