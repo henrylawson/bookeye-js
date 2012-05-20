@@ -13,3 +13,12 @@ BookFilter.wishlist = function(book) {
 BookFilter.read = function(book) {
 	return book.hasBeenRead === true;
 }
+BookFilter.filterAllBy = function(books, filter) {
+	var filteredBooks = [];
+	for(var i = 0; i < books.length; i++) {
+		if (filter(books[i]) === true) {
+			filteredBooks.push(books[i]);
+		}
+	}
+	return filteredBooks;
+}

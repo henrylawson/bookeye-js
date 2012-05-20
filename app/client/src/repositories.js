@@ -7,20 +7,16 @@ var BooksRepository = function(booksService) {
 	});
 }
 BooksRepository.prototype.getAll = function(options) {
+	var filter = this.determineFilter(options);
+	var filteredBooks = BookFilter.filterAllBy(this.books, filter);
+	return filteredBooks;
+}
+BooksRepository.prototype.determineFilter = function(options) {
 	var filter = BookFilter.all;
 	if (options) {
 		filter = options.filter || BookFilter.all;
 	}
-	return this.filterAllBy(filter);
-}
-BooksRepository.prototype.filterAllBy = function(filter) {
-	var filteredBooks = [];
-	for(var i = 0; i < this.books.length; i++) {
-		if (filter(this.books[i]) === true) {
-			filteredBooks.push(this.books[i]);
-		}
-	}
-	return filteredBooks;
+	return filter;
 }
 BooksRepository.prototype.move = function(isMoveUp, book, options) {
 	console.log(book);

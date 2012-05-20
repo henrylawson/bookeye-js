@@ -71,4 +71,40 @@ describe("BookFilter", function() {
 			expect(BookFilter.read(book)).toBeTruthy();
 		});
 	});
+
+	describe("filterAllBy", function() {
+		var books;
+		
+		beforeEach(function() {
+			books = BookFactory.createBooks();
+			books[0].id = 99;
+			books[1].id = 100;
+		});
+
+		it("should return all books", function() {
+			var actualBooks = BookFilter.filterAllBy(books, function() { 
+				return true; 
+			});
+
+			expect(actualBooks.length).toEqual(2);
+		});
+
+		it("should return no books", function() {
+			var actualBooks = BookFilter.filterAllBy(books, function() { 
+				return false; 
+			});
+
+			expect(actualBooks.length).toEqual(0);
+		});
+
+		it("should return book with correct id", function() {
+			var wantedId = books[0].id;
+			var actualBooks = BookFilter.filterAllBy(books, function(book) {
+				return book.id === wantedId;
+			});
+
+			expect(actualBooks.length).toEqual(1);
+			expect(actualBooks[0]).toEqual(books[0]);
+		});
+	});
 });

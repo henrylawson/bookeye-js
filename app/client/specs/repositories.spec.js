@@ -36,26 +36,55 @@ describe("BooksRepository", function() {
 	});
 	
 	describe("getAll", function() {
-		it("should return all books for default filter", function() {
-			booksRepository.save(BookFactory.createBook());
-			booksRepository.save(BookFactory.createBook());
-			
-			var books = booksRepository.getAll();
+		var options;
 		
-			expect(books.length).toEqual(2);
+		beforeEach(function() {
+			options = {
+				filter: BookFilter.upcoming,
+				key: 'all',
+			};
 		});
 		
-		it("should return read books for read filter", function() {
-			var book1 = BookFactory.createBook();
-			book1.hasBeenRead = false;
-			booksRepository.save(book1);
-			var book2 = BookFactory.createBook();
-			book2.hasBeenRead = true;
-			booksRepository.save(book2);
+		it("should pass options to determineFilter", function() {
+			spyOn(booksRepository, 'determineFilter');
+			
+			booksRepository.getAll(options);
+		
+			expect(booksRepository.determineFilter).toHaveBeenCalledWith(options);
+		});
+		
+		it("should return books filtered by filterAllBy", function() {
+			var expectedBooks = BookFactory.createBooks();
+			spyOn(BookFilter, 'filterAllBy').andReturn(expectedBooks);
+			
+			var actualBooks = booksRepository.getAll();
 
-			var books = booksRepository.getAll({ filter: BookFilter.read });
-
-			expect(books.length).toEqual(1);
+			expect(actualBooks).toBeDefined();
+			expect(actualBooks).toEqual(expectedBooks);
+		});
+	});
+	
+	describe("determineFilter", function() {
+		var options;
+		
+		beforeEach(function() {
+			options = {
+				filter: BookFilter.upcoming,
+			};
+		});
+		
+		it("should use default when nothing is provided", function() {
+			expect(booksRepository.determineFilter()).toEqual(BookFilter.all);
+		});
+		
+		it("should use default when nothing is provided for filter in options", function() {
+			options.filter = null;
+			
+			expect(booksRepository.determineFilter(options)).toEqual(BookFilter.all);
+		});
+		
+		it("should use the provided filter when set", function() {
+			expect(booksRepository.determineFilter(options)).toEqual(BookFilter.upcoming);
 		});
 	});
 	
