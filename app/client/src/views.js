@@ -37,28 +37,28 @@ BooksView.prototype.form = function(options) {
 	var book = options.book || {};
 	var element = $(options.displayElement).empty();
 	var template = Handlebars.compile($('#books-view-form').html());
-	var editHtml = $(template(book));
-	editHtml.find('input.cover').val(book.cover);
-	editHtml.find('div.save').click(function() {
-		book.title = editHtml.find('input.title').val();
-		book.author = editHtml.find('input.author').val();
-		book.year = editHtml.find('input.year').val();
-		book.cover = editHtml.find('input.cover').val();
-		book.hasBeenRead = editHtml.find('input.has-been-read').prop('checked');
-		book.ownTheBook = editHtml.find('input.own-the-book').prop('checked');
-		book.ownTheEBook = editHtml.find('input.own-the-ebook').prop('checked');
-		editHtml.modal('hide');
+	var formHtml = $(template(book));
+	formHtml.find('input.cover').val(book.cover);
+	formHtml.find('.save').click(function() {
+		book.title = formHtml.find('input.title').val();
+		book.author = formHtml.find('input.author').val();
+		book.year = formHtml.find('input.year').val();
+		book.cover = formHtml.find('input.cover').val();
+		book.hasBeenRead = formHtml.find('input.has-been-read').prop('checked');
+		book.ownTheBook = formHtml.find('input.own-the-book').prop('checked');
+		book.ownTheEBook = formHtml.find('input.own-the-ebook').prop('checked');
+		formHtml.modal('hide');
 		options.callbacks.save(book);
 	});
-	editHtml.modal({
+	formHtml.modal({
 		keybaord: false,
 		backdrop: 'static',
 	});
-	editHtml.find('.cancel').click(function() {
-		editHtml.modal('hide');
+	formHtml.find('.cancel').click(function() {
+		formHtml.modal('hide');
 		options.callbacks.cancel();
 	});
-	element.append(editHtml);
+	element.append(formHtml);
 }
 BooksView.prototype.deleteConfirm = function(options) {
 	var book = options.book || {};
@@ -75,4 +75,21 @@ BooksView.prototype.deleteConfirm = function(options) {
 	});
 	element.append(deleteConfirmHtml);
 	deleteConfirmHtml.alert();
+}
+
+var LookupBooksView = function() {}
+LookupBooksView.prototype.form = function(options) {
+	var element = $(options.displayElement).empty();
+	var template = Handlebars.compile($('#look-books-view-form').html());
+	var formHtml = $(template());
+	var lookupBooksView = this;
+	formHtml.find('.search').click(function() {
+		var query = formHtml.find('input.query').val();
+		options.callbacks.search(query);
+	});
+	formHtml.modal({
+		keybaord: false,
+		backdrop: 'static',
+	});
+	element.append(formHtml);
 }

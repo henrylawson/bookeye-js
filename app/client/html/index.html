@@ -22,7 +22,7 @@
 			var statusWidget = new StatusWidget($('#status'));
 			var titleWidget = new TitleWidget($('#title'));
 			var booksService = new BooksService(statusWidget, $.ajax);
-			var googleBooksService = new GoogleBooksService(statusWidget, $.ajax);
+			var lookupBooksService = new LookupBooksService(statusWidget, $.ajax);
 			var booksRepository = new BooksRepository(booksService, new BookSorter());
 			var booksView = new BooksView();
 			var booksController = new BooksController({
@@ -37,8 +37,6 @@
 					title: titleWidget
 				}
 			});
-			
-			
 			
 			var defaultAction = function() { 
 				booksController.all({ 
@@ -93,7 +91,7 @@
 			});
 			
 			var rightNavigationWidget = new NavigationWidget($('#navigation ul.right-items'));
-			rightNavigationWidget.add("Add Book", function() { booksController.new() }, '#navigation-widget-item-add');
+			rightNavigationWidget.add("Add Book", function() { booksController.add() }, '#navigation-widget-item-add');
 			
 			defaultAction();
 		});

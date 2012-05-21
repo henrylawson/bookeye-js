@@ -185,20 +185,20 @@ describe("BooksController", function() {
 		});
 	});
 
-	describe("new action", function() {
+	describe("add action", function() {
 		describe("should render form view", function() {
 			beforeEach(function() {
 				spyOn(mockBooksView, 'form');
 			});
 			
 			it("with no book passed in", function() {
-				booksController.new();
+				booksController.add();
 
 				expect(mockBooksView.form.mostRecentCall.args[0].book).not.toBeDefined();
 			});
 			
 			it("with the form display element", function() {
-				booksController.new();
+				booksController.add();
 
 				expect(mockBooksView.form.mostRecentCall.args[0].displayElement).toEqual(options.displayElements.form);
 			});
@@ -208,7 +208,7 @@ describe("BooksController", function() {
 					var book = BookFactory.createBook();
 					spyOn(booksController, 'save');
 					
-					booksController.new();
+					booksController.add();
 					mockBooksView.form.mostRecentCall.args[0].callbacks.save(book);
 
 					expect(booksController.save).toHaveBeenCalled();
@@ -296,5 +296,30 @@ describe("BooksController", function() {
 			
 			expect(booksController.all).toHaveBeenCalled();
 		});
+	});
+});
+
+describe("LookupBooksController", function() {
+	var lookupBooksController;
+	var mockLookupBooksView;
+	var options;
+	
+	beforeEach(function() {
+		mockLookupBooksView = jasmine.createSpy("lookup books view");
+		options = {
+			displayElements: {
+				quickAdd: $('<div></div>')
+			},
+			view: mockLookupBooksView,
+		};
+		lookupBooksController = new LookupBooksController(options);
+	});
+	
+	describe("quickAdd action", function() {
+		beforeEach(function() {
+			spyOn(mockBooksView, 'add');
+		});
+		
+		// to be added once view is ready
 	});
 });

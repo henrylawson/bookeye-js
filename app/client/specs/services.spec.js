@@ -181,15 +181,15 @@ describe("BooksService", function() {
 	});
 });
 
-describe("GoogleBooksService", function() {
-	var googleBooksService;
+describe("LookupBooksService", function() {
+	var lookupBooksService;
 	var mockAjaxHandler;
 	var mockStatusWidget;
 	
 	beforeEach(function() {
 		mockAjaxHandler = jasmine.createSpy("ajax handler");
 		mockStatusWidget = new StatusWidget($('<div></div>'));
-		googleBooksService = new GoogleBooksService(mockStatusWidget, mockAjaxHandler);
+		lookupBooksService = new LookupBooksService(mockStatusWidget, mockAjaxHandler);
 	});
 	
 	describe("search", function() {
@@ -202,18 +202,18 @@ describe("GoogleBooksService", function() {
 					success: jasmine.createSpy("success callback")
 				},
 				messages: {
-					success: "Google books returned results",
-					error: "Google books did not return any results"
+					success: "Lookup books returned results",
+					error: "Lookup books did not return any results"
 				}
 			};
-			googleBooksService.search(options);
+			lookupBooksService.search(options);
 		});
 		
 		it("should do a HTTP GET", function() {
 			expect(mockAjaxHandler.mostRecentCall.args[0].type).toEqual("GET");
 		});
 		
-		it("should use the google books api url", function() {
+		it("should use the correct lookup books api url", function() {
 			expect(mockAjaxHandler.mostRecentCall.args[0].url).toEqual("https://www.googleapis.com/books/v1/volumes");
 		});
 		

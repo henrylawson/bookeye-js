@@ -51,7 +51,7 @@ BooksController.prototype.edit = function(book) {
 		book: book
 	});
 }
-BooksController.prototype.new = function() {
+BooksController.prototype.add = function() {
 	var booksController = this;
 	this.options.view.form({
 		displayElement: this.options.displayElements.form, 

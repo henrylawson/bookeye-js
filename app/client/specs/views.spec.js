@@ -286,32 +286,25 @@ describe("BooksView", function() {
 		
 		beforeEach(function() {
 			options = {
-				displayElement: $("<div></div>"),
+				displayElement: $("<div>REMOVE ME</div>"),
 				callbacks: {
 					delete: jasmine.createSpy("delete callback"),
 					cancel: jasmine.createSpy("cancel callback")
 				},
 				book: BookFactory.createBook(),
 			};
+			booksView.deleteConfirm(options);
 		});
 		
 		it("should clear any data in display element before rendering", function() {
-			options.displayElement.append("REMOVE ME");
-			
-			booksView.deleteConfirm(options);
-				
 			expect(options.displayElement.html()).not.toContain("REMOVE ME");
 		});
 		
 		it("should render the book title in the display element", function() {
-			booksView.deleteConfirm(options);
-			
 			expect(options.displayElement.html()).toContain(options.book.title);
 		});
 		
 		it("should execute delete callback on delete button click", function() {
-			booksView.deleteConfirm(options);
-			
 			options.displayElement.find('.delete').click();
 			
 			expect(options.callbacks.delete).toHaveBeenCalledWith(options.book);
@@ -319,11 +312,45 @@ describe("BooksView", function() {
 		
 		
 		it("should execute cancel callback on cancel button click", function() {
-			booksView.deleteConfirm(options);
-			
 			options.displayElement.find('.cancel').click();
 			
 			expect(options.callbacks.cancel).toHaveBeenCalled();
+		});
+	});
+});
+
+describe("LookupBooksView", function() {
+	var lookupBooksView;
+	
+	beforeEach(function() {
+		lookupBooksView = new LookupBooksView();
+	});
+	
+	describe("form", function() {
+		var options;
+	
+		beforeEach(function() {
+			options = {
+				displayElement: $('<div>REMOVE ME</div>'),
+				callbacks: {
+					search: jasmine.createSpy('search'),
+					add: jasmine.createSpy('add')
+				}
+			};
+			lookupBooksView.form(options);
+		});
+		
+		it("should clear existing data in the display element", function() {
+			expect(options.displayElement.html()).not.toContain("REMOVE ME");
+		});
+		
+		it("should pass search query to search callback on search button click", function() {
+			var searchQuery = "Continuous Delivery";
+			
+			options.displayElement.find('.query').val(searchQuery);
+			options.displayElement.find('.search').click();
+			
+			expect(options.callbacks.search.mostRecentCall.args[0]).toEqual(searchQuery);
 		});
 	});
 });

@@ -67,12 +67,12 @@ BooksService.prototype.postAllBooksToWebService = function(successCallback, allB
 	});
 }
 
-var GoogleBooksService = function(statusWidget, ajaxHandler) {
+var LookupBooksService = function(statusWidget, ajaxHandler) {
 	this.statusWidget = statusWidget;
 	this.ajaxHandler = ajaxHandler;
 }
-GoogleBooksService.prototype.search = function(options) {
-	var googleBooksService = this;
+LookupBooksService.prototype.search = function(options) {
+	var lookupBooksService = this;
 	this.ajaxHandler({
 		type: 'GET',
 		url: 'https://www.googleapis.com/books/v1/volumes',
@@ -85,9 +85,9 @@ GoogleBooksService.prototype.search = function(options) {
 		},
 		complete: function(jqXHR, textStatus) {
 			if (textStatus == "success") {
-				googleBooksService.statusWidget.displaySuccess(options.messages.success);
+				lookupBooksService.statusWidget.displaySuccess(options.messages.success);
 			} else if (textStatus == "error") {
-				googleBooksService.statusWidget.displayError(options.messages.error);
+				lookupBooksService.statusWidget.displayError(options.messages.error);
 			}
 		}
 	});
