@@ -16,9 +16,9 @@ BooksService.prototype.updateHttpService = function(options) {
 		},
 		complete: function(jqXHR, textStatus) {
 			if (textStatus == "success") {
-				booksService.statusWidget.displaySuccess(options.messages.completeSuccess);
+				booksService.statusWidget.displaySuccess(options.messages.success);
 			} else if (textStatus == "error") {
-				booksService.statusWidget.displayError(options.messages.completeFailure);
+				booksService.statusWidget.displayError(options.messages.error);
 			}
 		}
 	});
@@ -41,8 +41,8 @@ BooksService.prototype.getAllBooksFromWebService = function(successCallback) {
 		async: false,
 		messages: {
 			started: 'Retrieving books...',
-			completeSuccess: 'Books retrieved!',
-			completeFailure: 'Error retrieving books from the service',
+			success: 'Books retrieved!',
+			error: 'Error retrieving books from the service',
 		},
 		callbacks: {
 			success: successCallback
@@ -58,11 +58,37 @@ BooksService.prototype.postAllBooksToWebService = function(successCallback, allB
 		async: true,
 		messages: {
 			started: 'Updating...',
-			completeSuccess: 'Books updated!',
-			completeFailure: 'Error updating books to the service',
+			success: 'Books updated!',
+			error: 'Error updating books to the service',
 		},
 		callbacks: {
 			success: successCallback
+		}
+	});
+}
+
+var GoogleBooksService = function(statusWidget, ajaxHandler) {
+	this.statusWidget = statusWidget;
+	this.ajaxHandler = ajaxHandler;
+}
+GoogleBooksService.prototype.search = function(options) {
+	var googleBooksService = this;
+	this.ajaxHandler({
+		type: 'GET',
+		url: 'https://www.googleapis.com/books/v1/volumes',
+		data: {
+			q: options.searchTerm
+		},
+		dataType: 'jsonp',
+		success: function(results) {
+			options.callbacks.success(results)
+		},
+		complete: function(jqXHR, textStatus) {
+			if (textStatus == "success") {
+				googleBooksService.statusWidget.displaySuccess(options.messages.success);
+			} else if (textStatus == "error") {
+				googleBooksService.statusWidget.displayError(options.messages.error);
+			}
 		}
 	});
 }

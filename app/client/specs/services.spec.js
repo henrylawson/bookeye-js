@@ -21,8 +21,8 @@ describe("BooksService", function() {
 				async: true,
 				messages: {
 					started: 'Started!',
-					completeSuccess: 'Success!',
-					completeFailure: 'Error!',
+					success: 'Success!',
+					error: 'Error!',
 				},
 				callbacks: {
 					success: mockSuccessCallback
@@ -173,9 +173,77 @@ describe("BooksService", function() {
 		});
 		
 		it("should call success callback on success", function() {
-			mockAjaxHandler.mostRecentCall.args[0].success(BookFactory.createBooks());
+			var books =  BookFactory.createBooks();
+			mockAjaxHandler.mostRecentCall.args[0].success(books);
 			
-			expect(mockSuccessCallback).toHaveBeenCalled();
+			expect(mockSuccessCallback).toHaveBeenCalledWith(books);
+		});
+	});
+});
+
+describe("GoogleBooksService", function() {
+	var googleBooksService;
+	var mockAjaxHandler;
+	var mockStatusWidget;
+	
+	beforeEach(function() {
+		mockAjaxHandler = jasmine.createSpy("ajax handler");
+		mockStatusWidget = new StatusWidget($('<div></div>'));
+		googleBooksService = new GoogleBooksService(mockStatusWidget, mockAjaxHandler);
+	});
+	
+	describe("search", function() {
+		var options;
+	
+		beforeEach(function() {
+			options = { 
+				searchTerm: "Continuous Delivery",
+				callbacks: {
+					success: jasmine.createSpy("success callback")
+				},
+				messages: {
+					success: "Google books returned results",
+					error: "Google books did not return any results"
+				}
+			};
+			googleBooksService.search(options);
+		});
+		
+		it("should do a HTTP GET", function() {
+			expect(mockAjaxHandler.mostRecentCall.args[0].type).toEqual("GET");
+		});
+		
+		it("should use the google books api url", function() {
+			expect(mockAjaxHandler.mostRecentCall.args[0].url).toEqual("https://www.googleapis.com/books/v1/volumes");
+		});
+		
+		it("should send the search term as the q parameter", function() {
+			expect(mockAjaxHandler.mostRecentCall.args[0].data.q).toEqual(options.searchTerm);
+		});
+		
+		it("should do a jsonp call", function() {
+			expect(mockAjaxHandler.mostRecentCall.args[0].dataType).toEqual('jsonp');
+		});
+		
+		it("should call success callback on success", function() {
+			var results = {};
+			mockAjaxHandler.mostRecentCall.args[0].success(results);
+			
+			expect(options.callbacks.success).toHaveBeenCalledWith(results);
+		});
+		
+		it("should display success message on successful completion", function() {
+			spyOn(mockStatusWidget, "displaySuccess");
+			mockAjaxHandler.mostRecentCall.args[0].complete(null, "success");
+		
+			expect(mockStatusWidget.displaySuccess).toHaveBeenCalledWith(options.messages.success);
+		});
+		
+		it("should display error message on error completion", function() {
+			spyOn(mockStatusWidget, "displayError");
+			mockAjaxHandler.mostRecentCall.args[0].complete(null, "error");
+		
+			expect(mockStatusWidget.displayError).toHaveBeenCalledWith(options.messages.error);
 		});
 	});
 });
