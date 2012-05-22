@@ -310,7 +310,6 @@ describe("BooksView", function() {
 			expect(options.callbacks.delete).toHaveBeenCalledWith(options.book);
 		});
 		
-		
 		it("should execute cancel callback on cancel button click", function() {
 			options.displayElement.find('.cancel').click();
 			
@@ -326,7 +325,7 @@ describe("LookupBooksView", function() {
 		lookupBooksView = new LookupBooksView();
 	});
 	
-	describe("form", function() {
+	describe("quickAdd", function() {
 		var options;
 	
 		beforeEach(function() {
@@ -334,10 +333,10 @@ describe("LookupBooksView", function() {
 				displayElement: $('<div>REMOVE ME</div>'),
 				callbacks: {
 					search: jasmine.createSpy('search'),
-					add: jasmine.createSpy('add')
+					cancel: jasmine.createSpy('cancel'),
 				}
 			};
-			lookupBooksView.form(options);
+			lookupBooksView.quickAdd(options);
 		});
 		
 		it("should clear existing data in the display element", function() {
@@ -351,6 +350,16 @@ describe("LookupBooksView", function() {
 			options.displayElement.find('.search').click();
 			
 			expect(options.callbacks.search.mostRecentCall.args[0]).toEqual(searchQuery);
+		});
+		
+		it("should disable the add button", function() {
+			expect(options.displayElement.find('.add')).toHaveClass('disabled');
+		});
+		
+		it("should execute cancel callback on cancel button click", function() {
+			options.displayElement.find('.cancel').click();
+			
+			expect(options.callbacks.cancel).toHaveBeenCalled();
 		});
 	});
 });

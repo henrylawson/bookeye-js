@@ -37,6 +37,15 @@
 					title: titleWidget
 				}
 			});
+			var lookupBooksController = new LookupBooksController({
+				displayElements: {
+					quickAdd: $('#modal-storage'),
+				},
+				view: new LookupBooksView(),
+				controllers: {
+					books: booksController
+				},
+			});
 			
 			var defaultAction = function() { 
 				booksController.all({ 
@@ -91,6 +100,7 @@
 			});
 			
 			var rightNavigationWidget = new NavigationWidget($('#navigation ul.right-items'));
+			rightNavigationWidget.add("Quick Add", function() { lookupBooksController.quickAdd() }, '#navigation-widget-item-quick-add');
 			rightNavigationWidget.add("Add Book", function() { booksController.add() }, '#navigation-widget-item-add');
 			
 			defaultAction();

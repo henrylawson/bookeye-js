@@ -138,7 +138,7 @@ describe("BooksController", function() {
 				expect(mockBooksView.form.mostRecentCall.args[0].displayElement).toEqual(options.displayElements.form);
 			});
 			
-			describe("with the correct call backs", function() {
+			describe("with the correct callbacks", function() {
 				it("save callback should execute save action", function() {
 					spyOn(booksController, 'save');
 					
@@ -172,8 +172,8 @@ describe("BooksController", function() {
 				expect(mockBooksView.deleteConfirm.mostRecentCall.args[0].displayElement).toEqual(options.displayElements.deleteConfirm);
 			});
 			
-			describe("with the correct call backs", function() {
-				it("save callback should execute save action", function() {
+			describe("with the correct callbacks", function() {
+				it("delete callback should execute delete action", function() {
 					spyOn(booksController, 'delete');
 					
 					booksController.deleteConfirm(book);
@@ -203,7 +203,7 @@ describe("BooksController", function() {
 				expect(mockBooksView.form.mostRecentCall.args[0].displayElement).toEqual(options.displayElements.form);
 			});
 			
-			describe("with correct call backs", function() {
+			describe("with correct callbacks", function() {
 				it("save the callback should execute save action", function() {
 					var book = BookFactory.createBook();
 					spyOn(booksController, 'save');
@@ -301,25 +301,56 @@ describe("BooksController", function() {
 
 describe("LookupBooksController", function() {
 	var lookupBooksController;
-	var mockLookupBooksView;
 	var options;
 	
 	beforeEach(function() {
-		mockLookupBooksView = jasmine.createSpy("lookup books view");
 		options = {
 			displayElements: {
 				quickAdd: $('<div></div>')
 			},
-			view: mockLookupBooksView,
+			view: new LookupBooksView(),
+			controllers: {
+				books: new BooksController()
+			},
 		};
 		lookupBooksController = new LookupBooksController(options);
 	});
 	
 	describe("quickAdd action", function() {
-		beforeEach(function() {
-			spyOn(mockBooksView, 'add');
+		describe("should render quickAdd view", function() {
+			var book;
+			
+			beforeEach(function() {
+				spyOn(options.view, 'quickAdd');
+			});
+			
+			it("with the quickAdd display element", function() {
+				lookupBooksController.quickAdd();
+
+				expect(options.view.quickAdd.mostRecentCall.args[0].displayElement).toEqual(options.displayElements.quickAdd);
+			});
+			
+			describe("with the correct callbacks", function() {
+				it("search callback should execute search action", function() {
+					var searchTerm = "Some book";
+					spyOn(lookupBooksController, 'search');
+					
+					lookupBooksController.quickAdd();
+					options.view.quickAdd.mostRecentCall.args[0].callbacks.search(searchTerm);
+
+					expect(lookupBooksController.search).toHaveBeenCalledWith(searchTerm);
+				});
+				
+				it("save callback should execute books controller save action", function() {
+					var book = BookFactory.createBook();
+					spyOn(options.controllers.books, 'save');
+					
+					lookupBooksController.quickAdd();
+					options.view.quickAdd.mostRecentCall.args[0].callbacks.add(book);
+
+					expect(options.controllers.books.save).toHaveBeenCalledWith(book);
+				});
+			});
 		});
-		
-		// to be added once view is ready
 	});
 });

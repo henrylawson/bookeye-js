@@ -76,3 +76,26 @@ BooksController.prototype.save = function(book) {
 	this.options.repository.save(book);
 	this.all();
 }
+
+var LookupBooksController = function(options) {
+	this.options = options;
+}
+LookupBooksController.prototype.quickAdd = function(book) {
+	var lookupBooksController = this;
+	this.options.view.quickAdd({
+		displayElement: this.options.displayElements.quickAdd,
+		callbacks: {
+			search: function (searchTerm) {
+				lookupBooksController.search(searchTerm);
+			},
+			add: function(book) {
+				lookupBooksController.options.controllers.books.save(book);
+			},
+			cancel: function() {
+			},
+		}
+	});
+}
+LookupBooksController.prototype.search = function(searchTerm) {
+	console.log(searchTerm);
+}
