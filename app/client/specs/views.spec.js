@@ -372,7 +372,6 @@ describe("LookupBooksView", function() {
 				displayElement: $('<div><div id="search-result">REMOVE ME</div><div class="cancel">Cancel</div><div class="add disabled">Add</div></div>'),
 				callbacks: {
 					add: jasmine.createSpy('search'),
-					cancel: jasmine.createSpy('cancel'),
 				}
 			};
 			lookupBooksView.searchResult(options);
@@ -391,12 +390,6 @@ describe("LookupBooksView", function() {
 			options.displayElement.find('.add').click();
 			
 			expect(options.callbacks.add).toHaveBeenCalled();
-		});
-		
-		it("should execute cancel callback on cancel button click", function() {
-			options.displayElement.find('.cancel').click();
-			
-			expect(options.callbacks.cancel).toHaveBeenCalled();
 		});
 		
 		describe("should render book in search result template", function() {

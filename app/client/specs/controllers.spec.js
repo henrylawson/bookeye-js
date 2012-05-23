@@ -409,12 +409,12 @@ describe("LookupBooksController", function() {
 		
 			describe("with the correct callbacks", function() {
 				it("add callback should execute books controller add action", function() {
-					spyOn(options.controllers.books, 'add');
+					spyOn(options.controllers.books, 'save');
 					
 					lookupBooksController.searchResult(book);
 					options.view.searchResult.mostRecentCall.args[0].callbacks.add(book);
 
-					expect(options.controllers.books.add).toHaveBeenCalledWith(book);
+					expect(options.controllers.books.save).toHaveBeenCalledWith(book);
 				});
 			});
 		});

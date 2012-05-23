@@ -115,9 +115,7 @@ LookupBooksController.prototype.searchResult = function(book) {
 		displayElement: this.options.displayElements.quickAdd,
 		callbacks: {
 			add: function() {
-				lookupBooksController.options.controllers.books.add(book)
-			},
-			cancel: function() {
+				lookupBooksController.options.controllers.books.save(book)
 			},
 		}
 	});

@@ -225,11 +225,13 @@ describe("LookupBooksService", function() {
 			expect(mockAjaxHandler.mostRecentCall.args[0].dataType).toEqual('jsonp');
 		});
 		
-		it("should call success callback on success", function() {
+		it("should call success callback on success with a mapped book", function() {
 			var results = {};
+			var book = BookFactory.createBook();
+			spyOn(lookupBooksService, 'map').andReturn(book)
 			mockAjaxHandler.mostRecentCall.args[0].success(results);
 			
-			expect(options.callbacks.success).toHaveBeenCalledWith(results);
+			expect(options.callbacks.success).toHaveBeenCalledWith(book);
 		});
 		
 		it("should display success message on successful completion", function() {
@@ -244,6 +246,43 @@ describe("LookupBooksService", function() {
 			mockAjaxHandler.mostRecentCall.args[0].complete(null, "error");
 		
 			expect(mockStatusWidget.displayError).toHaveBeenCalledWith(options.messages.error);
+		});
+	});
+	
+	describe("map", function() {
+		var results;
+		var book;
+		
+		beforeEach(function() {
+			results = {
+				items: [{
+						volumeInfo: {
+							title: "My title",
+							imageLinks: {
+								thumbnail:"img",
+							},
+							publishedDate: "2012-03-09",
+							authors:["Jimmy", "Tony"],
+						},
+				}]
+			};
+			book = lookupBooksService.map(results);
+		});
+		
+		it("should map the title", function() {
+			expect(book.title).toEqual("My title");
+		});
+		
+		it("should map the year", function() {
+			expect(book.year).toEqual("2012");
+		});
+		
+		it("should map the author", function() {
+			expect(book.author).toEqual("Jimmy, Tony");
+		});
+		
+		it("should map the cover", function() {
+			expect(book.cover).toEqual("img");
 		});
 	});
 });

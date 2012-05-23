@@ -104,13 +104,10 @@ LookupBooksView.prototype.searchResult = function(options) {
 	var template = Handlebars.compile($('#look-books-view-search-result').html());
 	var searchResultHtml = $(template(options.book));
 	element.append(searchResultHtml);
-	console.log(options.book);
 	options.displayElement.find('.add').removeClass('disabled');
 	options.displayElement.find('.add').addClass('enabled');
 	options.displayElement.find('.add').click(function() {
 		options.callbacks.add();
-	});
-	options.displayElement.find('.cancel').click(function() {
-		options.callbacks.cancel();
+		options.displayElement.find('.cancel').click();
 	});
 }

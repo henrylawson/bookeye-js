@@ -81,7 +81,8 @@ LookupBooksService.prototype.search = function(options) {
 		},
 		dataType: 'jsonp',
 		success: function(results) {
-			options.callbacks.success(results)
+			var book = lookupBooksService.map(results);
+			options.callbacks.success(book)
 		},
 		complete: function(jqXHR, textStatus) {
 			if (textStatus == "success") {
@@ -91,4 +92,12 @@ LookupBooksService.prototype.search = function(options) {
 			}
 		}
 	});
+}
+LookupBooksService.prototype.map = function(results) {
+	var book = {};
+	book.title = results.items[0].volumeInfo.title;
+	book.cover = results.items[0].volumeInfo.imageLinks.thumbnail;
+	book.author = results.items[0].volumeInfo.authors.join(", ");
+	book.year = results.items[0].volumeInfo.publishedDate.substring(0, 4);
+	return book;
 }
