@@ -88,12 +88,6 @@ LookupBooksView.prototype.quickAdd = function(options) {
 		options.callbacks.search(query);
 	});
 	formHtml.find('.add').addClass('disabled');
-	formHtml.find('.add').click(function() {
-		if (typeof options.book !== 'undefined') {
-			options.callbacks.add(options.book);
-			formHtml.modal('hide');
-		}
-	});
 	formHtml.find('.cancel').click(function() {
 		formHtml.modal('hide');
 		options.callbacks.cancel();
@@ -103,4 +97,20 @@ LookupBooksView.prototype.quickAdd = function(options) {
 		backdrop: 'static',
 	});
 	element.append(formHtml);
+}
+LookupBooksView.prototype.searchResult = function(options) {
+	var displayElement = options.displayElement.find("#search-result");
+	var element = $(displayElement).empty();
+	var template = Handlebars.compile($('#look-books-view-search-result').html());
+	var searchResultHtml = $(template(options.book));
+	element.append(searchResultHtml);
+	console.log(options.book);
+	options.displayElement.find('.add').removeClass('disabled');
+	options.displayElement.find('.add').addClass('enabled');
+	options.displayElement.find('.add').click(function() {
+		options.callbacks.add();
+	});
+	options.displayElement.find('.cancel').click(function() {
+		options.callbacks.cancel();
+	});
 }

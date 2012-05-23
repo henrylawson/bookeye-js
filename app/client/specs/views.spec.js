@@ -362,4 +362,55 @@ describe("LookupBooksView", function() {
 			expect(options.callbacks.cancel).toHaveBeenCalled();
 		});
 	});
+	
+	describe("searchResult", function() {
+		var options;
+	
+		beforeEach(function() {
+			options = {
+				book: BookFactory.createBook(),
+				displayElement: $('<div><div id="search-result">REMOVE ME</div><div class="cancel">Cancel</div><div class="add disabled">Add</div></div>'),
+				callbacks: {
+					add: jasmine.createSpy('search'),
+					cancel: jasmine.createSpy('cancel'),
+				}
+			};
+			lookupBooksView.searchResult(options);
+		});
+		
+		it("should clear existing data in the display element", function() {
+			expect(options.displayElement.find('#search-result').html()).not.toContain("REMOVE ME");
+		});
+		
+		it("should enable the add button", function() {
+			expect(options.displayElement.find('.add')).not.toHaveClass('disabled');
+			expect(options.displayElement.find('.add')).toHaveClass('enabled');
+		});
+		
+		it("should execute add callback on add button click", function() {
+			options.displayElement.find('.add').click();
+			
+			expect(options.callbacks.add).toHaveBeenCalled();
+		});
+		
+		it("should execute cancel callback on cancel button click", function() {
+			options.displayElement.find('.cancel').click();
+			
+			expect(options.callbacks.cancel).toHaveBeenCalled();
+		});
+		
+		describe("should render book in search result template", function() {
+			it("with the title", function() {
+				expect(options.displayElement.html()).toContain(options.book.title);
+			});
+	
+			it("with the author", function() {
+				expect(options.displayElement.html()).toContain(options.book.author);
+			});
+			
+			it("with the year", function() {
+				expect(options.displayElement.html()).toContain(options.book.year);
+			});
+		});
+	});
 });

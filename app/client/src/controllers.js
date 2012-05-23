@@ -88,14 +88,37 @@ LookupBooksController.prototype.quickAdd = function(book) {
 			search: function (searchTerm) {
 				lookupBooksController.search(searchTerm);
 			},
-			add: function(book) {
-				lookupBooksController.options.controllers.books.save(book);
-			},
 			cancel: function() {
 			},
 		}
 	});
 }
 LookupBooksController.prototype.search = function(searchTerm) {
-	console.log(searchTerm);
+	var lookupBooksController = this;
+	this.options.service.search({ 
+		searchTerm: searchTerm,
+		callbacks: {
+			success: function(book) {
+				lookupBooksController.searchResult(book)
+			}
+		},
+		messages: {
+			success: "Lookup books returned results",
+			error: "Lookup books did not return any results"
+		}
+	});
+}
+LookupBooksController.prototype.searchResult = function(book) {
+	var lookupBooksController = this;
+	this.options.view.searchResult({
+		book: book,
+		displayElement: this.options.displayElements.quickAdd,
+		callbacks: {
+			add: function() {
+				lookupBooksController.options.controllers.books.add(book)
+			},
+			cancel: function() {
+			},
+		}
+	});
 }

@@ -8,7 +8,7 @@
 				<input type="text" class="input-medium search-query query" name="query">
 				<div class="btn search">Search</div>
 			</div>
-			<div class="result-area">
+			<div id="search-result">
 			</div>
 		</div>	
 		<div class="modal-footer">
@@ -16,4 +16,9 @@
 			<div class="add btn btn-primary">Add</div>
 		</div>
 	</form>
+</script>
+<script id="look-books-view-search-result" type="text/x-handlebars-template">
+	<div class="book">
+	{{title}} {{author}} {{year}}
+	</div>
 </script>

@@ -300,26 +300,24 @@ describe("BooksController", function() {
 });
 
 describe("LookupBooksController", function() {
-	var lookupBooksController;
 	var options;
 	
 	beforeEach(function() {
 		options = {
 			displayElements: {
-				quickAdd: $('<div></div>')
+				quickAdd: $('<div></div>'),
 			},
 			view: new LookupBooksView(),
 			controllers: {
 				books: new BooksController()
 			},
+			service: new LookupBooksService(),
 		};
 		lookupBooksController = new LookupBooksController(options);
 	});
 	
 	describe("quickAdd action", function() {
 		describe("should render quickAdd view", function() {
-			var book;
-			
 			beforeEach(function() {
 				spyOn(options.view, 'quickAdd');
 			});
@@ -340,15 +338,83 @@ describe("LookupBooksController", function() {
 
 					expect(lookupBooksController.search).toHaveBeenCalledWith(searchTerm);
 				});
-				
-				it("save callback should execute books controller save action", function() {
-					var book = BookFactory.createBook();
-					spyOn(options.controllers.books, 'save');
-					
-					lookupBooksController.quickAdd();
-					options.view.quickAdd.mostRecentCall.args[0].callbacks.add(book);
+			});
+		});
+	});
+	
+	describe("search action", function() {
+		describe("should query service using searchTerm view", function() {
+			var searchTerm;
+			
+			beforeEach(function() {
+				searchTerm = "Continuous Delivery";
+				spyOn(options.service, 'search');
+			});
+			
+			it("with the searchResult display element", function() {
+				lookupBooksController.search(searchTerm);
 
-					expect(options.controllers.books.save).toHaveBeenCalledWith(book);
+				expect(options.service.search.mostRecentCall.args[0].searchTerm).toEqual(searchTerm);
+			});
+			
+			describe("with the message defined", function() {
+				it("for success", function() {
+					lookupBooksController.search(searchTerm);
+
+					expect(options.service.search.mostRecentCall.args[0].messages.success).toBeDefined();
+				});
+				
+				it("for error", function() {
+					lookupBooksController.search(searchTerm);
+
+					expect(options.service.search.mostRecentCall.args[0].messages.error).toBeDefined();
+				});
+			});
+			
+			describe("with the correct callbacks", function() {
+				it("success callback should execute searchResult action", function() {
+					var book = BookFactory.createBook();
+					spyOn(lookupBooksController, 'searchResult');
+					
+					lookupBooksController.search(searchTerm);
+					options.service.search.mostRecentCall.args[0].callbacks.success(book);
+
+					expect(lookupBooksController.searchResult).toHaveBeenCalledWith(book);
+				});
+			});
+		});
+	});
+	
+	describe("searchResult action", function() {
+		describe("should render searchResult view", function() {
+			var book;
+			
+			beforeEach(function() {
+				book = BookFactory.createBook();
+				spyOn(options.view, 'searchResult');
+				lookupBooksController.quickAdd();
+			});
+			
+			it("with the searchResult display element", function() {
+				lookupBooksController.searchResult(book);
+
+				expect(options.view.searchResult.mostRecentCall.args[0].displayElement).toEqual(options.displayElements.quickAdd);
+			});
+
+			it("with the book for display", function() {
+				lookupBooksController.searchResult(book);
+
+				expect(options.view.searchResult.mostRecentCall.args[0].book).toEqual(book);
+			});
+		
+			describe("with the correct callbacks", function() {
+				it("add callback should execute books controller add action", function() {
+					spyOn(options.controllers.books, 'add');
+					
+					lookupBooksController.searchResult(book);
+					options.view.searchResult.mostRecentCall.args[0].callbacks.add(book);
+
+					expect(options.controllers.books.add).toHaveBeenCalledWith(book);
 				});
 			});
 		});
