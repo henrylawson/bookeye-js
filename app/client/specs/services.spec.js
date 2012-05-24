@@ -56,7 +56,6 @@ describe("BooksService", function() {
 		
 			expect(mockAjaxHandler.mostRecentCall.args[0].data).toEqual({ books: 'data' });
 		});
-	
 		
 		describe("on complete", function() {
 			it("should set success message when sent successfully", function() {
@@ -111,7 +110,7 @@ describe("BooksService", function() {
 				});
 			});
 		});
-	});	
+	});
 	
 	describe("getAllBooksFromWebService", function() {
 		var mockSuccessCallback;

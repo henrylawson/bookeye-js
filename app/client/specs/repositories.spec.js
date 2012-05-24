@@ -3,12 +3,14 @@ describe("BooksRepository", function() {
 	var mockStatusWidget;
 	var mockAjaxHandler;
 	var mockBookSorter;
+	var mockTimeOut;
 	
 	beforeEach(function() {
 		mockStatusWidget = new StatusWidget($('<div></div>'));
 		mockBookSorter = new BookSorter();
+		mockTimeOut = jasmine.createSpy("time out");
 		mockBooksService = new BooksService(mockStatusWidget, jasmine.createSpy('ajax service'));
-		booksRepository = new BooksRepository(mockBooksService, mockBookSorter);
+		booksRepository = new BooksRepository(mockBooksService, mockBookSorter, mockTimeOut);
 	});
 	
 	describe("instantiation", function() {
@@ -19,18 +21,17 @@ describe("BooksRepository", function() {
 		});
 		
 		describe("should get books from the web service", function() {
-			var mostRecentCallArguments;
+			var serviceReturnedBooks;
 			
 			beforeEach(function() {
-				mockBooksService.getAllBooksFromWebService = jasmine.createSpy("get from web service");
-				booksRepository = new BooksRepository(mockBooksService, mockBookSorter);
-				mostRecentCallArguments = mockBooksService.getAllBooksFromWebService.mostRecentCall.args; 
+				serviceReturnedBooks = BookFactory.createBooks();
+				spyOn(mockBooksService, 'getAllBooksFromWebService');
 			});
 			
 			it("and on success, update the repository", function() {
-				var serviceReturnedBooks = BookFactory.createBooks();
+				booksRepository = new BooksRepository(mockBooksService, mockBookSorter, mockTimeOut);
 				
-				mostRecentCallArguments[0](serviceReturnedBooks);
+				mockBooksService.getAllBooksFromWebService.mostRecentCall.args[0](serviceReturnedBooks);
 				
 				expect(booksRepository.getAll()).toEqual(serviceReturnedBooks);
 			});
@@ -240,21 +241,36 @@ describe("BooksRepository", function() {
 		
 		beforeEach(function() {
 			newBook = BookFactory.createBook();
-			mockBooksService.postAllBooksToWebService = jasmine.createSpy("post to web service");
-			booksRepository.save(newBook);
-			mostRecentCallArguments = mockBooksService.postAllBooksToWebService.mostRecentCall.args; 
+			spyOn(mockBooksService, "postAllBooksToWebService");
 		});
 		
 		it("should post with all the books", function() {
-			expect(mostRecentCallArguments[1]).toEqual([newBook]);
+			booksRepository.save(newBook);
+			mockTimeOut.argsForCall[0][0]();
+		
+			expect(mockBooksService.postAllBooksToWebService.mostRecentCall.args[1]).toEqual([newBook]);
 		});
 		
 		it("should update the books list on success", function() {
+			booksRepository.save(newBook);
+			mockTimeOut.argsForCall[0][0]();
+		
 			var serviceReturnedBooks = BookFactory.createBooks();
-			
-			mostRecentCallArguments[0](serviceReturnedBooks);
+			mockBooksService.postAllBooksToWebService.mostRecentCall.args[0](serviceReturnedBooks);
 			
 			expect(booksRepository.getAll()).toEqual(serviceReturnedBooks);
+		});
+		
+		it("should only call the booksService once for multiple updateWebService calls", function() {
+			booksRepository.updateWebService();
+			booksRepository.updateWebService();
+			booksRepository.updateWebService();
+			
+			mockTimeOut.argsForCall[0][0]();
+			mockTimeOut.argsForCall[1][0]();
+			mockTimeOut.argsForCall[2][0]();
+
+			expect(mockBooksService.postAllBooksToWebService.callCount).toEqual(1);
 		});
 	});
 	

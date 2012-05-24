@@ -1,7 +1,11 @@
-var BooksRepository = function(booksService, bookSorter) {
+var BooksRepository = function(booksService, bookSorter, timeOut) {
 	this.booksService = booksService;
 	this.bookSorter = bookSorter;
+	this.timeOut = timeOut;
+	this.serviceCall = [];
 	this.books = [];
+	this.previousCallGuid = "";
+	
 	var booksRepository = this;
 	this.booksService.getAllBooksFromWebService(function(books) {
 		booksRepository.books = books;
@@ -67,10 +71,18 @@ BooksRepository.prototype.delete = function(book) {
 	}
 }
 BooksRepository.prototype.updateWebService = function() {
+	this.serviceCall[this.previousCallGuid] = false;
+	var currentCallGuid = BooksRepository.guid();
+	this.serviceCall[currentCallGuid] = true;
 	var booksRepository = this;
-	this.booksService.postAllBooksToWebService(function(books) {
-		booksRepository.books = books;
-	}, this.books);
+	this.timeOut(function() {
+		if (booksRepository.serviceCall[currentCallGuid] === true) {
+			booksRepository.booksService.postAllBooksToWebService(function(books) {
+				booksRepository.books = books;
+			}, booksRepository.books);
+		}
+	}, 2000);
+	this.previousCallGuid = currentCallGuid;
 }
 BooksRepository.prototype.addOrUpdate = function(book) {
 	BooksRepository.setIdIfMissing(book);

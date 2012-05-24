@@ -9,7 +9,7 @@ describe("BooksController", function() {
 		mockStatusWidget = new StatusWidget($('<div></div>'));
 		mockTitleWidget = new TitleWidget($('<div></div>'));
 		mockBooksService = new BooksService(mockStatusWidget, jasmine.createSpy('ajax service'));
-		mockBooksRepository = new BooksRepository(mockBooksService, new BookSorter());
+		mockBooksRepository = new BooksRepository(mockBooksService, new BookSorter(), jasmine.createSpy("time out"));
 		options = {
 			displayElements: {
 				all: $('<div></dv>'),

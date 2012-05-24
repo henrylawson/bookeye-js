@@ -24,7 +24,9 @@
 			var titleWidget = new TitleWidget($('#title'));
 			var booksService = new BooksService(statusWidget, $.ajax);
 			var lookupBooksService = new LookupBooksService($.ajax);
-			var booksRepository = new BooksRepository(booksService, new BookSorter());
+			var booksRepository = new BooksRepository(booksService, new BookSorter(), function(callback, time) {
+				setTimeout(callback, time);
+			});
 			var booksView = new BooksView();
 			var booksController = new BooksController({
 				displayElements: {

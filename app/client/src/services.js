@@ -79,9 +79,8 @@ LookupBooksService.prototype.search = function(options) {
 			q: options.searchTerm
 		},
 		dataType: 'jsonp',
-		timeout: 5000,
+		timeout: 10000,
 		success: function(results) {
-			console.log(results);
 			if (typeof results.items === 'undefined') {
 				options.callbacks.nothingFound();
 			} else {
