@@ -83,11 +83,17 @@ LookupBooksView.prototype.quickAdd = function(options) {
 	var template = Handlebars.compile($('#look-books-view-form').html());
 	var formHtml = $(template());
 	var lookupBooksView = this;
+	formHtml.find('input.query').keypress(function(e) {
+		if ((e.keyCode || e.which) == 13) {
+			formHtml.find('.search').click();
+		}
+	});
 	formHtml.find('.search').button();
 	formHtml.find('.search').click(function() {
 		formHtml.find('.search').button('loading');
 		var query = formHtml.find('input.query').val();
 		options.callbacks.search(query);
+		options.displayElement.find("#search-result").empty().append('<div class="loading"></div>');
 	});
 	formHtml.find('.add').addClass('disabled');
 	formHtml.find('.cancel').click(function() {

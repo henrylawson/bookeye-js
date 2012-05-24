@@ -18,3 +18,7 @@ div.page-container {
 	width:300px;
 	margin-right:15px;
 }
+.loading {
+	height:64px;
+	background:url("../img/loading.gif") no-repeat center center;
+}

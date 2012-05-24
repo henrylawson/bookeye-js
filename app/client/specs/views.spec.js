@@ -343,14 +343,33 @@ describe("LookupBooksView", function() {
 			expect(options.displayElement.html()).not.toContain("REMOVE ME");
 		});
 		
-		it("should pass search query to search callback on search button click", function() {
-			var searchQuery = "Continuous Delivery";
+		describe("on search button click", function() {
+			var searchQuery;
 			
-			options.displayElement.find('.query').val(searchQuery);
-			options.displayElement.find('.search').click();
+			beforeEach(function() {
+				searchQuery = "Continuous Delivery";
+				options.displayElement.find('#search-result').append("place holder text");
+				options.displayElement.find('.query').val(searchQuery);
+				options.displayElement.find('.search').click();
+			});
 			
-			expect(options.callbacks.search.mostRecentCall.args[0]).toEqual(searchQuery);
-		});
+			it("should pass search term to search callback", function() {
+				var searchQuery = "Continuous Delivery";
+
+				options.displayElement.find('.query').val(searchQuery);
+				options.displayElement.find('.search').click();
+
+				expect(options.callbacks.search.mostRecentCall.args[0]).toEqual(searchQuery);
+			});
+			
+			it("should clear exisitng html loading style", function() {
+				expect(options.displayElement.find('#search-result').html()).not.toContain('place holder text');
+			});
+
+			it("should set loading style", function() {
+				expect(options.displayElement.find('#search-result')).toContain('.loading');
+			});
+		})
 		
 		it("should disable the add button", function() {
 			expect(options.displayElement.find('.add')).toHaveClass('disabled');
