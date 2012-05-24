@@ -188,8 +188,7 @@ describe("LookupBooksService", function() {
 	
 	beforeEach(function() {
 		mockAjaxHandler = jasmine.createSpy("ajax handler");
-		mockStatusWidget = new StatusWidget($('<div></div>'));
-		lookupBooksService = new LookupBooksService(mockStatusWidget, mockAjaxHandler);
+		lookupBooksService = new LookupBooksService(mockAjaxHandler);
 	});
 	
 	describe("search", function() {
@@ -199,7 +198,9 @@ describe("LookupBooksService", function() {
 			options = { 
 				searchTerm: "Continuous Delivery",
 				callbacks: {
-					success: jasmine.createSpy("success callback")
+					success: jasmine.createSpy("success callback"),
+					error: jasmine.createSpy("error callback"),
+					nothingFound: jasmine.createSpy("nothing found")
 				},
 				messages: {
 					success: "Lookup books returned results",
@@ -225,27 +226,30 @@ describe("LookupBooksService", function() {
 			expect(mockAjaxHandler.mostRecentCall.args[0].dataType).toEqual('jsonp');
 		});
 		
+		it("should have a timeout", function() {
+			expect(mockAjaxHandler.mostRecentCall.args[0].timeout).toBeDefined();
+		});
+		
 		it("should call success callback on success with a mapped book", function() {
-			var results = {};
+			var results = { items: [] };
 			var book = BookFactory.createBook();
-			spyOn(lookupBooksService, 'map').andReturn(book)
+			spyOn(lookupBooksService, 'map').andReturn(book);
 			mockAjaxHandler.mostRecentCall.args[0].success(results);
 			
 			expect(options.callbacks.success).toHaveBeenCalledWith(book);
 		});
 		
-		it("should display success message on successful completion", function() {
-			spyOn(mockStatusWidget, "displaySuccess");
-			mockAjaxHandler.mostRecentCall.args[0].complete(null, "success");
-		
-			expect(mockStatusWidget.displaySuccess).toHaveBeenCalledWith(options.messages.success);
+		it("should call nothingFound callback when nothing found", function() {
+			var results = {};
+			mockAjaxHandler.mostRecentCall.args[0].success(results);
+			
+			expect(options.callbacks.nothingFound).toHaveBeenCalled();
 		});
 		
-		it("should display error message on error completion", function() {
-			spyOn(mockStatusWidget, "displayError");
-			mockAjaxHandler.mostRecentCall.args[0].complete(null, "error");
-		
-			expect(mockStatusWidget.displayError).toHaveBeenCalledWith(options.messages.error);
+		it("should call error callback on error", function() {
+			mockAjaxHandler.mostRecentCall.args[0].error();
+			
+			expect(options.callbacks.error).toHaveBeenCalled();
 		});
 	});
 	
@@ -283,6 +287,14 @@ describe("LookupBooksService", function() {
 		
 		it("should map the cover", function() {
 			expect(book.cover).toEqual("img");
+		});
+		
+		it("should map and empty stirng for the cover if it does not exist", function() {
+			results.items[0].volumeInfo.imageLinks = undefined;
+			
+			book = lookupBooksService.map(results);
+			
+			expect(book.cover).toEqual("");
 		});
 	});
 });

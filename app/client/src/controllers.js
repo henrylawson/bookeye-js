@@ -100,6 +100,12 @@ LookupBooksController.prototype.search = function(searchTerm) {
 		callbacks: {
 			success: function(book) {
 				lookupBooksController.searchResult(book)
+			},
+			error: function() {
+				lookupBooksController.searchResult('error')
+			},
+			nothingFound: function() {
+				lookupBooksController.searchResult('nothingFound')
 			}
 		},
 		messages: {

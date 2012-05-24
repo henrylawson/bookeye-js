@@ -67,8 +67,7 @@ BooksService.prototype.postAllBooksToWebService = function(successCallback, allB
 	});
 }
 
-var LookupBooksService = function(statusWidget, ajaxHandler) {
-	this.statusWidget = statusWidget;
+var LookupBooksService = function(ajaxHandler) {
 	this.ajaxHandler = ajaxHandler;
 }
 LookupBooksService.prototype.search = function(options) {
@@ -80,24 +79,31 @@ LookupBooksService.prototype.search = function(options) {
 			q: options.searchTerm
 		},
 		dataType: 'jsonp',
+		timeout: 5000,
 		success: function(results) {
-			var book = lookupBooksService.map(results);
-			options.callbacks.success(book)
-		},
-		complete: function(jqXHR, textStatus) {
-			if (textStatus == "success") {
-				lookupBooksService.statusWidget.displaySuccess(options.messages.success);
-			} else if (textStatus == "error") {
-				lookupBooksService.statusWidget.displayError(options.messages.error);
+			console.log(results);
+			if (typeof results.items === 'undefined') {
+				options.callbacks.nothingFound();
+			} else {
+				var book = lookupBooksService.map(results);
+				options.callbacks.success(book);
 			}
+		},
+		error: function() {
+			options.callbacks.error();
 		}
 	});
 }
 LookupBooksService.prototype.map = function(results) {
 	var book = {};
-	book.title = results.items[0].volumeInfo.title;
-	book.cover = results.items[0].volumeInfo.imageLinks.thumbnail;
-	book.author = results.items[0].volumeInfo.authors.join(", ");
-	book.year = results.items[0].volumeInfo.publishedDate.substring(0, 4);
+	var resultBookInfo = results.items[0].volumeInfo;
+	book.title = resultBookInfo.title;
+	if (typeof resultBookInfo.imageLinks === 'undefined') {
+		book.cover = "";
+	} else {
+		book.cover = resultBookInfo.imageLinks.thumbnail;
+	}
+	book.author = resultBookInfo.authors.join(", ");
+	book.year = resultBookInfo.publishedDate.substring(0, 4);
 	return book;
 }

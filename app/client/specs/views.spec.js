@@ -374,35 +374,72 @@ describe("LookupBooksView", function() {
 					add: jasmine.createSpy('search'),
 				}
 			};
-			lookupBooksView.searchResult(options);
 		});
 		
 		it("should clear existing data in the display element", function() {
+			lookupBooksView.searchResult(options);
+		
 			expect(options.displayElement.find('#search-result').html()).not.toContain("REMOVE ME");
 		});
 		
-		it("should enable the add button", function() {
-			expect(options.displayElement.find('.add')).not.toHaveClass('disabled');
-			expect(options.displayElement.find('.add')).toHaveClass('enabled');
-		});
-		
-		it("should execute add callback on add button click", function() {
-			options.displayElement.find('.add').click();
-			
-			expect(options.callbacks.add).toHaveBeenCalled();
-		});
-		
-		describe("should render book in search result template", function() {
-			it("with the title", function() {
-				expect(options.displayElement.html()).toContain(options.book.title);
+		describe("when 'error' provided", function() {
+			beforeEach(function() {
+				options.book = 'error';
+				lookupBooksView.searchResult(options);
 			});
+
+			it("the add button should be disabled", function() {
+				expect(options.displayElement.find('.add')).toHaveClass('disabled');
+			});
+			
+			it("should render error message on the page", function() {
+				expect(options.displayElement).toContain('.alert-error');
+			});
+		});
+		
+		describe("when 'nothingFound' provided", function() {
+			beforeEach(function() {
+				options.book = 'nothingFound';
+				lookupBooksView.searchResult(options);
+			});
+
+			it("the add button should be disabled", function() {
+				expect(options.displayElement.find('.add')).toHaveClass('disabled');
+			});
+			
+			it("should render info message on the page", function() {
+				expect(options.displayElement).toContain('.alert-info');
+			});
+		});
+		
+		describe("when the book is provided", function() {
+			beforeEach(function() {
+				lookupBooksView.searchResult(options);
+			});
+		
+			it("should enable the add button", function() {
+				expect(options.displayElement.find('.add')).not.toHaveClass('disabled');
+				expect(options.displayElement.find('.add')).toHaveClass('enabled');
+			});
+		
+			it("should execute add callback on add button click", function() {
+				options.displayElement.find('.add').click();
+			
+				expect(options.callbacks.add).toHaveBeenCalled();
+			});
+		
+			describe("should render book in search result template", function() {
+				it("with the title", function() {
+					expect(options.displayElement.html()).toContain(options.book.title);
+				});
 	
-			it("with the author", function() {
-				expect(options.displayElement.html()).toContain(options.book.author);
-			});
+				it("with the author", function() {
+					expect(options.displayElement.html()).toContain(options.book.author);
+				});
 			
-			it("with the year", function() {
-				expect(options.displayElement.html()).toContain(options.book.year);
+				it("with the year", function() {
+					expect(options.displayElement.html()).toContain(options.book.year);
+				});
 			});
 		});
 	});

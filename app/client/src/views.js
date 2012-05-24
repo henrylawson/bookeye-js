@@ -83,7 +83,9 @@ LookupBooksView.prototype.quickAdd = function(options) {
 	var template = Handlebars.compile($('#look-books-view-form').html());
 	var formHtml = $(template());
 	var lookupBooksView = this;
+	formHtml.find('.search').button();
 	formHtml.find('.search').click(function() {
+		formHtml.find('.search').button('loading');
 		var query = formHtml.find('input.query').val();
 		options.callbacks.search(query);
 	});
@@ -99,15 +101,26 @@ LookupBooksView.prototype.quickAdd = function(options) {
 	element.append(formHtml);
 }
 LookupBooksView.prototype.searchResult = function(options) {
+	options.displayElement.find('.search').button('reset');
 	var displayElement = options.displayElement.find("#search-result");
 	var element = $(displayElement).empty();
-	var template = Handlebars.compile($('#look-books-view-search-result').html());
-	var searchResultHtml = $(template(options.book));
-	element.append(searchResultHtml);
-	options.displayElement.find('.add').removeClass('disabled');
-	options.displayElement.find('.add').addClass('enabled');
-	options.displayElement.find('.add').click(function() {
-		options.callbacks.add();
-		options.displayElement.find('.cancel').click();
-	});
+	if (options.book === 'error') {
+		var template = Handlebars.compile($('#look-books-view-search-result-error').html());
+		var searchResultHtml = $(template());
+		element.append(searchResultHtml);
+	} else if (options.book === 'nothingFound') {
+		var template = Handlebars.compile($('#look-books-view-search-result-nothingFound').html());
+		var searchResultHtml = $(template());
+		element.append(searchResultHtml);
+	} else {
+		var template = Handlebars.compile($('#look-books-view-search-result').html());
+		var searchResultHtml = $(template(options.book));
+		element.append(searchResultHtml);
+		options.displayElement.find('.add').removeClass('disabled');
+		options.displayElement.find('.add').addClass('enabled');
+		options.displayElement.find('.add').click(function() {
+			options.callbacks.add();
+			options.displayElement.find('.cancel').click();
+		});
+	}
 }

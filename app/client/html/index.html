@@ -17,12 +17,13 @@
 	<script type="text/javascript" src="lib/bootstrap-2.0.3/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="lib/bootstrap-2.0.3/components/bootstrap-alert.js"></script>
 	<script type="text/javascript" src="lib/bootstrap-2.0.3/components/bootstrap-modal.js"></script>
+	<script type="text/javascript" src="lib/bootstrap-2.0.3/components/bootstrap-button.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var statusWidget = new StatusWidget($('#status'));
 			var titleWidget = new TitleWidget($('#title'));
 			var booksService = new BooksService(statusWidget, $.ajax);
-			var lookupBooksService = new LookupBooksService(statusWidget, $.ajax);
+			var lookupBooksService = new LookupBooksService($.ajax);
 			var booksRepository = new BooksRepository(booksService, new BookSorter());
 			var booksView = new BooksView();
 			var booksController = new BooksController({

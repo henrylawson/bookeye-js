@@ -6,11 +6,11 @@
 		<div class="modal-body book-form">
 			<div class="well form-search">
 				<input type="text" class="input-medium search-query query" name="query">
-				<div class="btn search">Search</div>
+				<div class="btn search" data-loading-text="Loading stuff...">Search</div>
 			</div>
 			<div id="search-result">
 			</div>
-		</div>	
+		</div>
 		<div class="modal-footer">
 			<div class="cancel btn">Cancel</div>
 			<div class="add btn btn-primary">Add</div>
@@ -33,5 +33,15 @@
 				<td>{{year}}</td>
 			</tr>
 		</table>
+	</div>
+</script>
+<script id="look-books-view-search-result-error" type="text/x-handlebars-template">
+	<div class="alert alert-error">
+		Dearest user, it appears I&#39;ve failed to perform the search!
+	</div>
+</script>
+<script id="look-books-view-search-result-nothingFound" type="text/x-handlebars-template">
+	<div class="alert alert-info">
+		Dat book don&#39;t exist brah!
 	</div>
 </script>

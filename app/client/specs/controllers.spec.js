@@ -381,6 +381,24 @@ describe("LookupBooksController", function() {
 
 					expect(lookupBooksController.searchResult).toHaveBeenCalledWith(book);
 				});
+				
+				it("error callback should execute searchResult action with no book defined", function() {
+					spyOn(lookupBooksController, 'searchResult');
+					
+					lookupBooksController.search(searchTerm);
+					options.service.search.mostRecentCall.args[0].callbacks.error();
+
+					expect(lookupBooksController.searchResult).toHaveBeenCalledWith("error");
+				});
+
+				it("error callback should execute searchResult action with no book defined", function() {
+					spyOn(lookupBooksController, 'searchResult');
+
+					lookupBooksController.search(searchTerm);
+					options.service.search.mostRecentCall.args[0].callbacks.nothingFound();
+
+					expect(lookupBooksController.searchResult).toHaveBeenCalledWith("nothingFound");
+				});
 			});
 		});
 	});
@@ -400,8 +418,8 @@ describe("LookupBooksController", function() {
 
 				expect(options.view.searchResult.mostRecentCall.args[0].displayElement).toEqual(options.displayElements.quickAdd);
 			});
-
-			it("with the book for display", function() {
+			
+			it("when the book is provied it should be passed for display", function() {
 				lookupBooksController.searchResult(book);
 
 				expect(options.view.searchResult.mostRecentCall.args[0].book).toEqual(book);
