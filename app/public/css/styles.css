@@ -11,6 +11,12 @@ div.page-container {
 .modal-backdrop {
 	opacity:0.2;
 }
+.move-down, .move-up {
+	padding-top:4px;
+}
+table.table tr td {
+	vertical-align:middle;
+}
 #status {
 	position:absolute;
 	bottom:0px;
