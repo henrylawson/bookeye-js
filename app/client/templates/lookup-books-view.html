@@ -19,6 +19,19 @@
 </script>
 <script id="look-books-view-search-result" type="text/x-handlebars-template">
 	<div class="book">
-	{{title}} {{author}} {{year}}
+		<table class="table table-bordered">
+			<tr>
+				<th>Title</th>
+				<td><strong>{{title}}</strong></td>
+			</tr>
+			<tr>
+				<th>Author</th>
+				<td>{{author}}</td>
+			</tr>
+			<tr>
+				<th>Year</th>
+				<td>{{year}}</td>
+			</tr>
+		</table>
 	</div>
 </script>
