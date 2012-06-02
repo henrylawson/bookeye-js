@@ -102,7 +102,11 @@ LookupBooksService.prototype.map = function(results) {
 	} else {
 		book.cover = resultBookInfo.imageLinks.thumbnail;
 	}
-	book.author = resultBookInfo.authors.join(", ");
+	if (typeof resultBookInfo.authors === 'undefined') {
+		book.author = "";
+	} else {
+		book.author = resultBookInfo.authors.join(", ");
+	}
 	if (typeof resultBookInfo.publishedDate === 'undefined') {
 		book.year = "";
 	} else {

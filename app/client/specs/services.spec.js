@@ -291,6 +291,14 @@ describe("LookupBooksService", function() {
 		it("should map the author", function() {
 			expect(book.author).toEqual("Jimmy, Tony");
 		});
+
+		it("should map an empty string for the author if it does not exist", function() {
+			results.items[0].volumeInfo.authors = undefined;
+
+			book = lookupBooksService.map(results);
+
+			expect(book.author).toEqual("");
+		});
 		
 		it("should map the cover", function() {
 			expect(book.cover).toEqual("img");
