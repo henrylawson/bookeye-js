@@ -103,6 +103,10 @@ LookupBooksService.prototype.map = function(results) {
 		book.cover = resultBookInfo.imageLinks.thumbnail;
 	}
 	book.author = resultBookInfo.authors.join(", ");
-	book.year = resultBookInfo.publishedDate.substring(0, 4);
+	if (typeof resultBookInfo.publishedDate === 'undefined') {
+		book.year = "";
+	} else {
+		book.year = resultBookInfo.publishedDate.substring(0, 4);
+	}
 	return book;
 }

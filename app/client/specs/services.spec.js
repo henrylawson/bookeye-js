@@ -280,6 +280,14 @@ describe("LookupBooksService", function() {
 			expect(book.year).toEqual("2012");
 		});
 		
+		it("should map an empty string for the year if it does not exist", function() {
+			results.items[0].volumeInfo.publishedDate = undefined;
+			
+			book = lookupBooksService.map(results);
+			
+			expect(book.year).toEqual("");
+		});
+		
 		it("should map the author", function() {
 			expect(book.author).toEqual("Jimmy, Tony");
 		});
@@ -288,7 +296,7 @@ describe("LookupBooksService", function() {
 			expect(book.cover).toEqual("img");
 		});
 		
-		it("should map and empty stirng for the cover if it does not exist", function() {
+		it("should map an empty string for the cover if it does not exist", function() {
 			results.items[0].volumeInfo.imageLinks = undefined;
 			
 			book = lookupBooksService.map(results);
