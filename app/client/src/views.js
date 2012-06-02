@@ -1,12 +1,8 @@
 var BooksView = function() {
 	this.booksListing = $('#books-listing');
 	this.booksListingWrapper = $('#books-listing-wrapper');
-	this.listingHeight = -1;
 }
 BooksView.prototype.all = function(options) {
-	if (this.listingHeight != -1) {
-		this.booksListing.height(this.listingHeight);
-	}
 	var element = $(options.displayElement).empty();
 	if (options.books.length > 0) {
 		var template = Handlebars.compile($('#books-view-all').html());
@@ -39,8 +35,7 @@ BooksView.prototype.all = function(options) {
 		var template = Handlebars.compile($('#books-view-all-empty').html());
 		element.append($(template()));
 	}	
-	this.listingHeight = this.booksListingWrapper.height();
-	this.booksListing.height(this.listingHeight);
+	this.booksListing.height(this.booksListingWrapper.height());
 }
 BooksView.prototype.form = function(options) {
 	var book = options.book || {};
