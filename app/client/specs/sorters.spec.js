@@ -30,6 +30,13 @@ describe("BookSorter", function() {
 			
 			expect(BookSorter.determinePriority(book)).toEqual(99);
 		});
+		
+		it("should return priority as integer if defined", function() {
+			book.priority = [];
+			book.priority[key] = "99";
+			
+			expect(BookSorter.determinePriority(book)).toEqual(99);
+		});
 	});
 	
 	describe("sort", function() {

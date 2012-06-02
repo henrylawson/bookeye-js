@@ -35,6 +35,6 @@ BookSorter.determinePriority = function(book) {
 	} else if (typeof book.priority[BookSorter._key] === 'undefined') {
 		return -1;
 	} else {
-		return book.priority[BookSorter._key];
+		return parseInt(book.priority[BookSorter._key]);
 	}
 }
