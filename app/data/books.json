@@ -6,7 +6,7 @@
     "year": "2010",
     "id": "50d9dd64-e9c5-ba8c-c753-e1f30e969b8c",
     "priority": {
-      "all": "48",
+      "all": "51",
       "wishlist": "14",
       "read": "20"
     },
@@ -21,7 +21,7 @@
     "year": "2009",
     "id": "88d639e6-6365-dbd1-fc4d-2a16f97867c4",
     "priority": {
-      "all": "39",
+      "all": "42",
       "wishlist": "28",
       "upcoming": "32",
       "read": "11"
@@ -37,7 +37,7 @@
     "year": "2005",
     "id": "54fa0651-ac02-06fe-83ec-0a667772b4f0",
     "priority": {
-      "all": "49",
+      "all": "52",
       "read": "19"
     },
     "hasBeenRead": "true",
@@ -51,7 +51,7 @@
     "year": "2009",
     "id": "56db32f9-faa6-74ce-b780-2b283a40de4a",
     "priority": {
-      "all": "23",
+      "all": "26",
       "wishlist": "12",
       "upcoming": "34",
       "read": "18"
@@ -67,7 +67,7 @@
     "year": "2004",
     "id": "dea202ce-28c3-9fb2-cb35-c5623b43b1ab",
     "priority": {
-      "all": "50",
+      "all": "53",
       "wishlist": "11",
       "upcoming": "14",
       "read": "17"
@@ -83,9 +83,9 @@
     "year": "2009",
     "id": "87198d6e-9aaa-d917-ea27-778e0f7e8703",
     "priority": {
-      "all": "18",
+      "all": "21",
       "wishlist": "13",
-      "upcoming": "16"
+      "upcoming": "15"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -98,7 +98,7 @@
     "year": "2010",
     "id": "67eeed62-a6fa-dfff-0730-4dd3470950f4",
     "priority": {
-      "all": "12",
+      "all": "15",
       "wishlist": "24",
       "read": "16"
     },
@@ -113,7 +113,7 @@
     "year": "2003",
     "id": "356a3cbf-1272-f9af-45c6-1e71765cba4a",
     "priority": {
-      "all": "31",
+      "all": "34",
       "wishlist": "20",
       "upcoming": "30"
     },
@@ -128,8 +128,8 @@
     "year": "2012",
     "id": "f8eaf524-1ca9-ed8b-b2f8-3683f904ddbe",
     "priority": {
-      "all": "17",
-      "upcoming": "32"
+      "all": "20",
+      "upcoming": "31"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -142,9 +142,9 @@
     "year": "2004",
     "id": "a5bd23c4-76e1-bf51-18ee-f7152a297fea",
     "priority": {
-      "all": "20",
+      "all": "23",
       "wishlist": "3",
-      "upcoming": "35"
+      "upcoming": "38"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -157,9 +157,9 @@
     "year": "1995",
     "id": "10e93e69-3abe-be04-6486-5f9fc5356d85",
     "priority": {
-      "all": "46",
+      "all": "49",
       "wishlist": "21",
-      "upcoming": "22"
+      "upcoming": "20"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -172,9 +172,9 @@
     "year": "2009",
     "id": "5d054cd3-0fd3-f8c7-e2b0-1c8cb4e72aa9",
     "priority": {
-      "all": "32",
+      "all": "35",
       "wishlist": "11",
-      "upcoming": "12"
+      "upcoming": "28"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -187,7 +187,7 @@
     "year": "2008",
     "id": "171ccbc3-371e-8534-0902-6a73fd1515a4",
     "priority": {
-      "all": "9",
+      "all": "12",
       "read": "15"
     },
     "hasBeenRead": "true",
@@ -201,7 +201,7 @@
     "year": "2004",
     "id": "da464e7b-7d40-58b0-f462-1fdf24f88b7c",
     "priority": {
-      "all": "24",
+      "all": "27",
       "read": "14"
     },
     "hasBeenRead": "true",
@@ -215,7 +215,7 @@
     "year": "2010",
     "id": "687d870d-e725-19fe-b590-a235827c054e",
     "priority": {
-      "all": "53",
+      "all": "56",
       "read": "13"
     },
     "hasBeenRead": "true",
@@ -229,7 +229,7 @@
     "year": "2007",
     "id": "662030bb-0546-8f23-d224-d430fb409849",
     "priority": {
-      "all": "35",
+      "all": "38",
       "read": "12"
     },
     "hasBeenRead": "true",
@@ -243,7 +243,7 @@
     "year": "2012",
     "id": "89d7fc82-fe00-7d07-fe40-556cff98ed5b",
     "priority": {
-      "all": "22",
+      "all": "25",
       "wishlist": "25",
       "upcoming": "12",
       "read": "10"
@@ -259,9 +259,9 @@
     "year": "2010",
     "id": "f406262f-3618-d886-e344-45c935b5dbbe",
     "priority": {
-      "all": "25",
+      "all": "28",
       "wishlist": "16",
-      "upcoming": "39"
+      "upcoming": "42"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -274,7 +274,7 @@
     "year": "2005",
     "id": "77d66bcc-53e3-42da-cbdc-1819081ea7cb",
     "priority": {
-      "all": "13",
+      "all": "16",
       "read": "9"
     },
     "hasBeenRead": "true",
@@ -288,7 +288,7 @@
     "year": "2010",
     "id": "52972997-3d57-70bb-88a8-0545a7a69474",
     "priority": {
-      "all": "4",
+      "all": "7",
       "wishlist": "24",
       "read": "8"
     },
@@ -303,7 +303,7 @@
     "year": "2011",
     "id": "5a94193f-c9e7-d894-76de-b08542da1b39",
     "priority": {
-      "all": "54",
+      "all": "57",
       "upcoming": "4"
     },
     "hasBeenRead": "false",
@@ -317,7 +317,7 @@
     "year": "2009",
     "id": "59a92735-e2ca-1bc9-d2f5-654964f2f28f",
     "priority": {
-      "all": "3",
+      "all": "6",
       "read": "7"
     },
     "hasBeenRead": "true",
@@ -331,8 +331,8 @@
     "year": "2007",
     "id": "be8af07a-c8c0-9e45-445d-4528138c2ba5",
     "priority": {
-      "all": "28",
-      "upcoming": "29"
+      "all": "31",
+      "upcoming": "27"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -345,9 +345,9 @@
     "year": "2008",
     "id": "412fb5f0-121d-9dd0-6045-a12b1c3b4278",
     "priority": {
-      "all": "30",
+      "all": "33",
       "wishlist": "2",
-      "upcoming": "14"
+      "upcoming": "13"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -360,8 +360,8 @@
     "year": "2011",
     "id": "d8a21ac1-69a1-9e54-9fe9-d6c588419f38",
     "priority": {
-      "all": "6",
-      "upcoming": "31"
+      "all": "9",
+      "upcoming": "22"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -374,7 +374,7 @@
     "year": "2008",
     "id": "3370e35e-1be6-a1b9-a0f8-aec52f4e4262",
     "priority": {
-      "all": "44",
+      "all": "47",
       "upcoming": "10"
     },
     "hasBeenRead": "false",
@@ -388,7 +388,7 @@
     "year": "2008",
     "id": "bff6e928-0f8c-469d-93e8-087047fe3439",
     "priority": {
-      "all": "47",
+      "all": "50",
       "wishlist": "19",
       "upcoming": "8"
     },
@@ -403,9 +403,9 @@
     "year": "1999",
     "id": "d648037b-b088-9f97-8d88-1d0b477a5a1d",
     "priority": {
-      "all": "33",
+      "all": "36",
       "wishlist": "17",
-      "upcoming": "20"
+      "upcoming": "19"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -418,9 +418,9 @@
     "year": "2000",
     "id": "de741fff-bd6f-1f27-afe9-40373f850c7a",
     "priority": {
-      "all": "14",
+      "all": "17",
       "wishlist": "11",
-      "upcoming": "17"
+      "upcoming": "16"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -433,8 +433,8 @@
     "year": "2011",
     "id": "2f5532fe-bf98-3cfb-be2c-56c16cffcbfa",
     "priority": {
-      "all": "41",
-      "upcoming": "18"
+      "all": "44",
+      "upcoming": "17"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -447,7 +447,7 @@
     "year": "2004",
     "id": "e8b69aa7-51f1-635f-8f76-c343d5b3cce5",
     "priority": {
-      "all": "43",
+      "all": "46",
       "read": "6"
     },
     "hasBeenRead": "true",
@@ -461,9 +461,9 @@
     "year": "2009",
     "id": "679a0d38-836d-a302-9d30-80f8f895dbc2",
     "priority": {
-      "all": "34",
+      "all": "37",
       "wishlist": "12",
-      "upcoming": "38"
+      "upcoming": "41"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -476,7 +476,7 @@
     "year": "2003",
     "id": "ee9e2746-5eb4-e6b6-8ced-f926eda06059",
     "priority": {
-      "all": "29",
+      "all": "32",
       "wishlist": "4",
       "upcoming": "5"
     },
@@ -491,9 +491,9 @@
     "year": "2011",
     "id": "d2ced8ae-6ba5-c4a4-5c28-7d133b85165d",
     "priority": {
-      "all": "51",
+      "all": "54",
       "wishlist": "28",
-      "upcoming": "36"
+      "upcoming": "39"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -506,9 +506,9 @@
     "year": "2009",
     "id": "8a173b1b-329a-87c3-f050-f1b9da574d85",
     "priority": {
-      "all": "15",
+      "all": "18",
       "wishlist": "18",
-      "upcoming": "28"
+      "upcoming": "29"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -521,7 +521,7 @@
     "year": "2011",
     "id": "8e945f15-8c2d-20b7-4d6d-36bcd321ab4e",
     "priority": {
-      "all": "38",
+      "all": "41",
       "wishlist": "14",
       "upcoming": "11"
     },
@@ -536,9 +536,9 @@
     "year": "2010",
     "id": "48c84b2e-83f9-e104-9f9f-0b9c7d6513f9",
     "priority": {
-      "all": "5",
+      "all": "8",
       "wishlist": "5",
-      "upcoming": "19"
+      "upcoming": "18"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -551,9 +551,9 @@
     "year": "2011",
     "id": "d6d7c67f-14e5-bd25-7a06-288f293525db",
     "priority": {
-      "all": "55",
+      "all": "58",
       "wishlist": "6",
-      "upcoming": "13"
+      "upcoming": "12"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -566,7 +566,7 @@
     "year": "1996",
     "id": "e5f8470e-e671-d7f2-88f8-ff1e9e4741ad",
     "priority": {
-      "all": "10",
+      "all": "13",
       "wishlist": "23",
       "upcoming": "2"
     },
@@ -581,7 +581,7 @@
     "year": "2006",
     "id": "d36f4148-c740-6dc2-4a38-62245fbdfe3a",
     "priority": {
-      "all": "61",
+      "all": "64",
       "wishlist": "8",
       "upcoming": "9"
     },
@@ -596,8 +596,8 @@
     "year": "2010",
     "id": "cb862b53-3d23-270d-4271-d1cee7ea8db7",
     "priority": {
-      "all": "37",
-      "upcoming": "33"
+      "all": "40",
+      "upcoming": "23"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -610,7 +610,7 @@
     "year": "2003",
     "id": "1fd0b76e-a392-d23f-cc32-cf964fb39c2d",
     "priority": {
-      "all": "52",
+      "all": "55",
       "wishlist": "23",
       "upcoming": "6"
     },
@@ -625,7 +625,7 @@
     "year": "2003",
     "id": "6b003fd0-13ad-ab37-d030-5a8eb206c960",
     "priority": {
-      "all": "8",
+      "all": "11",
       "wishlist": "10",
       "upcoming": "3"
     },
@@ -640,9 +640,9 @@
     "year": "2011",
     "id": "7e879d57-8c1d-0993-a4c9-7c4d9dd72a26",
     "priority": {
-      "all": "45",
+      "all": "48",
       "wishlist": "9",
-      "upcoming": "21"
+      "upcoming": "36"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -655,7 +655,7 @@
     "year": "2011",
     "id": "057fd92f-1870-8354-06e3-26e171bc54a3",
     "priority": {
-      "all": "16",
+      "all": "19",
       "wishlist": "31",
       "read": "5"
     },
@@ -670,9 +670,9 @@
     "year": "2008",
     "id": "6c358188-4704-4808-214f-a234830185c5",
     "priority": {
-      "all": "40",
+      "all": "43",
       "wishlist": "5",
-      "upcoming": "37"
+      "upcoming": "40"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -685,7 +685,7 @@
     "year": "2007",
     "id": "dad245b7-2e89-f00e-0097-f218979897cd",
     "priority": {
-      "all": "42",
+      "all": "45",
       "read": "4"
     },
     "hasBeenRead": "true",
@@ -699,9 +699,9 @@
     "year": "2005",
     "id": "05613ba9-4601-2119-9ed5-eea2133912c3",
     "priority": {
-      "all": "21",
+      "all": "24",
       "wishlist": "7",
-      "upcoming": "40"
+      "upcoming": "43"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -714,7 +714,7 @@
     "year": "2012",
     "id": "fad173a7-2f64-543a-621f-7a8d7dd067d7",
     "priority": {
-      "all": "59",
+      "all": "62",
       "read": "3"
     },
     "hasBeenRead": "true",
@@ -728,9 +728,9 @@
     "year": "2003",
     "id": "2e8839e9-3233-8808-9e96-a4531e870c4a",
     "priority": {
-      "all": "58",
+      "all": "61",
       "wishlist": "22",
-      "upcoming": "41"
+      "upcoming": "44"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -743,7 +743,7 @@
     "year": "1997",
     "id": "925eab5c-20d7-4240-f0f6-b5fed134ffc3",
     "priority": {
-      "all": "11",
+      "all": "14",
       "read": "2"
     },
     "hasBeenRead": "true",
@@ -757,8 +757,8 @@
     "year": "2010",
     "id": "53aacd2c-ba3e-ffcb-d6b5-f138a5cd9acf",
     "priority": {
-      "all": "27",
-      "upcoming": "15"
+      "all": "30",
+      "upcoming": "14"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -771,8 +771,8 @@
     "year": "2006",
     "id": "f991b307-a443-d1de-6769-4e7bf2253539",
     "priority": {
-      "all": "36",
-      "upcoming": "24"
+      "all": "39",
+      "upcoming": "32"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -785,9 +785,9 @@
     "year": "2010",
     "id": "ff29e5bc-bd8f-77f2-3e2e-790df10c2353",
     "priority": {
-      "all": "57",
+      "all": "60",
       "wishlist": "15",
-      "upcoming": "25"
+      "upcoming": "24"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -800,9 +800,9 @@
     "year": "1999",
     "id": "a2a9e9e4-ddae-3364-d218-b51dfa81a779",
     "priority": {
-      "all": "26",
+      "all": "29",
       "wishlist": "2",
-      "upcoming": "23"
+      "upcoming": "21"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -815,7 +815,7 @@
     "year": "2009",
     "id": "8cb023af-29de-1fd7-ab4c-2b74797f9153",
     "priority": {
-      "all": "7",
+      "all": "10",
       "upcoming": "7"
     },
     "hasBeenRead": "false",
@@ -829,8 +829,8 @@
     "year": "2011",
     "id": "96b5086d-78ce-86b7-02f5-de2c6df7aca0",
     "priority": {
-      "all": "19",
-      "upcoming": "27"
+      "all": "22",
+      "upcoming": "26"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -843,8 +843,8 @@
     "year": "2010",
     "id": "b09eea2f-2436-76da-b9f0-a5144f850a71",
     "priority": {
-      "all": "56",
-      "upcoming": "26"
+      "all": "59",
+      "upcoming": "25"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -857,7 +857,7 @@
     "year": "2012",
     "id": "ebffea68-ae4e-5168-b906-267168f6828c",
     "priority": {
-      "all": "60",
+      "all": "63",
       "upcoming": "1"
     },
     "hasBeenRead": "false",
@@ -876,7 +876,7 @@
     "priority": {
       "wishlist": "1",
       "read": "1",
-      "all": "2"
+      "all": "5"
     }
   },
   {
@@ -889,9 +889,51 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "all": "1",
-      "upcoming": "34",
+      "all": "4",
+      "upcoming": "37",
       "wishlist": "1"
+    }
+  },
+  {
+    "title": "Implementing lean software development",
+    "cover": "http://bks2.books.google.com/books?id=jlRnQgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+    "author": "Mary Poppendieck, Tom Poppendieck",
+    "year": "2007",
+    "id": "a80c3ae4-2c7c-7318-eccf-5fd652e35b6d",
+    "hasBeenRead": "false",
+    "ownTheBook": "false",
+    "ownTheEBook": "false",
+    "priority": {
+      "all": "3",
+      "upcoming": "35"
+    }
+  },
+  {
+    "title": "Leading Lean Software Development",
+    "cover": "http://bks1.books.google.com/books?id=Ty9ZAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+    "author": "Mary Poppendieck, Tom Poppendieck",
+    "year": "2009",
+    "id": "19866ce8-6932-74a0-cd5c-25a116997ab7",
+    "hasBeenRead": "false",
+    "ownTheBook": "false",
+    "ownTheEBook": "false",
+    "priority": {
+      "all": "2",
+      "upcoming": "34"
+    }
+  },
+  {
+    "title": "Growing Object-Oriented Software: Guided by Tests",
+    "cover": "http://bks3.books.google.com/books?id=fOyYCR4oYs0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+    "author": "Freeman Steve, Steve Freeman, Nat Pryce",
+    "year": "",
+    "id": "b308f28a-44fe-8e33-5230-978c7dbeb27d",
+    "hasBeenRead": "false",
+    "ownTheBook": "false",
+    "ownTheEBook": "false",
+    "priority": {
+      "upcoming": "33",
+      "all": "1"
     }
   }
 ]

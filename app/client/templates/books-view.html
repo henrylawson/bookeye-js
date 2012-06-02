@@ -14,6 +14,9 @@
 			<span class="label own-the-book {{#if ownTheBook}}checked label-success{{/if}}">BOOK</span>
 			<span class="label own-the-ebook {{#if ownTheEBook}}checked label-success{{/if}}">EBOOK</span>
 		</td>
+		<td class="link-out">
+			<a href="http://www.google.com/search?hl=en&btnI=1&q=site:amazon.com+{{title}}" target="_blank"><i class="icon-info-sign"></i></a>
+		</td>
 		<td>
 			<span class="title">{{title}}</span>
 		</td>
@@ -31,7 +34,7 @@
 </script>
 <script id="books-view-all-empty" type="text/x-handlebars-template">
 	<tr class="book">
-		<td colspan="6">
+		<td colspan="7">
 			No books to display
 		</td>
 	</tr>
