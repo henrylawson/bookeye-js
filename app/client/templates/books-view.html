@@ -10,12 +10,12 @@
 			</div>
 		</td>
 		<td>
-			<span class="label has-been-read {{#if hasBeenRead}}checked label-success{{/if}}">READ</span>
-			<span class="label own-the-book {{#if ownTheBook}}checked label-success{{/if}}">BOOK</span>
-			<span class="label own-the-ebook {{#if ownTheEBook}}checked label-success{{/if}}">EBOOK</span>
+			<span class="label has-been-read {{#if hasBeenRead}}checked label-success{{/if}}" rel="tooltip" title="Has been read?">R</span>
+			<span class="label own-the-book {{#if ownTheBook}}checked label-success{{/if}}" rel="tooltip" title="Own the book?">B</span>
+			<span class="label own-the-ebook {{#if ownTheEBook}}checked label-success{{/if}}" rel="tooltip" title="Own the eBook?">E</span>
 		</td>
 		<td class="link-out">
-			<a href="http://www.google.com/search?hl=en&btnI=1&q=site:amazon.com+{{title}}" target="_blank"><i class="icon-info-sign"></i></a>
+			<a href="http://www.google.com/search?hl=en&btnI=1&q=site:amazon.com+{{title}}" target="_blank" rel="tooltip" title="More information"><i class="icon-info-sign"></i></a>
 		</td>
 		<td>
 			<span class="title">{{title}}</span>
