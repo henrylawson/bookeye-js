@@ -8,7 +8,7 @@
     "priority": {
       "all": "51",
       "wishlist": "14",
-      "read": "20"
+      "read": "14"
     },
     "hasBeenRead": "true",
     "ownTheBook": "false",
@@ -38,7 +38,7 @@
     "id": "54fa0651-ac02-06fe-83ec-0a667772b4f0",
     "priority": {
       "all": "52",
-      "read": "19"
+      "read": "20"
     },
     "hasBeenRead": "true",
     "ownTheBook": "true",
@@ -54,7 +54,7 @@
       "all": "26",
       "wishlist": "12",
       "upcoming": "34",
-      "read": "18"
+      "read": "19"
     },
     "hasBeenRead": "true",
     "ownTheBook": "true",
@@ -70,7 +70,7 @@
       "all": "53",
       "wishlist": "11",
       "upcoming": "14",
-      "read": "17"
+      "read": "18"
     },
     "hasBeenRead": "true",
     "ownTheBook": "false",
@@ -85,7 +85,7 @@
     "priority": {
       "all": "21",
       "wishlist": "16",
-      "upcoming": "14"
+      "upcoming": "16"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -100,7 +100,7 @@
     "priority": {
       "all": "15",
       "wishlist": "24",
-      "read": "16"
+      "read": "17"
     },
     "hasBeenRead": "true",
     "ownTheBook": "false",
@@ -115,11 +115,12 @@
     "priority": {
       "all": "34",
       "wishlist": "23",
-      "upcoming": "30"
+      "upcoming": "29"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
-    "ownTheEBook": "false"
+    "ownTheEBook": "false",
+    "notes": "Famous"
   },
   {
     "title": "Mastering Regular Expressions",
@@ -129,11 +130,12 @@
     "id": "f8eaf524-1ca9-ed8b-b2f8-3683f904ddbe",
     "priority": {
       "all": "20",
-      "upcoming": "31"
+      "upcoming": "30"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
-    "ownTheEBook": "true"
+    "ownTheEBook": "true",
+    "notes": "Fundamentals"
   },
   {
     "title": "User Stories Applied",
@@ -148,7 +150,8 @@
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
-    "ownTheEBook": "false"
+    "ownTheEBook": "false",
+    "notes": "BA"
   },
   {
     "title": "The Mythical Man-Month",
@@ -159,7 +162,7 @@
     "priority": {
       "all": "49",
       "wishlist": "24",
-      "upcoming": "19"
+      "upcoming": "20"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -178,7 +181,8 @@
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
-    "ownTheEBook": "true"
+    "ownTheEBook": "true",
+    "notes": "Fundamentals"
   },
   {
     "title": "JavaScript",
@@ -188,7 +192,7 @@
     "id": "171ccbc3-371e-8534-0902-6a73fd1515a4",
     "priority": {
       "all": "12",
-      "read": "15"
+      "read": "16"
     },
     "hasBeenRead": "true",
     "ownTheBook": "false",
@@ -202,7 +206,7 @@
     "id": "da464e7b-7d40-58b0-f462-1fdf24f88b7c",
     "priority": {
       "all": "27",
-      "read": "14"
+      "read": "15"
     },
     "hasBeenRead": "true",
     "ownTheBook": "false",
@@ -265,7 +269,8 @@
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
-    "ownTheEBook": "false"
+    "ownTheEBook": "false",
+    "notes": "KB Series"
   },
   {
     "title": "Head First Java",
@@ -304,7 +309,7 @@
     "id": "5a94193f-c9e7-d894-76de-b08542da1b39",
     "priority": {
       "all": "57",
-      "upcoming": "3"
+      "upcoming": "1"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -336,7 +341,8 @@
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
-    "ownTheEBook": "true"
+    "ownTheEBook": "true",
+    "notes": "Fundamentals"
   },
   {
     "title": "Enterprise Recipes with Ruby and Rails",
@@ -347,7 +353,7 @@
     "priority": {
       "all": "33",
       "wishlist": "2",
-      "upcoming": "12"
+      "upcoming": "13"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -361,7 +367,7 @@
     "id": "d8a21ac1-69a1-9e54-9fe9-d6c588419f38",
     "priority": {
       "all": "9",
-      "upcoming": "21"
+      "upcoming": "10"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -390,7 +396,7 @@
     "priority": {
       "all": "50",
       "wishlist": "22",
-      "upcoming": "7"
+      "upcoming": "8"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -405,7 +411,7 @@
     "priority": {
       "all": "36",
       "wishlist": "20",
-      "upcoming": "18"
+      "upcoming": "19"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -420,7 +426,7 @@
     "priority": {
       "all": "17",
       "wishlist": "14",
-      "upcoming": "15"
+      "upcoming": "17"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -434,7 +440,7 @@
     "id": "2f5532fe-bf98-3cfb-be2c-56c16cffcbfa",
     "priority": {
       "all": "44",
-      "upcoming": "16"
+      "upcoming": "14"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -497,7 +503,8 @@
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
-    "ownTheEBook": "true"
+    "ownTheEBook": "true",
+    "notes": "MF Series"
   },
   {
     "title": "Bridging the Communication Gap",
@@ -508,11 +515,12 @@
     "priority": {
       "all": "18",
       "wishlist": "21",
-      "upcoming": "29"
+      "upcoming": "26"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
-    "ownTheEBook": "false"
+    "ownTheEBook": "false",
+    "notes": "Testing"
   },
   {
     "title": "Specification by Example",
@@ -523,7 +531,7 @@
     "priority": {
       "all": "41",
       "wishlist": "17",
-      "upcoming": "10"
+      "upcoming": "11"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -538,7 +546,7 @@
     "priority": {
       "all": "8",
       "wishlist": "8",
-      "upcoming": "17"
+      "upcoming": "18"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -553,7 +561,7 @@
     "priority": {
       "all": "58",
       "wishlist": "9",
-      "upcoming": "11"
+      "upcoming": "12"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -568,7 +576,7 @@
     "priority": {
       "all": "13",
       "wishlist": "23",
-      "upcoming": "1"
+      "upcoming": "3"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -583,7 +591,7 @@
     "priority": {
       "all": "64",
       "wishlist": "11",
-      "upcoming": "8"
+      "upcoming": "2"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -601,7 +609,8 @@
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
-    "ownTheEBook": "true"
+    "ownTheEBook": "true",
+    "notes": "Exploring"
   },
   {
     "title": "Object-Oriented Reengineering Patterns",
@@ -612,7 +621,7 @@
     "priority": {
       "all": "55",
       "wishlist": "25",
-      "upcoming": "5"
+      "upcoming": "6"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -627,7 +636,7 @@
     "priority": {
       "all": "11",
       "wishlist": "13",
-      "upcoming": "2"
+      "upcoming": "5"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -646,7 +655,8 @@
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
-    "ownTheEBook": "false"
+    "ownTheEBook": "false",
+    "notes": "Lean"
   },
   {
     "title": "Service Design Patterns",
@@ -676,7 +686,8 @@
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
-    "ownTheEBook": "true"
+    "ownTheEBook": "true",
+    "notes": "MF Series"
   },
   {
     "title": "Continuous Integration",
@@ -705,7 +716,8 @@
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
-    "ownTheEBook": "false"
+    "ownTheEBook": "false",
+    "notes": "MF Series"
   },
   {
     "title": "Enterprise Integration Patterns",
@@ -734,7 +746,8 @@
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
-    "ownTheEBook": "true"
+    "ownTheEBook": "true",
+    "notes": "MF Series"
   },
   {
     "title": "Analysis Patterns",
@@ -758,7 +771,7 @@
     "id": "53aacd2c-ba3e-ffcb-d6b5-f138a5cd9acf",
     "priority": {
       "all": "30",
-      "upcoming": "13"
+      "upcoming": "15"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -776,7 +789,8 @@
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
-    "ownTheEBook": "true"
+    "ownTheEBook": "true",
+    "notes": "DB"
   },
   {
     "title": "SQL Antipatterns",
@@ -787,11 +801,12 @@
     "priority": {
       "all": "60",
       "wishlist": "18",
-      "upcoming": "24"
+      "upcoming": "31"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
-    "ownTheEBook": "false"
+    "ownTheEBook": "false",
+    "notes": "DB"
   },
   {
     "title": "Gödel, Escher, Bach",
@@ -802,7 +817,7 @@
     "priority": {
       "all": "29",
       "wishlist": "5",
-      "upcoming": "20"
+      "upcoming": "21"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -816,7 +831,7 @@
     "id": "8cb023af-29de-1fd7-ab4c-2b74797f9153",
     "priority": {
       "all": "10",
-      "upcoming": "6"
+      "upcoming": "7"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -830,11 +845,12 @@
     "id": "96b5086d-78ce-86b7-02f5-de2c6df7aca0",
     "priority": {
       "all": "22",
-      "upcoming": "25"
+      "upcoming": "24"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
-    "ownTheEBook": "true"
+    "ownTheEBook": "true",
+    "notes": "Exploring"
   },
   {
     "title": "C# 4.0 in a Nutshell",
@@ -844,11 +860,12 @@
     "id": "b09eea2f-2436-76da-b9f0-a5144f850a71",
     "priority": {
       "all": "59",
-      "upcoming": "26"
+      "upcoming": "25"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
-    "ownTheEBook": "true"
+    "ownTheEBook": "true",
+    "notes": "Fundamentals"
   },
   {
     "title": "NoSQL Distilled",
@@ -862,7 +879,8 @@
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
-    "ownTheEBook": "true"
+    "ownTheEBook": "true",
+    "notes": "DB"
   },
   {
     "title": "Domain-Specific Languages",
@@ -890,9 +908,10 @@
     "ownTheEBook": "false",
     "priority": {
       "all": "4",
-      "upcoming": "38",
+      "upcoming": "34",
       "wishlist": "4"
-    }
+    },
+    "notes": "KB Series"
   },
   {
     "title": "Implementing lean software development",
@@ -907,7 +926,8 @@
       "all": "3",
       "upcoming": "36",
       "wishlist": "3"
-    }
+    },
+    "notes": "Lean"
   },
   {
     "title": "Leading Lean Software Development",
@@ -922,21 +942,23 @@
       "all": "2",
       "upcoming": "35",
       "wishlist": "2"
-    }
+    },
+    "notes": "Lean"
   },
   {
     "title": "Growing Object-Oriented Software: Guided by Tests",
     "cover": "http://bks3.books.google.com/books?id=fOyYCR4oYs0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
     "author": "Freeman Steve, Steve Freeman, Nat Pryce",
-    "year": "",
+    "year": "2009",
     "id": "b308f28a-44fe-8e33-5230-978c7dbeb27d",
     "hasBeenRead": "false",
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "34",
+      "upcoming": "38",
       "all": "1",
       "wishlist": "1"
-    }
+    },
+    "notes": "KB Series"
   }
 ]
