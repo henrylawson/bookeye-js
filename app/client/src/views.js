@@ -50,6 +50,7 @@ BooksView.prototype.form = function(options) {
 		book.author = formHtml.find('input.author').val();
 		book.year = formHtml.find('input.year').val();
 		book.cover = formHtml.find('input.cover').val();
+		book.notes = formHtml.find('textarea.notes').val();
 		book.hasBeenRead = formHtml.find('input.has-been-read').prop('checked');
 		book.ownTheBook = formHtml.find('input.own-the-book').prop('checked');
 		book.ownTheEBook = formHtml.find('input.own-the-ebook').prop('checked');

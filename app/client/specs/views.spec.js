@@ -62,6 +62,10 @@ describe("BooksView", function() {
 				expect(displayElement.html()).toContain(book.year);
 			});
 			
+			it("with notes", function() {
+				expect(displayElement.html()).toContain(book.notes);
+			});
+			
 			it("with cover image", function() {
 				// expect(displayElement.find('img.cover').attr('src')).toEqual(book.cover);
 			});
@@ -163,6 +167,10 @@ describe("BooksView", function() {
 				expect(displayElement.html()).toContain(book.year);
 			});
 			
+			it("with notes", function() {
+				expect(displayElement.html()).toContain(book.notes);
+			});
+			
 			it("with cover image", function() {
 				expect(displayElement.find('.cover').val()).toEqual(book.cover);
 			});
@@ -233,6 +241,15 @@ describe("BooksView", function() {
 				displayElement.find('div.save').click();
 				
 				expect(mostRecentSaveCall.args[0].year).toEqual(year);
+			});
+
+			it("with modified notes", function() {
+				var notes = "Some new notes";
+				displayElement.find('textarea.notes').val(notes);
+
+				displayElement.find('div.save').click();
+
+				expect(mostRecentSaveCall.args[0].notes).toEqual(notes);
 			});
 			
 			it("with modified cover", function() {
