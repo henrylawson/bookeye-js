@@ -1,4 +1,3 @@
+Fix bug -> Quick add, do search, do another search, add book, note that both books added and you have to go to all to see book appear...
 Validations
-More detailed book properties
 Display the cover somewhere
-Do links out
