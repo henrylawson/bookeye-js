@@ -131,6 +131,7 @@ LookupBooksView.prototype.searchResult = function(options) {
 		element.append(searchResultHtml);
 		options.displayElement.find('.add').removeClass('disabled');
 		options.displayElement.find('.add').addClass('enabled');
+		options.displayElement.find('.add').unbind("click");
 		options.displayElement.find('.add').click(function() {
 			options.callbacks.add();
 			options.displayElement.find('.cancel').click();

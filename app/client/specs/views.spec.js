@@ -401,11 +401,13 @@ describe("LookupBooksView", function() {
 	
 	describe("searchResult", function() {
 		var options;
+		var displayElementHtml;
 	
 		beforeEach(function() {
+			displayElementHtml = $('<div><div id="search-result">REMOVE ME</div><div class="cancel">Cancel</div><div class="add disabled">Add</div></div>');
 			options = {
 				book: BookFactory.createBook(),
-				displayElement: $('<div><div id="search-result">REMOVE ME</div><div class="cancel">Cancel</div><div class="add disabled">Add</div></div>'),
+				displayElement: displayElementHtml,
 				callbacks: {
 					add: jasmine.createSpy('search'),
 				}
@@ -462,6 +464,22 @@ describe("LookupBooksView", function() {
 				options.displayElement.find('.add').click();
 			
 				expect(options.callbacks.add).toHaveBeenCalled();
+			});
+			
+			it("should execute add callback on add button click for only the most recent results", function() {
+				var secondOptions = {
+					book: BookFactory.createBook(),
+					displayElement: displayElementHtml,
+					callbacks: {
+						add: jasmine.createSpy('search'),
+					}
+				};
+				lookupBooksView.searchResult(secondOptions);
+				
+				options.displayElement.find('.add').click();
+
+				expect(options.callbacks.add).not.toHaveBeenCalled();
+				expect(secondOptions.callbacks.add).toHaveBeenCalled();
 			});
 		
 			describe("should render book in search result template", function() {

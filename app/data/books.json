@@ -130,7 +130,7 @@
     "id": "f8eaf524-1ca9-ed8b-b2f8-3683f904ddbe",
     "priority": {
       "all": "21",
-      "upcoming": "38"
+      "upcoming": "39"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -177,7 +177,7 @@
     "priority": {
       "all": "36",
       "wishlist": "11",
-      "upcoming": "37"
+      "upcoming": "38"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -337,7 +337,7 @@
     "id": "be8af07a-c8c0-9e45-445d-4528138c2ba5",
     "priority": {
       "all": "32",
-      "upcoming": "36"
+      "upcoming": "37"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -714,9 +714,9 @@
       "wishlist": "10",
       "upcoming": "44"
     },
-    "hasBeenRead": "false",
+    "hasBeenRead": "true",
     "ownTheBook": "false",
-    "ownTheEBook": "false",
+    "ownTheEBook": "true",
     "notes": "MF Series"
   },
   {
@@ -785,7 +785,7 @@
     "id": "f991b307-a443-d1de-6769-4e7bf2253539",
     "priority": {
       "all": "40",
-      "upcoming": "39"
+      "upcoming": "36"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -881,7 +881,7 @@
     "hasBeenRead": "false",
     "ownTheBook": "false",
     "ownTheEBook": "true",
-    "notes": "DB"
+    "notes": "MF Series"
   },
   {
     "title": "Domain-Specific Languages",
