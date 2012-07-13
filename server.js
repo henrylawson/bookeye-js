@@ -1,11 +1,11 @@
-var basicRouter = require('./src/basic.router');
+var basicRouter = require('./app/src/basic.router');
 var express = require("express");
 var path = require('path');
 
 var settings = {
-	currentDir: __dirname,
-	clientDir: path.join(__dirname, 'client'),
-	port: process.env.port || 4567
+	currentDir: path.join(__dirname, 'app'),
+	clientDir: path.join(__dirname, 'app', 'client'),
+	port: (process.env.port || 4567)
 };
 
 var app = express.createServer();
