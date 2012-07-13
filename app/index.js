@@ -5,7 +5,7 @@ var path = require('path');
 var settings = {
 	currentDir: __dirname,
 	clientDir: path.join(__dirname, 'client'),
-	port: 80
+	port: process.env.port || 4567
 };
 
 var app = express.createServer();
