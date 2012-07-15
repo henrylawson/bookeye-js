@@ -3,3 +3,4 @@ Validations
 Display the cover somewhere
 User authentication
 Push it to azure
+Use head.js
