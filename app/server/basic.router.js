@@ -31,6 +31,7 @@ this.getBooks = function(req, res) {
 		var booksString = fileSystem.readFileSync(settings.booksFilePath);
 		var booksJson = JSON.parse(booksString);
 		res.send(booksJson);
+	} else {
+		res.send([]);
 	}
-	res.send([]);
 }

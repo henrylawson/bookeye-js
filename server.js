@@ -1,4 +1,4 @@
-var basicRouter = require('./app/src/basic.router');
+var basicRouter = require('./app/server/basic.router');
 var express = require("express");
 var path = require('path');
 
