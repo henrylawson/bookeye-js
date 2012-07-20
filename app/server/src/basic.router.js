@@ -3,8 +3,8 @@ var path = require('path');
 var fileSystem = require('fs');
 
 var settings = {
-	clientDir: path.join(__dirname, '..', 'client'),
-	booksFilePath: path.join(__dirname, '..', 'data', 'books.json')
+	clientDir: path.join(__dirname, '..', '..', 'client'),
+	booksFilePath: path.join(__dirname, '..', '..', 'data', 'books.json')
 }
 
 this.index = function(req, res) {

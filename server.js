@@ -1,4 +1,4 @@
-var server = require('./app/server/index');
+var server = require('./app/server/src/index');
 var path = require('path');
 
 server.start({
