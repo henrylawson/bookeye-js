@@ -12,7 +12,7 @@ this.tests = function() {
 	return bolt.captureOutput("Tests", spawn("node", [jasmineScript, specsFolder]));
 };
 this.default = function() {
-	bolt.task.tests().then(function() {
-		bolt.task.server();
+	bolt.tasks.tests().then(function() {
+		bolt.tasks.server();
 	});
 };
