@@ -52,7 +52,8 @@ describe("Bolt", function() {
 			spawnedProcess.on.mostRecentCall.args[1](exitCode);
 
 			expect(spawnedProcess.on.mostRecentCall.args[0]).toEqual("exit");
-			expect(process.stdout.write.mostRecentCall.args[0]).toContain('Exited with: ' + exitCode);
+			expect(process.stdout.write.mostRecentCall.args[0]).toContain('exited with: ' + exitCode);
+			expect(process.stdout.write.mostRecentCall.args[0]).toContain(taskName);
 		});
 
 		it("should resolve promise when spawned process exits", function() {
@@ -76,7 +77,7 @@ describe("Bolt", function() {
 			expect(bolt.task.default).toHaveBeenCalled();
 		});
 
-		it("should execute the tasks synchronously provided by the command line", function() {
+		it("should execute the tasks provided by the command line", function() {
 			var args = ["temp", "temp", "task1", "task2"];
 			bolt.task.task1 = jasmine.createSpy("Task 1");
 			bolt.task.task2 = jasmine.createSpy("Task 2");

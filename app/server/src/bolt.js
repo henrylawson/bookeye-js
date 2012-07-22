@@ -11,7 +11,7 @@ this.captureOutput = function(name, spawnedProcess) {
 	  process.stdout.write('' + data);
 	});
 	spawnedProcess.on('exit', function (code) {
-	  console.log('Exited with: ' + code);
+	  console.log(name + ' exited with: ' + code);
 	  deferred.resolve();
 	});
 	return deferred.promise;
