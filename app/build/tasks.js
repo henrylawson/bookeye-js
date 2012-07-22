@@ -1,6 +1,6 @@
 var spawn = require('child_process').spawn;
 var path = require('path');
-var bolt = require('bolt');	
+var bolt = require('usain');
 
 this.server = function() {
 	process.env.DEVELOPMENT = 1;

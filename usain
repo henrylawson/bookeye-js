@@ -1,4 +1,4 @@
-var bolt = require("bolt");
+var bolt = require("usain");
 bolt.task = require("./app/build/tasks");
 
 bolt.execute(process.argv);
