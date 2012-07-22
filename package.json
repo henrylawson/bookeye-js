@@ -4,7 +4,8 @@
   	"author": "Henry Lawson",
 	"dependencies" : { 
 		"express" : "3.x",
-		"q" : "0.x"
+		"q" : "0.x",
+		"bolt" : "0.0.x"
 	},
 	"devDependencies" : {
 		"jasmine-node" : "1.x"

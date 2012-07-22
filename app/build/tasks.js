@@ -1,7 +1,7 @@
 var spawn = require('child_process').spawn;
 var path = require('path');
-var bolt = require("../server/src/bolt");
-	
+var bolt = require('bolt');	
+
 this.server = function() {
 	process.env.DEVELOPMENT = 1;
 	return bolt.captureOutput("Server", spawn("node", ["server.js"]));
