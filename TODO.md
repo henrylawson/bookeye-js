@@ -2,5 +2,10 @@ Fix bug -> Quick add, do search, do another search, add book, note that both boo
 Validations
 Display the cover somewhere
 User authentication
-Push it to azure
 Use head.js
+Fix the multiple update and queueing system, too many overwrites and changes lost
+Better re-ordering interaction
+A download link for saving the books.json
+A flipkart info link
+A copy name link too
+Upcoming as default screen
