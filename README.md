@@ -4,7 +4,7 @@ A JavaScript implementation of my book tracking applicaiton.
 
 getting started
 ===============
-git clone git@github.com:henrylawson/bookeye-js.git
-cd bookeye-js
-npm install
-node usain
+1. git clone git@github.com:henrylawson/bookeye-js.git
+2. cd bookeye-js
+3. npm install
+4. node usain
