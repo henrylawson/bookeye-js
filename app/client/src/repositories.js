@@ -85,7 +85,7 @@ BooksRepository.prototype.updateWebService = function() {
 	this.previousCallGuid = currentCallGuid;
 }
 BooksRepository.prototype.addOrUpdate = function(book) {
-	BooksRepository.setIdIfMissing(book);
+	BooksRepository.setDefaultPropertiesIfMissing(book);
 	for(var i = 0; i < this.books.length; i++) {
 		if (this.books[i].id == book.id) {
 			this.books[i] = book;
@@ -93,6 +93,18 @@ BooksRepository.prototype.addOrUpdate = function(book) {
 		}
 	}
 	this.books.push(book);
+}
+BooksRepository.setDefaultPropertiesIfMissing = function(book) {
+	BooksRepository.setIdIfMissing(book);
+	book.title = book.title || "";
+	book.author = book.author || "";
+	book.year = book.year || "";
+	book.notes = book.notes || "";
+	book.cover = book.cover || "";
+	book.hasBeenRead = book.hasBeenRead || false;
+	book.ownTheBook = book.ownTheBook || false;
+	book.ownTheEBook = book.ownTheEBook || false;
+	book.priority = book.priority || {};
 }
 BooksRepository.setIdIfMissing = function(book) {
 	if (typeof book.id === "undefined" || !book.id) {

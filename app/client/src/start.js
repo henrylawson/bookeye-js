@@ -29,7 +29,7 @@ var lookupBooksController = new LookupBooksController({
 	service: lookupBooksService,
 });
 
-var defaultAction = function() { 
+var allAction = function() { 
 	booksController.all({ 
 		title: {
 			title: "All", 
@@ -79,7 +79,7 @@ var readAction = function() {
 };
 
 var navigationWidget = new NavigationWidget($('#navigation ul.items'));
-navigationWidget.add("All", defaultAction);
+navigationWidget.add("All", allAction);
 navigationWidget.add("Upcoming", upcomingAction);
 navigationWidget.add("Wishlist", wishlistAction);
 navigationWidget.add("Read", readAction);
@@ -88,4 +88,4 @@ var rightNavigationWidget = new NavigationWidget($('#navigation ul.right-items')
 rightNavigationWidget.add("Quick Add", function() { lookupBooksController.quickAdd() }, '#navigation-widget-item-quick-add');
 rightNavigationWidget.add("Add Book", function() { booksController.add() }, '#navigation-widget-item-add');
 
-defaultAction();
+upcomingAction();

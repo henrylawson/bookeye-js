@@ -167,6 +167,98 @@ describe("BooksRepository", function() {
 			expect(booksRepository.updateWebService).toHaveBeenCalled();
 		});
 	});
+
+	describe("setIdIfMissing", function() {
+		var newBook;
+		
+		beforeEach(function() {
+			newBook = BookFactory.createBook();
+		});
+
+		it("should set the id of a book when null", function() {
+			newBook.id = null;
+
+			BooksRepository.setIdIfMissing(newBook);
+
+			expect(newBook.id).not.toBeNull();
+		});
+
+		it("should not set the id of a book when already set", function() {
+			newBook.id = "hello";
+
+			BooksRepository.setIdIfMissing(newBook);
+
+			expect(newBook.id).toEqual("hello");
+		});
+	});
+
+	describe("setDefaultPropertiesIfMissing", function() {
+		var newBook;
+		
+		beforeEach(function() {
+			newBook = BookFactory.createBook();
+		});
+
+		it("should set the default properties when undefined", function() {
+			newBook.id = undefined;
+			newBook.title = undefined;
+			newBook.author = undefined;
+			newBook.year = undefined;
+			newBook.notes = undefined;
+			newBook.cover = undefined;
+			newBook.hasBeenRead = undefined;
+			newBook.ownTheBook = undefined;
+			newBook.ownTheEBook = undefined;
+			newBook.priority = undefined;
+
+			BooksRepository.setDefaultPropertiesIfMissing(newBook);
+
+			expect(newBook.id).not.toBeUndefined();
+			expect(newBook.title).not.toBeUndefined();
+			expect(newBook.author).not.toBeUndefined();
+			expect(newBook.year).not.toBeUndefined();
+			expect(newBook.notes).not.toBeUndefined();
+			expect(newBook.cover).not.toBeUndefined();
+			expect(newBook.hasBeenRead).not.toBeUndefined();
+			expect(newBook.ownTheBook).not.toBeUndefined();
+			expect(newBook.ownTheEBook).not.toBeUndefined();
+			expect(newBook.priority).not.toBeUndefined();
+		});
+
+		it("should not change the values of the properties if already defined", function() {
+			newBook.id = "value";
+			newBook.title = "value";
+			newBook.author = "value";
+			newBook.year = "value";
+			newBook.notes = "value";
+			newBook.cover = "value";
+			newBook.hasBeenRead = "value";
+			newBook.ownTheBook = "value";
+			newBook.ownTheEBook = "value";
+			newBook.priority = "value";
+
+			BooksRepository.setDefaultPropertiesIfMissing(newBook);
+
+			expect(newBook.id).toEqual("value");
+			expect(newBook.title).toEqual("value");
+			expect(newBook.author).toEqual("value");
+			expect(newBook.year).toEqual("value");
+			expect(newBook.notes).toEqual("value");
+			expect(newBook.cover).toEqual("value");
+			expect(newBook.hasBeenRead).toEqual("value");
+			expect(newBook.ownTheBook).toEqual("value");
+			expect(newBook.ownTheEBook).toEqual("value");
+			expect(newBook.priority).toEqual("value");
+		});
+
+		it("should pass the book to setIdIfMissing", function() {
+			spyOn(BooksRepository, "setIdIfMissing");
+
+			booksRepository.addOrUpdate(newBook);
+
+			expect(BooksRepository.setIdIfMissing).toHaveBeenCalledWith(newBook);
+		});
+	});
 	
 	describe("addOrUpdate", function() {
 		var newBook;
@@ -176,7 +268,7 @@ describe("BooksRepository", function() {
 		});
 		
 		it("should add a book and it should be available in getAll", function() {
-			booksRepository.save(newBook);
+			booksRepository.addOrUpdate(newBook);
 			
 			expect(booksRepository.getAll()).toContain(newBook);
 		});
@@ -184,7 +276,8 @@ describe("BooksRepository", function() {
 		it("should not re-add a book that already exists", function() {
 			var originalBooksCount = booksRepository.getAll().length;
 			
-			booksRepository.save(booksRepository.save(newBook));
+			booksRepository.addOrUpdate(newBook);
+			booksRepository.addOrUpdate(newBook);
 			
 			expect(booksRepository.getAll().length).toEqual(originalBooksCount + 1);
 			expect(booksRepository.getAll()).toContain(newBook);
@@ -192,15 +285,23 @@ describe("BooksRepository", function() {
 		
 		it("should update an existing book", function() {
 			var originalBook = newBook;
-			booksRepository.save(originalBook);
+			booksRepository.addOrUpdate(originalBook);
 			var updatedBook = BookFactory.createBook();
 			updatedBook.id = originalBook.id;
 			updatedBook.title = 'Updated the title';
 			
-			booksRepository.save(updatedBook);
+			booksRepository.addOrUpdate(updatedBook);
 			
 			expect(booksRepository.getAll()).not.toContain(originalBook);
 			expect(booksRepository.getAll()).toContain(updatedBook);
+		});
+
+		it("should pass the book to setDefaultPropertiesIfMissing", function() {
+			spyOn(BooksRepository, "setDefaultPropertiesIfMissing");
+
+			booksRepository.addOrUpdate(newBook);
+
+			expect(BooksRepository.setDefaultPropertiesIfMissing).toHaveBeenCalledWith(newBook);
 		});
 	})
 	
