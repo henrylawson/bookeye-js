@@ -85,6 +85,7 @@ navigationWidget.add("Wishlist", wishlistAction);
 navigationWidget.add("Read", readAction);
 
 var rightNavigationWidget = new NavigationWidget($('#navigation ul.right-items'));
+rightNavigationWidget.add("Export", function() { window.open("/books") }, '#navigation-widget-item-download');
 rightNavigationWidget.add("Quick Add", function() { lookupBooksController.quickAdd() }, '#navigation-widget-item-quick-add');
 rightNavigationWidget.add("Add Book", function() { booksController.add() }, '#navigation-widget-item-add');
 

@@ -13,6 +13,7 @@ div.page-container {
 }
 .move-down, .move-up {
 	padding-top:4px;
+	cursor:pointer;
 }
 table.table tr td {
 	vertical-align:middle;
