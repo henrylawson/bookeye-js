@@ -24,6 +24,14 @@ table.table tr td {
 	width:300px;
 	margin-right:15px;
 }
+#confirm {
+	position:fixed;
+	top:40px;
+	width:100%;
+}
+#confirm .alert {
+	border-radius: 0;
+}
 .loading {
 	height:64px;
 	background:url("../img/loading.gif") no-repeat center center;

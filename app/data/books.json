@@ -85,7 +85,7 @@
     "priority": {
       "all": "29",
       "wishlist": "21",
-      "upcoming": "23"
+      "upcoming": "17"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -116,7 +116,7 @@
     "priority": {
       "all": "41",
       "wishlist": "27",
-      "upcoming": "32"
+      "upcoming": "26"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -131,7 +131,7 @@
     "id": "f8eaf524-1ca9-ed8b-b2f8-3683f904ddbe",
     "priority": {
       "all": "28",
-      "upcoming": "43"
+      "upcoming": "37"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -147,7 +147,7 @@
     "priority": {
       "all": "31",
       "wishlist": "12",
-      "upcoming": "41"
+      "upcoming": "35"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -163,7 +163,7 @@
     "priority": {
       "all": "56",
       "wishlist": "28",
-      "upcoming": "27"
+      "upcoming": "21"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -179,7 +179,7 @@
     "priority": {
       "all": "42",
       "wishlist": "11",
-      "upcoming": "45"
+      "upcoming": "39"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -312,7 +312,7 @@
     "id": "5a94193f-c9e7-d894-76de-b08542da1b39",
     "priority": {
       "all": "64",
-      "upcoming": "9"
+      "upcoming": "4"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -341,7 +341,7 @@
     "id": "be8af07a-c8c0-9e45-445d-4528138c2ba5",
     "priority": {
       "all": "38",
-      "upcoming": "40"
+      "upcoming": "34"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -357,7 +357,7 @@
     "priority": {
       "all": "40",
       "wishlist": "2",
-      "upcoming": "12"
+      "upcoming": "7"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -372,7 +372,7 @@
     "id": "d8a21ac1-69a1-9e54-9fe9-d6c588419f38",
     "priority": {
       "all": "17",
-      "upcoming": "13"
+      "upcoming": "8"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -387,7 +387,7 @@
     "id": "3370e35e-1be6-a1b9-a0f8-aec52f4e4262",
     "priority": {
       "all": "54",
-      "upcoming": "10"
+      "upcoming": "5"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -403,7 +403,7 @@
     "priority": {
       "all": "57",
       "wishlist": "26",
-      "upcoming": "19"
+      "upcoming": "13"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -419,7 +419,7 @@
     "priority": {
       "all": "43",
       "wishlist": "24",
-      "upcoming": "26"
+      "upcoming": "20"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -435,7 +435,7 @@
     "priority": {
       "all": "25",
       "wishlist": "19",
-      "upcoming": "22"
+      "upcoming": "16"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -450,7 +450,7 @@
     "id": "2f5532fe-bf98-3cfb-be2c-56c16cffcbfa",
     "priority": {
       "all": "51",
-      "upcoming": "11"
+      "upcoming": "6"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -480,23 +480,7 @@
     "priority": {
       "all": "44",
       "wishlist": "20",
-      "upcoming": "29"
-    },
-    "hasBeenRead": "false",
-    "ownTheBook": "false",
-    "ownTheEBook": "false",
-    "notes": ""
-  },
-  {
-    "title": "Kanban Made Simple",
-    "cover": "http://bks5.books.google.com/books?id=fR1WvjSlE9gC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    "author": "John M. Gross, Kenneth R. McInnis",
-    "year": "2003",
-    "id": "ee9e2746-5eb4-e6b6-8ced-f926eda06059",
-    "priority": {
-      "all": "39",
-      "wishlist": "13",
-      "upcoming": "16"
+      "upcoming": "23"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -529,7 +513,7 @@
     "priority": {
       "all": "26",
       "wishlist": "25",
-      "upcoming": "30"
+      "upcoming": "24"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -545,7 +529,7 @@
     "priority": {
       "all": "48",
       "wishlist": "22",
-      "upcoming": "20"
+      "upcoming": "14"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -561,7 +545,7 @@
     "priority": {
       "all": "16",
       "wishlist": "14",
-      "upcoming": "24"
+      "upcoming": "18"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -577,7 +561,7 @@
     "priority": {
       "all": "65",
       "wishlist": "15",
-      "upcoming": "21"
+      "upcoming": "15"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -593,7 +577,7 @@
     "priority": {
       "all": "21",
       "wishlist": "23",
-      "upcoming": "34"
+      "upcoming": "28"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -609,7 +593,7 @@
     "priority": {
       "all": "71",
       "wishlist": "16",
-      "upcoming": "15"
+      "upcoming": "10"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -624,7 +608,7 @@
     "id": "cb862b53-3d23-270d-4271-d1cee7ea8db7",
     "priority": {
       "all": "47",
-      "upcoming": "25"
+      "upcoming": "19"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -640,7 +624,7 @@
     "priority": {
       "all": "62",
       "wishlist": "29",
-      "upcoming": "18"
+      "upcoming": "12"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -656,7 +640,7 @@
     "priority": {
       "all": "19",
       "wishlist": "18",
-      "upcoming": "17"
+      "upcoming": "11"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -672,7 +656,7 @@
     "priority": {
       "all": "55",
       "wishlist": "17",
-      "upcoming": "38"
+      "upcoming": "32"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -795,7 +779,7 @@
     "id": "f991b307-a443-d1de-6769-4e7bf2253539",
     "priority": {
       "all": "46",
-      "upcoming": "46"
+      "upcoming": "40"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -811,7 +795,7 @@
     "priority": {
       "all": "67",
       "wishlist": "23",
-      "upcoming": "33"
+      "upcoming": "27"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -827,7 +811,7 @@
     "priority": {
       "all": "37",
       "wishlist": "11",
-      "upcoming": "28"
+      "upcoming": "22"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -842,7 +826,7 @@
     "id": "8cb023af-29de-1fd7-ab4c-2b74797f9153",
     "priority": {
       "all": "18",
-      "upcoming": "42"
+      "upcoming": "36"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -857,7 +841,7 @@
     "id": "96b5086d-78ce-86b7-02f5-de2c6df7aca0",
     "priority": {
       "all": "30",
-      "upcoming": "31"
+      "upcoming": "25"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -872,7 +856,7 @@
     "id": "b09eea2f-2436-76da-b9f0-a5144f850a71",
     "priority": {
       "all": "66",
-      "upcoming": "44"
+      "upcoming": "38"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -921,7 +905,7 @@
     "ownTheEBook": "false",
     "priority": {
       "all": "12",
-      "upcoming": "35",
+      "upcoming": "29",
       "wishlist": "10"
     },
     "notes": "KB Series"
@@ -937,7 +921,7 @@
     "ownTheEBook": "false",
     "priority": {
       "all": "11",
-      "upcoming": "37",
+      "upcoming": "31",
       "wishlist": "9"
     },
     "notes": "Lean"
@@ -953,7 +937,7 @@
     "ownTheEBook": "false",
     "priority": {
       "all": "10",
-      "upcoming": "36",
+      "upcoming": "30",
       "wishlist": "8"
     },
     "notes": "Lean"
@@ -968,7 +952,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "39",
+      "upcoming": "33",
       "all": "9",
       "wishlist": "7"
     },
@@ -985,7 +969,7 @@
     "ownTheEBook": "false",
     "priority": {
       "all": "8",
-      "upcoming": "14",
+      "upcoming": "9",
       "wishlist": "6"
     },
     "notes": ""
@@ -1000,7 +984,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "8",
+      "upcoming": "3",
       "all": "7",
       "wishlist": "5"
     },
@@ -1030,29 +1014,13 @@
     "id": "bae829e2-3200-03da-d5dd-9afc356e279c",
     "priority": {
       "all": "5",
-      "upcoming": "7",
+      "upcoming": "2",
       "wishlist": "4"
     },
     "notes": "",
     "hasBeenRead": "false",
     "ownTheBook": "false",
     "ownTheEBook": "false"
-  },
-  {
-    "title": "C# and the .NET platform",
-    "cover": "http://bks9.books.google.com/books?id=OjRlQgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-    "author": "Andrew Troelsen",
-    "year": "2003",
-    "id": "f2c14da1-5067-4eec-6d8e-085ebb903c84",
-    "priority": {
-      "all": "4",
-      "upcoming": "6",
-      "wishlist": "3"
-    },
-    "hasBeenRead": "false",
-    "ownTheBook": "false",
-    "ownTheEBook": "false",
-    "notes": ""
   },
   {
     "title": "Windows PowerShell in Action",
@@ -1062,71 +1030,12 @@
     "id": "6e0edf78-1da1-257d-b216-30a25783aa9b",
     "priority": {
       "all": "3",
-      "upcoming": "5",
+      "upcoming": "1",
       "wishlist": "2"
     },
     "notes": "PowerShell",
     "hasBeenRead": "false",
     "ownTheBook": "false",
     "ownTheEBook": "false"
-  },
-  {
-    "title": "THE TRAVELLER'S AND TOURIST'S GUIDE THROUGH THE UNITED STATES OF AMERICA, CANADA, ETC.",
-    "cover": "",
-    "author": "W. WILLIAMS",
-    "year": "1851",
-    "id": "74a0094b-2b90-f740-f71d-26448326b439",
-    "priority": {
-      "all": "2",
-      "upcoming": "4",
-      "wishlist": "1"
-    },
-    "hasBeenRead": "false",
-    "ownTheBook": "false",
-    "ownTheEBook": "false",
-    "notes": ""
-  },
-  {
-    "title": "Sustainable Energy",
-    "cover": "http://bks9.books.google.com/books?id=AIbLqsJrW-QC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    "author": "Jefferson W. Tester",
-    "year": "2005",
-    "id": "804146b9-4c69-e681-3da7-827be945263e",
-    "priority": {
-      "all": "1",
-      "upcoming": "3"
-    },
-    "hasBeenRead": "false",
-    "ownTheBook": "false",
-    "ownTheEBook": "false",
-    "notes": ""
-  },
-  {
-    "title": "Database and Expert Systems Applications",
-    "cover": "http://bks8.books.google.com.au/books?id=bkr4GQpX-fYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    "author": "Gerald Quirchmayr, Erich Schweighofer, Trevor J.M. Bench-Capon",
-    "year": "1998",
-    "id": "c6617d97-0378-f732-a539-c375737c0aa4",
-    "notes": "",
-    "hasBeenRead": "false",
-    "ownTheBook": "false",
-    "ownTheEBook": "false",
-    "priority": {
-      "upcoming": "2"
-    }
-  },
-  {
-    "title": "Holy Old Whistlin'",
-    "cover": "http://bks6.books.google.com.au/books?id=AnNnhfeGbdQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    "author": "Brent Connelly",
-    "year": "2005",
-    "id": "703bf8b3-d50f-39ad-1723-c50f55d8e8e0",
-    "notes": "",
-    "hasBeenRead": "false",
-    "ownTheBook": "false",
-    "ownTheEBook": "false",
-    "priority": {
-      "upcoming": "1"
-    }
   }
 ]
