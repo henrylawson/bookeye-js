@@ -3,72 +3,49 @@
 <html>
 <head>
   <title>bookeye - Spec Runner</title>
+  <script type="text/javascript" src="../lib/head-0.96/head.min.js"></script>
+  <script type="text/javascript">
+    head.js(
+      // jasmine test runner scripts
+      "../lib/jasmine-1.2.0.rc3/jasmine.js",
+      "../lib/jasmine-1.2.0.rc3/jasmine-html.js",
+      "../lib/jasmine-1.2.0.rc3/jasmine-runner.js",
+      "../lib/jasmine-jquery-1.3.1/jasmine-jquery.js",
 
+      // library scripts
+      "../lib/jquery-1.7.2/jquery.min.js",
+      "../lib/handlebars-1.0.0.beta.6/handlebars.js", 
+      "../lib/bootstrap-2.0.3/js/bootstrap.min.js",
+      "../lib/bootstrap-2.0.3/components/bootstrap-alert.js",
+      "../lib/bootstrap-2.0.3/components/bootstrap-modal.js",
+      "../lib/bootstrap-2.0.3/components/bootstrap-button.js",
+      "../lib/bootstrap-2.0.3/components/bootstrap-tooltip.js",
+      "../lib/json2js/json2.js",
+
+      // source files
+      "../src/controllers.js",
+      "../src/services.js",
+      "../src/repositories.js",
+      "../src/views.js",
+      "../src/widgets.js",
+      "../src/filters.js",
+      "../src/sorters.js",
+
+      // spec files
+      "../specs/controllers.spec.js",
+      "../specs/views.spec.js",
+      "../specs/services.spec.js",
+      "../specs/repositories.spec.js",
+      "../specs/widgets.spec.js",
+      "../specs/filters.spec.js",
+      "../specs/sorters.spec.js",
+
+      // factory files
+      "../test/factories/book.factory.js"
+    );
+  </script>
   <link rel="shortcut icon" type="image/png" href="../lib/jasmine-1.2.0.rc3/jasmine_favicon.png">
   <link rel="stylesheet" type="text/css" href="../lib/jasmine-1.2.0.rc3/jasmine.css">
-  <script type="text/javascript" src="../lib/jasmine-1.2.0.rc3/jasmine.js"></script>
-  <script type="text/javascript" src="../lib/jasmine-1.2.0.rc3/jasmine-html.js"></script>
-  <script type="text/javascript" src="../lib/jasmine-jquery-1.3.1/jasmine-jquery.js"></script>
-
-  <!-- include library source files here... -->
-  <script type="text/javascript" src="../lib/jquery-1.7.2/jquery.min.js"></script>
-  <script type="text/javascript" src="../lib/handlebars-1.0.0.beta.6/handlebars.js"></script>	
-	<script type="text/javascript" src="lib/bootstrap-2.0.3/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="lib/bootstrap-2.0.3/components/bootstrap-alert.js"></script>
-	<script type="text/javascript" src="lib/bootstrap-2.0.3/components/bootstrap-modal.js"></script>
-	<script type="text/javascript" src="lib/bootstrap-2.0.3/components/bootstrap-button.js"></script>
-	<script type="text/javascript" src="lib/bootstrap-2.0.3/components/bootstrap-tooltip.js"></script>
-	<script type="text/javascript" src="lib/json2js/json2.js"></script>
-
-  <!-- include source files here... -->
-  <script type="text/javascript" src="../src/controllers.js"></script>
-  <script type="text/javascript" src="../src/services.js"></script>
-  <script type="text/javascript" src="../src/repositories.js"></script>
-  <script type="text/javascript" src="../src/views.js"></script>
-  <script type="text/javascript" src="../src/widgets.js"></script>
-  <script type="text/javascript" src="../src/filters.js"></script>	
-	<script type="text/javascript" src="../src/sorters.js"></script>
-
-  <!-- include spec files here... -->
-  <script type="text/javascript" src="../specs/controllers.spec.js"></script>
-  <script type="text/javascript" src="../specs/views.spec.js"></script>
-  <script type="text/javascript" src="../specs/services.spec.js"></script>
-  <script type="text/javascript" src="../specs/repositories.spec.js"></script>
-  <script type="text/javascript" src="../specs/widgets.spec.js"></script>
-  <script type="text/javascript" src="../specs/filters.spec.js"></script>
-  <script type="text/javascript" src="../specs/sorters.spec.js"></script>
-
-  <!-- include factory source files here... -->
-  <script type="text/javascript" src="../test/factories/book.factory.js"></script>
-
-  <script type="text/javascript">
-    (function() {
-      var jasmineEnv = jasmine.getEnv();
-      jasmineEnv.updateInterval = 1000;
-
-      var htmlReporter = new jasmine.HtmlReporter();
-
-      jasmineEnv.addReporter(htmlReporter);
-
-      jasmineEnv.specFilter = function(spec) {
-        return htmlReporter.specFilter(spec);
-      };
-
-      var currentWindowOnload = window.onload;
-
-      window.onload = function() {
-        if (currentWindowOnload) {
-          currentWindowOnload();
-        }
-        execJasmine();
-      };
-
-      function execJasmine() {
-        jasmineEnv.execute();
-      }
-
-    })();
-  </script>
 </head>
 <body>
 </body>

@@ -18,7 +18,7 @@ table.table tr td {
 	vertical-align:middle;
 }
 #status {
-	position:absolute;
+	position:fixed;
 	bottom:0px;
 	right:0px;
 	width:300px;

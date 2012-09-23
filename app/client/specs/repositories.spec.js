@@ -251,14 +251,14 @@ describe("BooksRepository", function() {
 			expect(mockBooksService.postAllBooksToWebService.mostRecentCall.args[1]).toEqual([newBook]);
 		});
 		
-		it("should update the books list on success", function() {
+		it("should not update the books list on success", function() {
 			booksRepository.save(newBook);
 			mockTimeOut.argsForCall[0][0]();
 		
 			var serviceReturnedBooks = BookFactory.createBooks();
 			mockBooksService.postAllBooksToWebService.mostRecentCall.args[0](serviceReturnedBooks);
 			
-			expect(booksRepository.getAll()).toEqual(serviceReturnedBooks);
+			expect(booksRepository.getAll()).not.toEqual(serviceReturnedBooks);
 		});
 		
 		it("should only call the booksService once for multiple updateWebService calls", function() {

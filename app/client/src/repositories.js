@@ -78,7 +78,7 @@ BooksRepository.prototype.updateWebService = function() {
 	this.timeOut(function() {
 		if (booksRepository.serviceCall[currentCallGuid] === true) {
 			booksRepository.booksService.postAllBooksToWebService(function(books) {
-				booksRepository.books = books;
+
 			}, booksRepository.books);
 		}
 	}, 2000);
