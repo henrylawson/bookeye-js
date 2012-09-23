@@ -376,44 +376,56 @@ describe("BooksRepository", function() {
 	});
 	
 	describe("move", function() {
-		var bookToSwap;
-		var book;
+		var books;
 		var key;
 		
 		beforeEach(function() {
 			key = 'all';
-			bookToSwap = BookFactory.createBook();
-			book = BookFactory.createBook();
-			bookToSwap.priority[key] = 99;
-			book.priority[key] = 20;
+			books = [BookFactory.createBook(), BookFactory.createBook(), BookFactory.createBook(), BookFactory.createBook()];
+			books[0].priority[key] = 4;
+			books[1].priority[key] = 3;
+			books[2].priority[key] = 2;
+			books[3].priority[key] = 1;
+			booksRepository.books = books;
 		});
 		
 		it("should not change books priority if bookToSwap is undefined", function() {
-			booksRepository.move(undefined, book, key);
+			booksRepository.move(undefined, books[0], key);
 			
-			expect(book.priority[key]).toEqual(20);
+			expect(books[0].priority[key]).toEqual(4);
 		});
 		
-		it("should swap the priorities of both books for the given key", function() {
-			booksRepository.move(bookToSwap, book, key);
+		it("should swap the priorities of the adjacent books for the given key", function() {
+			booksRepository.move(books[1], books[0], key);
 			
-			expect(bookToSwap.priority[key]).toEqual(20);
-			expect(book.priority[key]).toEqual(99);
+			expect(books[1].priority[key]).toEqual(4);
+			expect(books[0].priority[key]).toEqual(3);
+			expect(books[2].priority[key]).toEqual(2);
+			expect(books[3].priority[key]).toEqual(1);
 		});
 		
-		it("should call addOrUpdate for both books", function() {
-			spyOn(booksRepository, "addOrUpdate");
-
-			booksRepository.move(bookToSwap, book, key);
-
-			expect(booksRepository.addOrUpdate).toHaveBeenCalledWith(book);
-			expect(booksRepository.addOrUpdate).toHaveBeenCalledWith(bookToSwap);
+		it("should update the priorities of all the books when re ordering up", function() {
+			booksRepository.move(books[3], books[0], key);
+			
+			expect(books[3].priority[key]).toEqual(4);
+			expect(books[0].priority[key]).toEqual(3);
+			expect(books[1].priority[key]).toEqual(2);
+			expect(books[2].priority[key]).toEqual(1);
 		});
+		
+		it("should update the priorities of all the books re ordering down", function() {
+			booksRepository.move(books[0], books[3], key);
+			
+			expect(books[1].priority[key]).toEqual(4);
+			expect(books[2].priority[key]).toEqual(3);
+			expect(books[3].priority[key]).toEqual(2);
+			expect(books[0].priority[key]).toEqual(1);
+		})
 
 		it("should call updateWebService on successful move", function() {
 			spyOn(booksRepository, "updateWebService");
 
-			booksRepository.move(bookToSwap, book, key);
+			booksRepository.move(books[1], books[0], key);
 
 			expect(booksRepository.updateWebService).toHaveBeenCalled();
 		});
@@ -421,7 +433,7 @@ describe("BooksRepository", function() {
 		it("should not call updateWebService on unsuccessful move", function() {
 			spyOn(booksRepository, "updateWebService");
 
-			booksRepository.move(undefined, book, key);
+			booksRepository.move(undefined, books[0], key);
 
 			expect(booksRepository.updateWebService).not.toHaveBeenCalled();
 		});
