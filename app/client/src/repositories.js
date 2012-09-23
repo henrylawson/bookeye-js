@@ -40,25 +40,20 @@ BooksRepository.prototype.move = function(bookToMove, book, key) {
 	if (typeof bookToMove !== 'undefined') {
 		var goalPriority = book.priority[key];
 		var beginPriority = bookToMove.priority[key];
-		console.log("start, goal: " + goalPriority + " begin: " + beginPriority);
 		for(var i = 0; i < this.books.length; i++) {
 			var currentPriority = this.books[i].priority[key];
-			console.log("book " + i + " currentPriority: " + currentPriority);
 			if (currentPriority > beginPriority 
 				&& currentPriority <= goalPriority 
 				&& goalPriority > beginPriority) {
-					console.log("from: " + this.books[i].priority[key] + " minus");
 					this.books[i].priority[key]--;
 			} else if (currentPriority < beginPriority 
 				&& currentPriority >= goalPriority 
 				&& goalPriority < beginPriority) {
-				console.log("from: " + this.books[i].priority[key] + " plus");
 				this.books[i].priority[key]++;
 			}
 		}
 		bookToMove.priority[key] = goalPriority;
 		this.updateWebService();
-		console.log("end");
 	}
 }
 BooksRepository.prototype.saveMultiple = function(books) {

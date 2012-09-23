@@ -119,6 +119,69 @@ describe("BooksView", function() {
 
 			expect(options.callbacks.move).toHaveBeenCalledWith(options.books[1], options.books[0]);
 		});
+
+		it("should not have any book selected when no click has been made", function() {
+			booksView.all(options);
+
+			expect(booksView.selected.book).toBeNull();
+			expect(booksView.selected.element).toBeNull();
+		});
+
+		it("should set book as selected book when it is clicked and control key is not down", function() {
+			var e = jQuery.Event("click");
+			e.ctrlKey = false; 
+
+			booksView.all(options);
+			displayElement.find('.book').first().trigger(e);
+
+			expect(booksView.selected.book).toEqual(options.books[0]);
+			expect(booksView.selected.element).not.toBeNull();
+		});
+
+		it("should unselect book as selected book when it is clicked twice", function() {
+			var e = jQuery.Event("click");
+			e.ctrlKey = false; 
+
+			booksView.all(options);
+			displayElement.find('.book').first().trigger(e);
+			displayElement.find('.book').first().trigger(e);
+
+			expect(booksView.selected.book).toBeNull();
+			expect(booksView.selected.element).toBeNull();
+		});
+
+		it("should call move callback when a book is control clicked, when a selected book is set", function() {
+			var e = jQuery.Event("click");
+			e.ctrlKey = true; 
+
+			booksView.all(options);
+			booksView.selected.book = options.books[1];
+			displayElement.find('.book').first().trigger(e);
+
+			expect(options.callbacks.move).toHaveBeenCalledWith(options.books[1], options.books[0]);
+		});
+
+		it("should not call move callback when a book is control clicked, when no selected book is set", function() {
+			var e = jQuery.Event("click");
+			e.ctrlKey = true; 
+
+			booksView.all(options);
+			booksView.selected.book = null;
+			displayElement.find('.book').first().trigger(e);
+
+			expect(options.callbacks.move).not.toHaveBeenCalled();
+		});
+
+		it("should not call move callback when a book is control clicked, when it is its own book", function() {
+			var e = jQuery.Event("click");
+			e.ctrlKey = true; 
+
+			booksView.all(options);
+			booksView.selected.book = options.books[0];
+			displayElement.find('.book').first().trigger(e);
+
+			expect(options.callbacks.move).not.toHaveBeenCalled();
+		});
 	});
 	
 	describe("form", function() {

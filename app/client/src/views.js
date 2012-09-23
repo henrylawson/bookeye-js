@@ -2,6 +2,7 @@ var BooksView = function() {
 	this.booksListing = $('#books-listing');
 	this.booksListingWrapper = $('#books-listing-wrapper');
 	this.tooltipSelector = '[rel=tooltip]';
+	this.selected = {book: null, element: null};
 }
 BooksView.prototype.all = function(options) {
 	var element = $(options.displayElement).empty();
@@ -30,6 +31,26 @@ BooksView.prototype.all = function(options) {
 			bookHtml.find('.move-down').click(function() {
 				options.callbacks.move(bookBelow, book);
 			});
+			bookHtml.click(function(e) {
+				if (e.ctrlKey === true && view.selected.book != null && view.selected.book != book) {
+					options.callbacks.move(view.selected.book, book);
+				} else if (e.ctrlKey === false && view.selected.book == book) {
+					view.selected.element.removeClass('selected');
+					view.selected.book = null;
+					view.selected.element = null;
+				} else {
+					view.selected.book = book;
+					if (view.selected.element !== null) {
+						view.selected.element.removeClass('selected');
+					}
+					view.selected.element = bookHtml;	
+					view.selected.element.addClass('selected');		
+				}
+			});
+			if (view.selected.book == book) {
+				view.selected.element = bookHtml;	
+				view.selected.element.addClass('selected');	
+			}
 			element.append(bookHtml);
 		});
 	} else {
