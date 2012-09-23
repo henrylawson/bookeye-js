@@ -19,22 +19,25 @@ BooksView.prototype.all = function(options) {
 			if (typeof bookBelow === 'undefined') {
 				bookHtml.find('.move-down').hide();
 			}
-			bookHtml.find('.edit').click(function() {
+			bookHtml.find('div, a, button').click(function(event) {
+				event.stopPropagation();
+			});
+			bookHtml.find('.edit').click(function(event) {
 				options.callbacks.edit(book);
 			});
-			bookHtml.find('.delete').click(function() {
+			bookHtml.find('.delete').click(function(event) {
 				options.callbacks.delete(book);
 			});
-			bookHtml.find('.move-up').click(function() {
+			bookHtml.find('.move-up').click(function(event) {
 				options.callbacks.move(bookAbove, book);
 			});
 			bookHtml.find('.move-down').click(function() {
 				options.callbacks.move(bookBelow, book);
 			});
-			bookHtml.click(function(e) {
-				if (e.ctrlKey === true && view.selected.book != null && view.selected.book != book) {
+			bookHtml.click(function(event) {
+				if (event.ctrlKey === true && view.selected.book != null && view.selected.book != book) {
 					options.callbacks.move(view.selected.book, book);
-				} else if (e.ctrlKey === false && view.selected.book == book) {
+				} else if (event.ctrlKey === false && view.selected.book == book) {
 					view.selected.element.removeClass('selected');
 					view.selected.book = null;
 					view.selected.element = null;
