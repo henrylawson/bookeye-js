@@ -3,6 +3,7 @@ var BooksController = function(options) {
 	this.stateOptions = null;
 }
 BooksController.prototype.all = function(options) {
+	this.options.view.loading();
 	this.stateOptions = options || this.stateOptions;
 	this.options.widgets.title.display(this.stateOptions.title);
 	var books = this.options.repository.getAll(this.stateOptions.repository);

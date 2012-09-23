@@ -4,6 +4,9 @@ var BooksView = function() {
 	this.tooltipSelector = '[rel=tooltip]';
 	this.selected = {book: null, element: null};
 }
+BooksView.prototype.loading = function() {
+	$("#loading").show();
+}
 BooksView.prototype.all = function(options) {
 	var element = $(options.displayElement).empty();
 	if (options.books.length > 0) {
@@ -62,6 +65,7 @@ BooksView.prototype.all = function(options) {
 	}	
 	this.booksListing.height(this.booksListingWrapper.height());
 	$(this.tooltipSelector).tooltip();
+	$("#loading").hide();
 }
 BooksView.prototype.form = function(options) {
 	var book = options.book || {};

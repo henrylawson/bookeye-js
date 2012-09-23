@@ -30,50 +30,51 @@
 	<link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-	<div id="confirm">
-	</div>
-	<div class="page-container">
-		<div id="navigation">
-			<div class="navbar navbar-fixed-top">
-			  <div class="navbar-inner">
-				<div class="page-container">
-					<a class="brand" href="#">
-					  bookeye
-					</a>
-					<ul class="items nav">
-						<li class="divider-vertical"></li>
-					</ul>
-					<ul class="right-items nav pull-right">
-					</ul>
+	<div id="loading"></div>
+	<div id="app">
+		<div id="confirm"></div>
+		<div class="page-container">
+			<div id="navigation">
+				<div class="navbar navbar-fixed-top">
+				  <div class="navbar-inner">
+					<div class="page-container">
+						<a class="brand" href="#">
+						  bookeye
+						</a>
+						<ul class="items nav">
+							<li class="divider-vertical"></li>
+						</ul>
+						<ul class="right-items nav pull-right">
+						</ul>
+					</div>
+				  </div>
 				</div>
-			  </div>
+			</div>
+			<div id="title" class="page-header">
+			</div>
+			<div id="books-listing">
+				<div id="books-listing-wrapper">
+					<table class="table table-striped table-condensed">
+						<thead>
+							<tr>
+								<th width="40px" class="priority">Priority</th>
+								<th width="60px">Info</th>
+								<th width="20px">&nbsp;</th>
+								<th>Title</th>
+								<th>Author</th>
+								<th>Notes</th>
+								<th>Year</th>
+								<th width="120px">Actions</th>
+							</tr>
+						</thead>
+						<tbody id="all-books">
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
-		<div id="title" class="page-header">
-		</div>
-		<div id="books-listing">
-			<div id="books-listing-wrapper">
-				<table class="table table-striped table-condensed">
-					<thead>
-						<tr>
-							<th width="40px" class="priority">Priority</th>
-							<th width="60px">Info</th>
-							<th width="20px">&nbsp;</th>
-							<th>Title</th>
-							<th>Author</th>
-							<th>Notes</th>
-							<th>Year</th>
-							<th width="120px">Actions</th>
-						</tr>
-					</thead>
-					<tbody id="all-books">
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-	<div id="modal-storage"></div>
-	<div id="status">
+		<div id="modal-storage"></div>
+		<div id="status"></div>
 	</div>
 </body>
 </html>

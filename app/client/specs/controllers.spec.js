@@ -46,6 +46,14 @@ describe("BooksController", function() {
 			booksController.all(actionOptions);
 		});
 		
+		it("should render loading view at start", function() {
+			spyOn(mockBooksView, 'loading');
+			
+			booksController.all();
+			
+			expect(mockBooksView.loading).toHaveBeenCalled();
+		});
+
 		it("should get all the books from the repository", function() {
 			expect(mockBooksRepository.getAll).toHaveBeenCalledWith(actionOptions.repository);
 		});
