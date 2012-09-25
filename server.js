@@ -6,4 +6,3 @@ server.start({
 	clientDir: path.join(__dirname, 'app', 'client'),
 	port: (process.env.port || 4567)
 });
-
