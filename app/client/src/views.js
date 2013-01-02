@@ -38,9 +38,10 @@ BooksView.prototype.all = function(options) {
 				options.callbacks.move(bookBelow, book);
 			});
 			bookHtml.click(function(event) {
-				if (event.ctrlKey === true && view.selected.book != null && view.selected.book != book) {
+				var isKeyPressed = event.altKey;
+				if (isKeyPressed === true && view.selected.book != null && view.selected.book != book) {
 					options.callbacks.move(view.selected.book, book);
-				} else if (event.ctrlKey === false && view.selected.book == book) {
+				} else if (isKeyPressed === false && view.selected.book == book) {
 					view.selected.element.removeClass('selected');
 					view.selected.book = null;
 					view.selected.element = null;
