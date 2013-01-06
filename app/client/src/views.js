@@ -13,6 +13,7 @@ BooksView.prototype.all = function(options) {
 		var template = Handlebars.compile($('#books-view-all').html());
 		var view = this;
 		$.each(options.books, function(i, book) {
+			book.index = i + 1;
 			var bookHtml = $(template(book));
 			var bookAbove = options.books[i-1];
 			var bookBelow = options.books[i+1];

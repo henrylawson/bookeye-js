@@ -81,6 +81,10 @@ describe("BooksView", function() {
 			it("with has been read checked", function() {
 				expect(displayElement.find('.own-the-ebook')).toHaveClass('checked');
 			});
+
+			it("with index", function() {
+				expect(displayElement.find('.index').html()).toContain(1);
+			});
 		});
 	
 		it("should render multiple books in template", function() {
@@ -129,7 +133,7 @@ describe("BooksView", function() {
 
 		it("should set book as selected book when it is clicked and control key is not down", function() {
 			var e = jQuery.Event("click");
-			e.ctrlKey = false; 
+			e.altKey = false; 
 
 			booksView.all(options);
 			displayElement.find('.book').first().trigger(e);
@@ -140,7 +144,7 @@ describe("BooksView", function() {
 
 		it("should unselect book as selected book when it is clicked twice", function() {
 			var e = jQuery.Event("click");
-			e.ctrlKey = false; 
+			e.altKey = false; 
 
 			booksView.all(options);
 			displayElement.find('.book').first().trigger(e);
@@ -152,7 +156,7 @@ describe("BooksView", function() {
 
 		it("should call move callback when a book is control clicked, when a selected book is set", function() {
 			var e = jQuery.Event("click");
-			e.ctrlKey = true; 
+			e.altKey = true; 
 
 			booksView.all(options);
 			booksView.selected.book = options.books[1];
@@ -163,7 +167,7 @@ describe("BooksView", function() {
 
 		it("should not call move callback when a book is control clicked, when no selected book is set", function() {
 			var e = jQuery.Event("click");
-			e.ctrlKey = true; 
+			e.altKey = true; 
 
 			booksView.all(options);
 			booksView.selected.book = null;
@@ -174,7 +178,7 @@ describe("BooksView", function() {
 
 		it("should not call move callback when a book is control clicked, when it is its own book", function() {
 			var e = jQuery.Event("click");
-			e.ctrlKey = true; 
+			e.altKey = true; 
 
 			booksView.all(options);
 			booksView.selected.book = options.books[0];
