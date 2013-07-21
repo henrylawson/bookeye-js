@@ -95,7 +95,7 @@
     "priority": {
       "all": "118",
       "wishlist": "88",
-      "upcoming": "87"
+      "upcoming": "93"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -129,7 +129,7 @@
     "priority": {
       "all": "130",
       "wishlist": "92",
-      "upcoming": "91"
+      "upcoming": "97"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -381,7 +381,7 @@
     "id": "be8af07a-c8c0-9e45-445d-4528138c2ba5",
     "priority": {
       "all": "127",
-      "upcoming": "93"
+      "upcoming": "99"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -468,7 +468,7 @@
     "priority": {
       "all": "132",
       "wishlist": "90",
-      "upcoming": "89"
+      "upcoming": "95"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -485,7 +485,7 @@
     "priority": {
       "all": "114",
       "wishlist": "86",
-      "upcoming": "86"
+      "upcoming": "92"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -552,7 +552,7 @@
     "priority": {
       "all": "128",
       "wishlist": "20",
-      "upcoming": "106"
+      "upcoming": "112"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -587,7 +587,7 @@
     "priority": {
       "all": "115",
       "wishlist": "91",
-      "upcoming": "124"
+      "upcoming": "130"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -604,7 +604,7 @@
     "priority": {
       "all": "137",
       "wishlist": "29",
-      "upcoming": "126"
+      "upcoming": "132"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -621,7 +621,7 @@
     "priority": {
       "all": "105",
       "wishlist": "83",
-      "upcoming": "88"
+      "upcoming": "94"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -638,7 +638,7 @@
     "priority": {
       "all": "154",
       "wishlist": "84",
-      "upcoming": "85"
+      "upcoming": "91"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -672,7 +672,7 @@
     "priority": {
       "all": "151",
       "wishlist": "46",
-      "upcoming": "82"
+      "upcoming": "88"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -689,7 +689,7 @@
     "priority": {
       "all": "108",
       "wishlist": "85",
-      "upcoming": "81"
+      "upcoming": "87"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -860,7 +860,7 @@
     "priority": {
       "all": "156",
       "wishlist": "89",
-      "upcoming": "92"
+      "upcoming": "98"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -877,7 +877,7 @@
     "priority": {
       "all": "126",
       "wishlist": "82",
-      "upcoming": "90"
+      "upcoming": "96"
     },
     "hasBeenRead": "false",
     "ownTheBook": "false",
@@ -980,7 +980,7 @@
     "ownTheEBook": "false",
     "priority": {
       "all": "101",
-      "upcoming": "98",
+      "upcoming": "104",
       "wishlist": "81"
     },
     "notes": "KB Series",
@@ -1032,7 +1032,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "119",
+      "upcoming": "125",
       "all": "98",
       "wishlist": "80"
     },
@@ -1050,7 +1050,7 @@
     "ownTheEBook": "false",
     "priority": {
       "all": "97",
-      "upcoming": "97",
+      "upcoming": "103",
       "wishlist": "79"
     },
     "notes": "Testing",
@@ -1066,7 +1066,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "80",
+      "upcoming": "86",
       "all": "96",
       "wishlist": "78"
     },
@@ -1098,7 +1098,7 @@
     "id": "bae829e2-3200-03da-d5dd-9afc356e279c",
     "priority": {
       "all": "94",
-      "upcoming": "96",
+      "upcoming": "102",
       "wishlist": "77"
     },
     "notes": "C#",
@@ -1133,7 +1133,7 @@
     "id": "a581cc15-d0d1-ee7e-5ee5-44bec2543553",
     "priority": {
       "all": "92",
-      "upcoming": "79",
+      "upcoming": "85",
       "wishlist": "76"
     },
     "hasBeenRead": "false",
@@ -1150,7 +1150,7 @@
     "id": "693dc096-616c-56b7-a15e-9942e951baad",
     "priority": {
       "all": "91",
-      "upcoming": "78",
+      "upcoming": "84",
       "wishlist": "75"
     },
     "hasBeenRead": "false",
@@ -1167,7 +1167,7 @@
     "id": "c3dee1dc-d96f-ab0a-b0d3-3ad2e2bb39f4",
     "priority": {
       "all": "90",
-      "upcoming": "77",
+      "upcoming": "83",
       "wishlist": "74"
     },
     "notes": "TW Thread",
@@ -1184,7 +1184,7 @@
     "id": "216eca36-0578-6f29-50e7-a95eb17f415f",
     "priority": {
       "all": "89",
-      "upcoming": "76",
+      "upcoming": "82",
       "wishlist": "73"
     },
     "notes": "TW Thread",
@@ -1221,7 +1221,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "73",
+      "upcoming": "79",
       "all": "87",
       "wishlist": "72"
     },
@@ -1239,7 +1239,7 @@
     "ownTheEBook": "false",
     "priority": {
       "all": "86",
-      "upcoming": "75",
+      "upcoming": "81",
       "wishlist": "71"
     },
     "notes": "PowerShell",
@@ -1256,7 +1256,7 @@
     "ownTheEBook": "false",
     "id": "1f79314f-8ee0-e8a8-f822-76d91ee7ffaf",
     "priority": {
-      "upcoming": "72",
+      "upcoming": "78",
       "all": "85",
       "wishlist": "70"
     },
@@ -1289,7 +1289,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "74",
+      "upcoming": "80",
       "all": "83",
       "wishlist": "69"
     },
@@ -1304,7 +1304,7 @@
     "id": "ed788668-6a1a-3d7b-50aa-d51cb66a9efe",
     "priority": {
       "all": "82",
-      "upcoming": "71",
+      "upcoming": "77",
       "wishlist": "68"
     },
     "notes": "Lisp",
@@ -1407,7 +1407,7 @@
     "id": "47385d3e-4882-d283-612f-6b7023a19286",
     "priority": {
       "all": "77",
-      "upcoming": "70",
+      "upcoming": "76",
       "wishlist": "66"
     },
     "hasBeenRead": "false",
@@ -1461,7 +1461,7 @@
     "ownTheEBook": "true",
     "priority": {
       "all": "74",
-      "upcoming": "127"
+      "upcoming": "133"
     },
     "notes": "Fundamentals",
     "index": "11"
@@ -1476,7 +1476,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "69",
+      "upcoming": "75",
       "all": "68",
       "wishlist": "65"
     },
@@ -1493,7 +1493,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "68",
+      "upcoming": "74",
       "all": "72",
       "wishlist": "64"
     },
@@ -1510,7 +1510,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "67",
+      "upcoming": "73",
       "all": "71",
       "wishlist": "63"
     },
@@ -1527,7 +1527,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "66",
+      "upcoming": "72",
       "all": "70",
       "wishlist": "62"
     },
@@ -1544,7 +1544,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "65",
+      "upcoming": "71",
       "all": "69",
       "wishlist": "61"
     },
@@ -1562,7 +1562,7 @@
     "ownTheEBook": "false",
     "priority": {
       "all": "73",
-      "upcoming": "64",
+      "upcoming": "70",
       "wishlist": "60"
     },
     "notes": "TW China",
@@ -1579,7 +1579,7 @@
     "ownTheEBook": "false",
     "priority": {
       "all": "67",
-      "upcoming": "63",
+      "upcoming": "69",
       "wishlist": "67"
     },
     "notes": "TW China",
@@ -1596,7 +1596,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "112",
+      "upcoming": "118",
       "all": "66",
       "wishlist": "59"
     },
@@ -1613,7 +1613,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "103",
+      "upcoming": "109",
       "wishlist": "58",
       "all": "65"
     },
@@ -1630,7 +1630,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "107",
+      "upcoming": "113",
       "wishlist": "57",
       "all": "64"
     },
@@ -1647,7 +1647,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "105",
+      "upcoming": "111",
       "wishlist": "55",
       "all": "63"
     },
@@ -1664,7 +1664,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "62",
+      "upcoming": "68",
       "wishlist": "39",
       "all": "62"
     },
@@ -1699,7 +1699,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "61",
+      "upcoming": "67",
       "wishlist": "54",
       "all": "60"
     },
@@ -1716,7 +1716,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "128",
+      "upcoming": "134",
       "wishlist": "53",
       "all": "59"
     },
@@ -1733,7 +1733,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "60",
+      "upcoming": "66",
       "wishlist": "52",
       "all": "58"
     },
@@ -1750,7 +1750,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "104",
+      "upcoming": "110",
       "wishlist": "51",
       "all": "57"
     },
@@ -1767,7 +1767,7 @@
     "ownTheEBook": "false",
     "id": "a4191828-258a-d395-5ddb-dce9308bc434",
     "priority": {
-      "upcoming": "95",
+      "upcoming": "101",
       "wishlist": "50",
       "all": "56"
     },
@@ -1784,7 +1784,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "59",
+      "upcoming": "65",
       "wishlist": "49",
       "all": "55"
     },
@@ -1801,7 +1801,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "58",
+      "upcoming": "64",
       "wishlist": "48",
       "all": "54"
     },
@@ -1818,7 +1818,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "57",
+      "upcoming": "63",
       "wishlist": "47",
       "all": "53"
     },
@@ -1835,7 +1835,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "true",
     "priority": {
-      "upcoming": "94",
+      "upcoming": "100",
       "all": "52"
     },
     "index": "44"
@@ -1868,7 +1868,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "true",
     "priority": {
-      "upcoming": "83",
+      "upcoming": "89",
       "all": "50"
     },
     "index": "55"
@@ -1884,7 +1884,7 @@
     "ownTheEBook": "true",
     "id": "74b0ddc3-58be-2079-4326-23dcc519e779",
     "priority": {
-      "upcoming": "84",
+      "upcoming": "90",
       "all": "49"
     },
     "index": "54"
@@ -1917,7 +1917,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "108",
+      "upcoming": "114",
       "wishlist": "46",
       "all": "47"
     },
@@ -1934,7 +1934,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "56",
+      "upcoming": "62",
       "wishlist": "45",
       "all": "46"
     },
@@ -1951,7 +1951,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "55",
+      "upcoming": "61",
       "wishlist": "44",
       "all": "45"
     },
@@ -1968,7 +1968,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "54",
+      "upcoming": "60",
       "wishlist": "43",
       "all": "44"
     },
@@ -1985,7 +1985,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "53",
+      "upcoming": "59",
       "wishlist": "42",
       "all": "43"
     },
@@ -2002,7 +2002,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "52",
+      "upcoming": "58",
       "wishlist": "41",
       "all": "42"
     },
@@ -2019,7 +2019,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "51",
+      "upcoming": "57",
       "wishlist": "40",
       "all": "3"
     },
@@ -2036,7 +2036,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "50",
+      "upcoming": "56",
       "wishlist": "56",
       "all": "40"
     },
@@ -2053,7 +2053,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "49",
+      "upcoming": "55",
       "wishlist": "38",
       "all": "39"
     },
@@ -2070,7 +2070,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "48",
+      "upcoming": "54",
       "wishlist": "37",
       "all": "38"
     },
@@ -2087,7 +2087,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "47",
+      "upcoming": "53",
       "wishlist": "36",
       "all": "37"
     },
@@ -2104,7 +2104,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "46",
+      "upcoming": "52",
       "wishlist": "35",
       "all": "36"
     },
@@ -2121,7 +2121,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "45",
+      "upcoming": "51",
       "wishlist": "34",
       "all": "35"
     },
@@ -2138,7 +2138,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "44",
+      "upcoming": "50",
       "wishlist": "33",
       "all": "34"
     },
@@ -2155,7 +2155,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "43",
+      "upcoming": "49",
       "wishlist": "32",
       "all": "33"
     },
@@ -2172,7 +2172,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "42",
+      "upcoming": "48",
       "wishlist": "31",
       "all": "32"
     },
@@ -2189,7 +2189,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "41",
+      "upcoming": "47",
       "wishlist": "30",
       "all": "31"
     },
@@ -2206,7 +2206,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "40",
+      "upcoming": "46",
       "wishlist": "29",
       "all": "30"
     },
@@ -2223,7 +2223,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "39",
+      "upcoming": "45",
       "wishlist": "28",
       "all": "29"
     },
@@ -2240,7 +2240,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "38",
+      "upcoming": "44",
       "wishlist": "27",
       "all": "28"
     },
@@ -2257,7 +2257,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "37",
+      "upcoming": "43",
       "wishlist": "26",
       "all": "27"
     },
@@ -2292,7 +2292,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "36",
+      "upcoming": "42",
       "wishlist": "25",
       "all": "25"
     },
@@ -2309,7 +2309,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "35",
+      "upcoming": "41",
       "wishlist": "24",
       "all": "24"
     },
@@ -2326,7 +2326,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "34",
+      "upcoming": "40",
       "wishlist": "23",
       "all": "23"
     },
@@ -2343,7 +2343,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "118",
+      "upcoming": "124",
       "wishlist": "22",
       "all": "22"
     },
@@ -2360,7 +2360,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "33",
+      "upcoming": "39",
       "wishlist": "21",
       "all": "21"
     },
@@ -2377,7 +2377,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "31",
+      "upcoming": "37",
       "wishlist": "20",
       "all": "20"
     },
@@ -2394,7 +2394,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "32",
+      "upcoming": "38",
       "wishlist": "19",
       "all": "19"
     },
@@ -2411,7 +2411,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "30",
+      "upcoming": "36",
       "wishlist": "18",
       "all": "18"
     },
@@ -2428,7 +2428,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "29",
+      "upcoming": "35",
       "wishlist": "17",
       "all": "17"
     },
@@ -2445,7 +2445,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "28",
+      "upcoming": "34",
       "wishlist": "16",
       "all": "16"
     },
@@ -2462,7 +2462,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "26",
+      "upcoming": "32",
       "wishlist": "5",
       "all": "15"
     },
@@ -2479,7 +2479,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "27",
+      "upcoming": "33",
       "wishlist": "14",
       "all": "14"
     },
@@ -2496,7 +2496,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "25",
+      "upcoming": "31",
       "wishlist": "13",
       "all": "13"
     },
@@ -2513,7 +2513,7 @@
     "ownTheEBook": "false",
     "id": "472d1fda-a1a0-cd4b-d420-3c73c05940fd",
     "priority": {
-      "upcoming": "24",
+      "upcoming": "30",
       "wishlist": "12",
       "all": "12"
     },
@@ -2530,7 +2530,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "110",
+      "upcoming": "116",
       "wishlist": "11",
       "all": "11"
     },
@@ -2547,7 +2547,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "111",
+      "upcoming": "117",
       "wishlist": "10",
       "all": "10"
     },
@@ -2581,7 +2581,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "99",
+      "upcoming": "105",
       "wishlist": "9",
       "all": "8"
     },
@@ -2598,7 +2598,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "114",
+      "upcoming": "120",
       "wishlist": "8",
       "all": "7"
     },
@@ -2615,7 +2615,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "115",
+      "upcoming": "121",
       "wishlist": "7",
       "all": "6"
     },
@@ -2632,7 +2632,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "101",
+      "upcoming": "107",
       "wishlist": "6",
       "all": "5"
     },
@@ -2649,7 +2649,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "100",
+      "upcoming": "106",
       "wishlist": "15",
       "all": "4"
     },
@@ -2666,7 +2666,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "23",
+      "upcoming": "29",
       "all": "41",
       "wishlist": "4"
     },
@@ -2700,7 +2700,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "109",
+      "upcoming": "115",
       "all": "1",
       "wishlist": "3"
     },
@@ -2733,7 +2733,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "102",
+      "upcoming": "108",
       "wishlist": "2"
     },
     "index": "36"
@@ -2765,7 +2765,7 @@
     "ownTheEBook": "false",
     "id": "3e3abe7f-c2f2-ac86-9e86-c731ee03109d",
     "priority": {
-      "upcoming": "22",
+      "upcoming": "28",
       "wishlist": "1"
     },
     "index": "116"
@@ -2811,7 +2811,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "true",
     "priority": {
-      "upcoming": "137"
+      "upcoming": "143"
     },
     "index": "1"
   },
@@ -2826,7 +2826,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "129"
+      "upcoming": "135"
     },
     "index": "9"
   },
@@ -2841,7 +2841,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "19"
+      "upcoming": "25"
     },
     "index": "119"
   },
@@ -2856,7 +2856,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "18"
+      "upcoming": "24"
     },
     "index": "120"
   },
@@ -2871,7 +2871,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "17"
+      "upcoming": "23"
     },
     "index": "121"
   },
@@ -2886,7 +2886,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "15"
+      "upcoming": "21"
     },
     "index": "123"
   },
@@ -2901,7 +2901,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "16"
+      "upcoming": "22"
     },
     "index": "122"
   },
@@ -2916,7 +2916,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "14"
+      "upcoming": "20"
     },
     "index": "124"
   },
@@ -2931,7 +2931,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "13"
+      "upcoming": "19"
     },
     "index": "125"
   },
@@ -2946,7 +2946,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "12"
+      "upcoming": "18"
     },
     "index": "126"
   },
@@ -2961,7 +2961,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "21"
+      "upcoming": "27"
     },
     "index": "117"
   },
@@ -2976,7 +2976,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "20"
+      "upcoming": "26"
     },
     "index": "118"
   },
@@ -2991,7 +2991,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "117"
+      "upcoming": "123"
     },
     "index": "21"
   },
@@ -3006,7 +3006,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "113"
+      "upcoming": "119"
     },
     "index": "25"
   },
@@ -3021,7 +3021,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "11"
+      "upcoming": "17"
     },
     "index": "127"
   },
@@ -3036,7 +3036,7 @@
     "ownTheEBook": "true",
     "id": "f4a689ff-028d-62c5-654c-578500a8a8ad",
     "priority": {
-      "upcoming": "10"
+      "upcoming": "16"
     },
     "index": "128"
   },
@@ -3051,7 +3051,7 @@
     "ownTheEBook": "true",
     "id": "6227388a-8649-ec22-16cb-91277ad28c5a",
     "priority": {
-      "upcoming": "9"
+      "upcoming": "15"
     },
     "index": "129"
   },
@@ -3061,12 +3061,12 @@
     "author": "Gary Gruver, Mike Young, Pat Fulghum",
     "year": "2012",
     "id": "0a78520f-988a-f6bb-dc69-634a93bfa815",
-    "notes": "JeffHumble",
+    "notes": "Jez",
     "hasBeenRead": "false",
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "8"
+      "upcoming": "14"
     },
     "index": "130"
   },
@@ -3081,7 +3081,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "7"
+      "upcoming": "13"
     },
     "index": "131"
   },
@@ -3096,7 +3096,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "6"
+      "upcoming": "12"
     },
     "index": "132"
   },
@@ -3111,7 +3111,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "5"
+      "upcoming": "11"
     },
     "index": "133"
   },
@@ -3126,7 +3126,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "4"
+      "upcoming": "10"
     },
     "index": "134"
   },
@@ -3186,7 +3186,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "true",
     "priority": {
-      "upcoming": "131"
+      "upcoming": "137"
     },
     "index": "7"
   },
@@ -3201,7 +3201,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "122"
+      "upcoming": "128"
     },
     "index": "16"
   },
@@ -3216,7 +3216,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "130"
+      "upcoming": "136"
     },
     "index": "8"
   },
@@ -3231,7 +3231,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "125"
+      "upcoming": "131"
     },
     "index": "13"
   },
@@ -3246,7 +3246,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "123"
+      "upcoming": "129"
     },
     "index": "15"
   },
@@ -3261,7 +3261,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "true",
     "priority": {
-      "upcoming": "116"
+      "upcoming": "122"
     },
     "index": "22"
   },
@@ -3276,7 +3276,7 @@
     "ownTheEBook": "true",
     "id": "9f3035fb-8b0d-03d8-f4dd-a15f48748147",
     "priority": {
-      "upcoming": "135"
+      "upcoming": "141"
     },
     "index": "3"
   },
@@ -3291,7 +3291,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "3"
+      "upcoming": "9"
     },
     "index": "135"
   },
@@ -3306,7 +3306,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "120"
+      "upcoming": "126"
     },
     "index": "18"
   },
@@ -3321,7 +3321,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "121"
+      "upcoming": "127"
     },
     "index": "17"
   },
@@ -3336,7 +3336,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "2"
+      "upcoming": "8"
     },
     "index": "136"
   },
@@ -3351,7 +3351,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "1"
+      "upcoming": "7"
     },
     "index": "137"
   },
@@ -3366,7 +3366,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "134"
+      "upcoming": "140"
     },
     "index": "4"
   },
@@ -3381,7 +3381,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "133"
+      "upcoming": "139"
     },
     "index": "5"
   },
@@ -3396,7 +3396,7 @@
     "ownTheBook": "false",
     "ownTheEBook": "false",
     "priority": {
-      "upcoming": "132"
+      "upcoming": "138"
     },
     "index": "6"
   },
@@ -3411,8 +3411,98 @@
     "ownTheEBook": "true",
     "id": "a0f14ffe-7896-808b-548b-6dd8bdd1f30f",
     "priority": {
-      "upcoming": "136"
+      "upcoming": "142"
     },
     "index": "2"
+  },
+  {
+    "title": "The Enterprise and Scrum",
+    "cover": "http://bks6.books.google.com.br/books?id=I2UAiIEEJagC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+    "author": "Ken Schwaber",
+    "year": "2011",
+    "id": "f2a764a1-a7fa-1ae1-12a7-93a26395b03d",
+    "notes": "TW Thread",
+    "hasBeenRead": "false",
+    "ownTheBook": "false",
+    "ownTheEBook": "false",
+    "priority": {
+      "upcoming": "6"
+    },
+    "index": "138"
+  },
+  {
+    "title": "Managing Humans",
+    "cover": "http://bks0.books.google.com.br/books?id=-VLNVRTnTF8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+    "author": "Michael Lopp",
+    "year": "2012",
+    "id": "1d667e66-fd04-3a13-a4c6-36c62686434c",
+    "notes": "TW Thread",
+    "hasBeenRead": "false",
+    "ownTheBook": "false",
+    "ownTheEBook": "false",
+    "priority": {
+      "upcoming": "5"
+    },
+    "index": "139"
+  },
+  {
+    "title": "Becoming a Technical Leader",
+    "cover": "http://bks1.books.google.com.br/books?id=CLK3AAAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+    "author": "Gerald M. Weinberg",
+    "year": "1986",
+    "id": "60bd71ff-a1e8-f77a-323b-86abcc4471cb",
+    "notes": "TW Thread",
+    "hasBeenRead": "false",
+    "ownTheBook": "false",
+    "ownTheEBook": "false",
+    "priority": {
+      "upcoming": "4"
+    },
+    "index": "140"
+  },
+  {
+    "title": "Thinking, Fast and Slow",
+    "cover": "http://bks1.books.google.com.br/books?id=ZuKTvERuPG8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+    "author": "Daniel Kahneman",
+    "year": "2011",
+    "id": "ef52c495-f8f8-9af4-f257-d06b76ace0ff",
+    "notes": "TW Thread",
+    "hasBeenRead": "false",
+    "ownTheBook": "false",
+    "ownTheEBook": "false",
+    "priority": {
+      "upcoming": "3"
+    },
+    "index": "141"
+  },
+  {
+    "title": "Vagrant: Up and Running",
+    "cover": "http://bks5.books.google.com.br/books?id=9c0hT2EOxLQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+    "author": "Mitchell Hashimoto",
+    "year": "2013",
+    "id": "84f887d3-ee96-9093-9cc8-c3cd1e2a14f9",
+    "notes": "DevOps",
+    "hasBeenRead": "false",
+    "ownTheBook": "false",
+    "ownTheEBook": "false",
+    "priority": {
+      "upcoming": "2"
+    },
+    "index": "142"
+  },
+  {
+    "title": "Linux Shell Scripting Cookbook",
+    "cover": "http://bks4.books.google.com.br/books?id=Y4xAhxfTXxgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+    "author": "Sarath Lakshman",
+    "year": "2011",
+    "id": "b0bc13ed-a2f3-f62e-532f-74f25ce92525",
+    "notes": "TWer",
+    "hasBeenRead": "false",
+    "ownTheBook": "false",
+    "ownTheEBook": "false",
+    "priority": {
+      "upcoming": "1"
+    },
+    "index": "143"
   }
 ]
