@@ -17,7 +17,7 @@ this.test = function(req, res) {
 
 this.postBooks = function(req, res) {
 	var booksJsonFileDir = path.dirname(settings.booksFilePath);
-	if (!path.existsSync(booksJsonFileDir)) {
+	if (!fileSystem.existsSync(booksJsonFileDir)) {
 		fileSystem.mkdirSync(booksJsonFileDir);
 	}
 	var booksJson = req.param('books', []);
@@ -27,7 +27,7 @@ this.postBooks = function(req, res) {
 }
 
 this.getBooks = function(req, res) {
-	if (path.existsSync(settings.booksFilePath)) {
+	if (fileSystem.existsSync(settings.booksFilePath)) {
 		var booksString = fileSystem.readFileSync(settings.booksFilePath);
 		var booksJson = JSON.parse(booksString);
 		res.send(booksJson);
