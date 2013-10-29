@@ -3,7 +3,7 @@ var path = require('path');
 var basicRouter = require('./basic.router');
 
 this.start = function(settings) {
-	var app = express.createServer();
+	var app = express();
 
 	app.configure(function(){
 		app.use(express.methodOverride());
