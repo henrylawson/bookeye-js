@@ -3,7 +3,7 @@
 PWD=`pwd`
 
 # Install dependencies
-npm -g update forever
+npm -g install forever
 
 # Kill node process
 forever stop usain
