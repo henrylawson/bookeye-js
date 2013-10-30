@@ -1,7 +1,12 @@
 #! /bin/bash
 
+PWD=`pwd`
+
+# Install dependencies
+npm -g update forever
+
 # Kill node process
-# ??
+forever stop usain
 
 # Backup books.json
 if [ -f ./master/bookeye-js-master/app/data/books.json ]; then
@@ -23,7 +28,4 @@ fi
 # Restart node
 cd ./master/bookeye-js-master
 npm install
-cmd="node usain"
-$cmd &
-PID=$!
-echo $PID >> ./pid
+forever --sourceDir $PWD -a -l $PWD/../../bookeye-forever.log -o $PWD/../../bookeye-output.log -e $PWD/../../bookeye-error.log --minUptime 5000 --spinSleepTime 2000 start usain 
