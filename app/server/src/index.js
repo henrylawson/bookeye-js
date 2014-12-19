@@ -9,7 +9,7 @@ this.start = function(settings) {
 		app.use(express.json({limit: '50mb'}));
 		app.use(express.urlencoded({limit: '50mb'}));
 		app.use(express.methodOverride());
-		app.use(express.bodyParser());
+		app.use(express.bodyParser({limit: '50mb'}));
 		app.use(express.static(path.join(settings.currentDir, 'public')));
 		app.use('/src', express.static(path.join(settings.clientDir, 'src')));
 		app.use(app.router);
