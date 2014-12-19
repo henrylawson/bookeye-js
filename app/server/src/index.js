@@ -6,6 +6,8 @@ this.start = function(settings) {
 	var app = express();
 
 	app.configure(function(){
+		app.use(express.json({limit: '50mb'}));
+		app.use(express.urlencoded({limit: '50mb'}));
 		app.use(express.methodOverride());
 		app.use(express.bodyParser());
 		app.use(express.static(path.join(settings.currentDir, 'public')));
