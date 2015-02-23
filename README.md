@@ -11,6 +11,4 @@ getting started
 
 deploying
 =========
-1. wget -N https://github.com/henrylawson/bookeye-js/raw/master/deploy.sh
-2. chmod u+x deploy.sh
-3. sudo ./deploy.sh
+wget -N https://github.com/henrylawson/bookeye-js/raw/master/deploy.sh && chmod u+x deploy.sh && sudo ./deploy.sh

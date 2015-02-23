@@ -32,4 +32,4 @@ fi
 # Restart node
 cd ./master/bookeye-js-master
 npm install
-pm2 start ./master/bookeye-js-master/usain --name "api"
+pm2 start usain --name "api"
