@@ -3,10 +3,10 @@
 PWD=`pwd`
 
 # Install dependencies
-npm -g install forever
+npm install pm2 -g --unsafe-perm
 
 # Kill node process
-forever stop usain
+pm2 delete bookeye
 
 # Backup books.json
 if [ -f ./master/bookeye-js-master/app/data/books.json ]; then
@@ -32,4 +32,4 @@ fi
 # Restart node
 cd ./master/bookeye-js-master
 npm install
-forever -a -l $PWD/../../bookeye-forever.log -o $PWD/../../bookeye-output.log -e $PWD/../../bookeye-error.log --sourceDir $PWD --minUptime 5000 --spinSleepTime 2000 start usain 
+pm2 start ./master/bookeye-js-master/usain --name "api"
