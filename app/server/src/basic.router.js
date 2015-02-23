@@ -20,17 +20,15 @@ this.postBooks = function(req, res) {
 	if (!fileSystem.existsSync(booksJsonFileDir)) {
 		fileSystem.mkdirSync(booksJsonFileDir);
 	}
-	var booksJson = req.param('books', []);
+	var booksJson = req.body.books;
 	var booksString = JSON.stringify(booksJson, null, 2);
-	console.log("Writting to [" + settings.booksFilePath + "]");
 	fileSystem.writeFile(settings.booksFilePath, booksString, function (error) {
 		if (error) {
-			console.log("Error occured, booksString, " + error);
+			res.status(500).jsonp({ error: error });
 		} else {
-			console.log("Completed writting to [" + settings.booksFilePath + "]", booksString);
+			res.send(booksJson);
 		}
 	});
-	res.send(booksJson);
 }
 
 this.getBooks = function(req, res) {
