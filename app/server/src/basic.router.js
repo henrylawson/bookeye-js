@@ -22,7 +22,13 @@ this.postBooks = function(req, res) {
 	}
 	var booksJson = req.param('books', []);
 	var booksString = JSON.stringify(booksJson, null, 2);
-	fileSystem.writeFile(settings.booksFilePath, booksString);
+	console.log("Writting to [" + settings.booksFilePath + "]");
+	fileSystem.writeFile(settings.booksFilePath, booksString, function (error) {
+		if (error) {
+			console.log("Error occured" + error);
+		}
+	});
+	console.log("Completed writting to [" + settings.booksFilePath + "]");
 	res.send(booksJson);
 }
 
