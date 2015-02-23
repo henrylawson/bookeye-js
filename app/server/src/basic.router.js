@@ -25,10 +25,11 @@ this.postBooks = function(req, res) {
 	console.log("Writting to [" + settings.booksFilePath + "]");
 	fileSystem.writeFile(settings.booksFilePath, booksString, function (error) {
 		if (error) {
-			console.log("Error occured" + error);
+			console.log("Error occured, booksString, " + error);
+		} else {
+			console.log("Completed writting to [" + settings.booksFilePath + "]", booksString);
 		}
 	});
-	console.log("Completed writting to [" + settings.booksFilePath + "]");
 	res.send(booksJson);
 }
 

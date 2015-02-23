@@ -19,13 +19,17 @@ rm -f master.zip
 wget https://github.com/henrylawson/bookeye-js/archive/master.zip
 unzip ./master.zip -d master
 
+# Create books.json and make and read/write/executable
+mkdir ./master/bookeye-js-master/app/data
+touch ./master/bookeye-js-master/app/data/books.json
+chmod a+rwx ./master/bookeye-js-master/app/data/books.json
+
 # Restore backed up books.json
 if [ -f ./books.json_bk ]; then
-	mkdir ./master/bookeye-js-master/app/data
 	cp -f ./books.json_bk ./master/bookeye-js-master/app/data/books.json
 fi
 
 # Restart node
 cd ./master/bookeye-js-master
 npm install
-forever --uid "usain" --sourceDir $PWD -a -l $PWD/../../bookeye-forever.log -o $PWD/../../bookeye-output.log -e $PWD/../../bookeye-error.log --minUptime 5000 --spinSleepTime 2000 start usain 
+forever -a -l $PWD/../../bookeye-forever.log -o $PWD/../../bookeye-output.log -e $PWD/../../bookeye-error.log --sourceDir $PWD --minUptime 5000 --spinSleepTime 2000 start usain 
