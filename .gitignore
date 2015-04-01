@@ -2,3 +2,4 @@
 node_modules
 bookeye-js.tmproj
 /app/data/books.json
+nohup.out

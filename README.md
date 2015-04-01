@@ -8,6 +8,7 @@ getting started
 2. cd bookeye-js
 3. npm install
 4. node usain
+5. cp bookeye-js.plist ~/Library/LaunchAgents
 
 deploying
 =========
