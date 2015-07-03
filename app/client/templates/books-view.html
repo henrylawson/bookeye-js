@@ -16,6 +16,7 @@
       <span class="label has-been-read {{#if hasBeenRead}}checked label-success{{/if}}" rel="tooltip" title="Has been read?">R</span>
       <span class="label own-the-book {{#if ownTheBook}}checked label-success{{/if}}" rel="tooltip" title="Own the book?">B</span>
       <span class="label own-the-ebook {{#if ownTheEBook}}checked label-success{{/if}}" rel="tooltip" title="Own the eBook?">E</span>
+      <span class="label own-the-audiobook {{#if ownTheAudiobook}}checked label-success{{/if}}" rel="tooltip" title="Own the Audiobook?">A</span>
     </td>
     <td class="link-out">
       <a href="http://www.google.com/search?hl=en&btnI=1&q=site:amazon.com+{{title}}" target="_blank" rel="tooltip" title="More information"><i class="icon-info-sign"></i></a>
@@ -87,6 +88,12 @@
         <label class="checkbox">
           <input type="checkbox" {{#if ownTheEBook}}checked="checked"{{/if}} class="own-the-ebook" name="own-the-ebook" />
           Own the eBook?
+        </label>
+      </div>
+      <div class="field">
+        <label class="checkbox">
+          <input type="checkbox" {{#if ownTheAudiobook}}checked="checked"{{/if}} class="own-the-audiobook" name="own-the-audiobook" />
+          Own the Audiobook?
         </label>
       </div>
     </div>

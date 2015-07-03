@@ -46,6 +46,7 @@ describe("BooksView", function() {
         book.hasBeenRead = true;
         book.ownTheBook = false;
         book.ownTheEBook = true;
+        book.ownTheAudiobook = true;
         options.books = [book];
         booksView.all(options);
       });
@@ -76,6 +77,10 @@ describe("BooksView", function() {
 
       it("with own the ebook unchecked", function() {
         expect(displayElement.find('.own-the-book')).not.toHaveClass('checked');
+      });
+
+      it("with own the audiobook checked", function() {
+        expect(displayElement.find('.own-the-audiobook')).toHaveClass('checked');
       });
 
       it("with has been read checked", function() {
@@ -218,6 +223,7 @@ describe("BooksView", function() {
         book.hasBeenRead = true;
         book.ownTheBook = true;
         book.ownTheEBook = false;
+        book.ownTheAudiobook = true;
         options.book = book;
         booksView.form(options);
       });
@@ -248,6 +254,10 @@ describe("BooksView", function() {
 
       it("with own the ebook unchecked", function() {
         expect(displayElement.find('.own-the-book').prop('checked')).toEqual(book.ownTheBook);
+      });
+
+      it("with own the audiobook unchecked", function() {
+        expect(displayElement.find('.own-the-audiobook').prop('checked')).toEqual(book.ownTheAudiobook);
       });
 
       it("with has been read checked", function() {
@@ -350,6 +360,14 @@ describe("BooksView", function() {
         displayElement.find('div.save').click();
 
         expect(mostRecentSaveCall.args[0].ownTheEBook).toBeTruthy();
+      });
+
+      it("with 'own the audiobook' modified", function() {
+        displayElement.find('input.own-the-audiobook').prop('checked', true);
+
+        displayElement.find('div.save').click();
+
+        expect(mostRecentSaveCall.args[0].ownTheAudiobook).toBeTruthy();
       });
     });
 
