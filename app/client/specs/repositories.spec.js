@@ -209,6 +209,7 @@ describe("BooksRepository", function() {
       newBook.hasBeenRead = undefined;
       newBook.ownTheBook = undefined;
       newBook.ownTheEBook = undefined;
+      newBook.ownTheAudiobook = undefined;
       newBook.priority = undefined;
 
       BooksRepository.setDefaultPropertiesIfMissing(newBook);
@@ -222,6 +223,7 @@ describe("BooksRepository", function() {
       expect(newBook.hasBeenRead).not.toBeUndefined();
       expect(newBook.ownTheBook).not.toBeUndefined();
       expect(newBook.ownTheEBook).not.toBeUndefined();
+      expect(newBook.ownTheAudiobook).not.toBeUndefined();
       expect(newBook.priority).not.toBeUndefined();
     });
 

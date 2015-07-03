@@ -113,6 +113,7 @@ BooksRepository.setDefaultPropertiesIfMissing = function(book) {
   book.hasBeenRead = book.hasBeenRead || false;
   book.ownTheBook = book.ownTheBook || false;
   book.ownTheEBook = book.ownTheEBook || false;
+  book.ownTheAudiobook = book.ownTheAudiobook || false;
   book.priority = book.priority || {};
 }
 BooksRepository.setIdIfMissing = function(book) {

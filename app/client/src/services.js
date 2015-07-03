@@ -28,6 +28,7 @@ BooksService.prototype.cleanSerializedBooks = function(books) {
     books[i].hasBeenRead = this.cleanBoolean(books[i].hasBeenRead);
     books[i].ownTheBook = this.cleanBoolean(books[i].ownTheBook);
     books[i].ownTheEBook = this.cleanBoolean(books[i].ownTheEBook);
+    books[i].ownTheAudiobook = this.cleanBoolean(books[i].ownTheAudiobook);
   }
   return books;
 }

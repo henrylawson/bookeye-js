@@ -108,6 +108,10 @@ describe("BooksService", function() {
         it("by converting ownTheEBook to boolean", function() {
           expect(booksReturnedFromService[0].ownTheEBook).toEqual(false);
         });
+
+        it("by converting ownTheAudiobook to boolean", function() {
+          expect(booksReturnedFromService[0].ownTheAudiobook).toEqual(false);
+        });
       });
     });
   });

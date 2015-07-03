@@ -8,7 +8,8 @@ BookFilter.upcoming = function(book) {
 BookFilter.wishlist = function(book) {
   return book.hasBeenRead === false
     && book.ownTheEBook === false
-    && book.ownTheBook === false;
+    && book.ownTheBook === false
+    && book.ownTheAudiobook === false;
 }
 BookFilter.read = function(book) {
   return book.hasBeenRead === true;
