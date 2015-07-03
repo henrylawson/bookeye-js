@@ -13,3 +13,11 @@ getting started
 deploying
 =========
 wget -N https://github.com/henrylawson/bookeye-js/raw/master/deploy.sh && chmod u+x deploy.sh && sudo ./deploy.sh
+
+installing
+==========
+launchctl load bookeye-js.plist
+
+unisntalling
+============
+launchctl unload bookeye-js.plist
