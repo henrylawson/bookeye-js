@@ -1,109 +1,109 @@
 <script id="books-view-all" type="text/x-handlebars-template">
-	<tr class="book">
-		<td class="cover-container cover-image">
-			{{{cover}}}
-		</td>
-		<td class="index">
-			<div class="index">{{index}}</div>
-		</td>
-		<td class="priority">
-			<div class="row-fluid">
-				<div class="span6"><div class="move-up"><i class="icon-chevron-up"></i></div></div>
-				<div class="span6"><div class="move-down"><i class="icon-chevron-down"></i></div></div>
-			</div>
-		</td>
-		<td>
-			<span class="label has-been-read {{#if hasBeenRead}}checked label-success{{/if}}" rel="tooltip" title="Has been read?">R</span>
-			<span class="label own-the-book {{#if ownTheBook}}checked label-success{{/if}}" rel="tooltip" title="Own the book?">B</span>
-			<span class="label own-the-ebook {{#if ownTheEBook}}checked label-success{{/if}}" rel="tooltip" title="Own the eBook?">E</span>
-		</td>
-		<td class="link-out">
-			<a href="http://www.google.com/search?hl=en&btnI=1&q=site:amazon.com+{{title}}" target="_blank" rel="tooltip" title="More information"><i class="icon-info-sign"></i></a>
-		</td>
-		<td class="title-cell">
-			<span class="title"><strong>{{title}}</strong></span>
-		</td>
-		<td>
-			<span class="author">{{author}}</span>
-		</td>
-		<td>
-			<span class="notes">{{#if notes}}<code>{{notes}}</code>{{/if}}</span>
-		</td>
-		<td class="year-cell">
-			<span class="year">{{year}}</span>
-		</td>
-		<td>
-			<div class="delete btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> Delete</div>
-			<div class="edit btn btn-primary btn-mini"><i class="icon-edit icon-white"></i> Edit</div>
-		</td>
-	</tr>
+  <tr class="book">
+    <td class="cover-container cover-image">
+      {{{cover}}}
+    </td>
+    <td class="index">
+      <div class="index">{{index}}</div>
+    </td>
+    <td class="priority">
+      <div class="row-fluid">
+        <div class="span6"><div class="move-up"><i class="icon-chevron-up"></i></div></div>
+        <div class="span6"><div class="move-down"><i class="icon-chevron-down"></i></div></div>
+      </div>
+    </td>
+    <td>
+      <span class="label has-been-read {{#if hasBeenRead}}checked label-success{{/if}}" rel="tooltip" title="Has been read?">R</span>
+      <span class="label own-the-book {{#if ownTheBook}}checked label-success{{/if}}" rel="tooltip" title="Own the book?">B</span>
+      <span class="label own-the-ebook {{#if ownTheEBook}}checked label-success{{/if}}" rel="tooltip" title="Own the eBook?">E</span>
+    </td>
+    <td class="link-out">
+      <a href="http://www.google.com/search?hl=en&btnI=1&q=site:amazon.com+{{title}}" target="_blank" rel="tooltip" title="More information"><i class="icon-info-sign"></i></a>
+    </td>
+    <td class="title-cell">
+      <span class="title"><strong>{{title}}</strong></span>
+    </td>
+    <td>
+      <span class="author">{{author}}</span>
+    </td>
+    <td>
+      <span class="notes">{{#if notes}}<code>{{notes}}</code>{{/if}}</span>
+    </td>
+    <td class="year-cell">
+      <span class="year">{{year}}</span>
+    </td>
+    <td>
+      <div class="delete btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> Delete</div>
+      <div class="edit btn btn-primary btn-mini"><i class="icon-edit icon-white"></i> Edit</div>
+    </td>
+  </tr>
 </script>
 <script id="books-view-all-empty" type="text/x-handlebars-template">
-	<tr class="book">
-		<td colspan="10">
-			No books to display
-		</td>
-	</tr>
+  <tr class="book">
+    <td colspan="10">
+      No books to display
+    </td>
+  </tr>
 </script>
 <script id="books-view-form" type="text/x-handlebars-template">
-	<form class="modal">
-		<div class="modal-header">
-	    	<h3>Book Editor</h3>
-	  	</div>															
-		<div class="modal-body book-form">
-			<div class="field">
-				<label>Title</label>
-				<input type="text" value="{{title}}" class="title" name="title" />
-			</div>
-			<div class="field">
-				<label>Author</label>
-				<input type="text" value="{{author}}" class="author" name="author" />
-			</div>
-			<div class="field">
-				<label>Year</label>
-				<input type="text" value="{{year}}" class="year" name="year" />
-			</div>
-			<div class="field">
-				<label>Cover</label>
-				<input type="text" value="{{{cover}}}" class="cover" name="cover" />
-			</div>
-			<div class="field">
-				<label>Notes</label>
-				<textarea class="notes">{{notes}}</textarea>
-			</div>
-			<div class="field">
-				<label class="checkbox">
-					<input type="checkbox" {{#if hasBeenRead}}checked="checked"{{/if}} class="has-been-read" name="has-been-read" /> 
-					Has been read?
-				</label>
-			</div>
-			<div class="field">
-				<label class="checkbox">
-					<input type="checkbox" {{#if ownTheBook}}checked="checked"{{/if}} class="own-the-book" name="own-the-book" />
-					Own the book?
-				</label>
-			</div>
-			<div class="field">
-				<label class="checkbox">
-					<input type="checkbox" {{#if ownTheEBook}}checked="checked"{{/if}} class="own-the-ebook" name="own-the-ebook" />
-					Own the eBook?
-				</label>
-			</div>
-		</div>	
-		<div class="modal-footer">
-			<div class="cancel btn">Cancel</div>
-			<div class="save btn btn-primary">Save</div>
-		</div>
-	</form>
+  <form class="modal">
+    <div class="modal-header">
+        <h3>Book Editor</h3>
+      </div>
+    <div class="modal-body book-form">
+      <div class="field">
+        <label>Title</label>
+        <input type="text" value="{{title}}" class="title" name="title" />
+      </div>
+      <div class="field">
+        <label>Author</label>
+        <input type="text" value="{{author}}" class="author" name="author" />
+      </div>
+      <div class="field">
+        <label>Year</label>
+        <input type="text" value="{{year}}" class="year" name="year" />
+      </div>
+      <div class="field">
+        <label>Cover</label>
+        <input type="text" value="{{{cover}}}" class="cover" name="cover" />
+      </div>
+      <div class="field">
+        <label>Notes</label>
+        <textarea class="notes">{{notes}}</textarea>
+      </div>
+      <div class="field">
+        <label class="checkbox">
+          <input type="checkbox" {{#if hasBeenRead}}checked="checked"{{/if}} class="has-been-read" name="has-been-read" />
+          Has been read?
+        </label>
+      </div>
+      <div class="field">
+        <label class="checkbox">
+          <input type="checkbox" {{#if ownTheBook}}checked="checked"{{/if}} class="own-the-book" name="own-the-book" />
+          Own the book?
+        </label>
+      </div>
+      <div class="field">
+        <label class="checkbox">
+          <input type="checkbox" {{#if ownTheEBook}}checked="checked"{{/if}} class="own-the-ebook" name="own-the-ebook" />
+          Own the eBook?
+        </label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="cancel btn">Cancel</div>
+      <div class="save btn btn-primary">Save</div>
+    </div>
+  </form>
 </script>
 <script id="books-view-delete-confirm" type="text/x-handlebars-template">
-	<div class="alert alert-block alert-error fade in">
-		<button class="close cancel" data-dismiss="alert">×</button>
-		<h4 class="alert-heading">Hold up!</h4>
-		<p>Are you sure you want to delete &#34;{{title}}&#34; from bookeye, forever!?</p>
-		<p>
-			<button class="btn btn-danger btn-mini delete" href="#">Delete it!</button> 
-			<button class="btn btn-mini cancel" href="#">Nooo, let&#39;s keep it!</button>
-		</p>
-	</div>
+  <div class="alert alert-block alert-error fade in">
+    <button class="close cancel" data-dismiss="alert">×</button>
+    <h4 class="alert-heading">Hold up!</h4>
+    <p>Are you sure you want to delete &#34;{{title}}&#34; from bookeye, forever!?</p>
+    <p>
+      <button class="btn btn-danger btn-mini delete" href="#">Delete it!</button>
+      <button class="btn btn-mini cancel" href="#">Nooo, let&#39;s keep it!</button>
+    </p>
+  </div>
 </script>

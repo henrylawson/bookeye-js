@@ -1,47 +1,47 @@
 <script id="look-books-view-form" type="text/x-handlebars-template">
-	<div class="modal">
-		<div class="modal-header">
-	    	<h3>Quick Add</h3>
-	  	</div>															
-		<div class="modal-body book-form">
-			<div class="well form-search">
-				<input type="text" class="input-medium search-query query" name="query">
-				<div class="btn search" data-loading-text="Loading stuff...">Search</div>
-			</div>
-			<div id="search-result">
-			</div>
-		</div>
-		<div class="modal-footer">
-			<div class="cancel btn">Cancel</div>
-			<div class="add btn btn-primary">Add</div>
-		</div>
-	</div>
+  <div class="modal">
+    <div class="modal-header">
+        <h3>Quick Add</h3>
+      </div>
+    <div class="modal-body book-form">
+      <div class="well form-search">
+        <input type="text" class="input-medium search-query query" name="query">
+        <div class="btn search" data-loading-text="Loading stuff...">Search</div>
+      </div>
+      <div id="search-result">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="cancel btn">Cancel</div>
+      <div class="add btn btn-primary">Add</div>
+    </div>
+  </div>
 </script>
 <script id="look-books-view-search-result" type="text/x-handlebars-template">
-	<div class="book">
-		<table class="table table-bordered">
-			<tr>
-				<th>Title</th>
-				<td><strong>{{title}}</strong></td>
-			</tr>
-			<tr>
-				<th>Author</th>
-				<td>{{author}}</td>
-			</tr>
-			<tr>
-				<th>Year</th>
-				<td>{{year}}</td>
-			</tr>
-		</table>
-	</div>
+  <div class="book">
+    <table class="table table-bordered">
+      <tr>
+        <th>Title</th>
+        <td><strong>{{title}}</strong></td>
+      </tr>
+      <tr>
+        <th>Author</th>
+        <td>{{author}}</td>
+      </tr>
+      <tr>
+        <th>Year</th>
+        <td>{{year}}</td>
+      </tr>
+    </table>
+  </div>
 </script>
 <script id="look-books-view-search-result-error" type="text/x-handlebars-template">
-	<div class="alert alert-error">
-		Dearest user, it appears I&#39;ve failed to perform the search!
-	</div>
+  <div class="alert alert-error">
+    Dearest user, it appears I&#39;ve failed to perform the search!
+  </div>
 </script>
 <script id="look-books-view-search-result-nothingFound" type="text/x-handlebars-template">
-	<div class="alert alert-info">
-		Dat book don&#39;t exist brah!
-	</div>
+  <div class="alert alert-info">
+    Dat book don&#39;t exist brah!
+  </div>
 </script>
