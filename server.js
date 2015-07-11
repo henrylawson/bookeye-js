@@ -4,5 +4,5 @@ var path = require('path');
 server.start({
   currentDir: path.join(__dirname, 'app'),
   clientDir: path.join(__dirname, 'app', 'client'),
-  port: (process.env.port || 1234)
+  port: (process.env.port || 9444)
 });

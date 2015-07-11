@@ -47,6 +47,7 @@ describe("BooksView", function() {
         book.ownTheBook = false;
         book.ownTheEBook = true;
         book.ownTheAudiobook = true;
+        book.queuedInSafari = true;
         options.books = [book];
         booksView.all(options);
       });
@@ -81,6 +82,10 @@ describe("BooksView", function() {
 
       it("with own the audiobook checked", function() {
         expect(displayElement.find('.own-the-audiobook')).toHaveClass('checked');
+      });
+
+      it("with queued in safari checked", function() {
+        expect(displayElement.find('.queued-in-safari')).toHaveClass('checked');
       });
 
       it("with has been read checked", function() {
@@ -224,6 +229,7 @@ describe("BooksView", function() {
         book.ownTheBook = true;
         book.ownTheEBook = false;
         book.ownTheAudiobook = true;
+        book.queuedInSafari = true;
         options.book = book;
         booksView.form(options);
       });
@@ -258,6 +264,10 @@ describe("BooksView", function() {
 
       it("with own the audiobook unchecked", function() {
         expect(displayElement.find('.own-the-audiobook').prop('checked')).toEqual(book.ownTheAudiobook);
+      });
+
+      it("with queued in safari unchecked", function() {
+        expect(displayElement.find('.queued-in-safari').prop('checked')).toEqual(book.queuedInSafari);
       });
 
       it("with has been read checked", function() {
@@ -368,6 +378,14 @@ describe("BooksView", function() {
         displayElement.find('div.save').click();
 
         expect(mostRecentSaveCall.args[0].ownTheAudiobook).toBeTruthy();
+      });
+
+      it("with 'queued in safari' modified", function() {
+        displayElement.find('input.queued-in-safari').prop('checked', true);
+
+        displayElement.find('div.save').click();
+
+        expect(mostRecentSaveCall.args[0].queuedInSafari).toBeTruthy();
       });
     });
 

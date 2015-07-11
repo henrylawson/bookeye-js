@@ -112,6 +112,10 @@ describe("BooksService", function() {
         it("by converting ownTheAudiobook to boolean", function() {
           expect(booksReturnedFromService[0].ownTheAudiobook).toEqual(false);
         });
+
+        it("by converting queuedInSafari to boolean", function() {
+          expect(booksReturnedFromService[0].queuedInSafari).toEqual(false);
+        });
       });
     });
   });

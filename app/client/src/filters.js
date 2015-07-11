@@ -9,7 +9,8 @@ BookFilter.wishlist = function(book) {
   return book.hasBeenRead === false
     && book.ownTheEBook === false
     && book.ownTheBook === false
-    && book.ownTheAudiobook === false;
+    && book.ownTheAudiobook === false
+    && book.queuedInSafari === false;
 }
 BookFilter.read = function(book) {
   return book.hasBeenRead === true;

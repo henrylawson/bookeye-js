@@ -85,6 +85,7 @@ BooksView.prototype.form = function(options) {
     book.ownTheBook = formHtml.find('input.own-the-book').prop('checked');
     book.ownTheEBook = formHtml.find('input.own-the-ebook').prop('checked');
     book.ownTheAudiobook = formHtml.find('input.own-the-audiobook').prop('checked');
+    book.queuedInSafari = formHtml.find('input.queued-in-safari').prop('checked');
     formHtml.modal('hide');
     options.callbacks.save(book);
   });

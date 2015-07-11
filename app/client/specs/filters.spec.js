@@ -35,6 +35,7 @@ describe("BookFilter", function() {
       book.ownTheEBook = false;
       book.ownTheBook = false;
       book.ownTheAudiobook = false;
+      book.queuedInSafari = false;
 
       expect(BookFilter.wishlist(book)).toBeTruthy();
     });
@@ -62,6 +63,7 @@ describe("BookFilter", function() {
     it("should be false for a book that has not been read but the audiobook is owned", function() {
       book.hasBeenRead = false;
       book.ownTheAudiobook = true;
+      book.queuedInSafari = true;
 
       expect(BookFilter.wishlist(book)).toBeFalsy();
     });

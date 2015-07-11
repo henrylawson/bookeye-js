@@ -14,6 +14,7 @@ BookFactory.createBooks = function() {
       ownTheBook: true,
       ownTheEBook: true,
       ownTheAudiobook: true,
+      queuedInSafari: true,
       priority: {
         all: 1
       },
@@ -29,6 +30,7 @@ BookFactory.createBooks = function() {
       ownTheBook: false,
       ownTheEBook: false,
       ownTheAudiobook: false,
+      queuedInSafari: false,
       priority: {
         all: 1
       },
@@ -47,6 +49,7 @@ BookFactory.createBook = function() {
     ownTheBook: true,
     ownTheEBook: true,
     ownTheAudiobook: true,
+    queuedInSafari: true,
     priority: {
       all: 1
     },
@@ -68,7 +71,7 @@ BookFactory.createSerializedBook = function() {
     hasBeenRead: 'true',
     ownTheBook: 'true',
     ownTheEBook: 'false',
-    ownTheAudiobook: 'false',
+    queuedInSafari: 'false',
     priority: {
       all: '1'
     },
