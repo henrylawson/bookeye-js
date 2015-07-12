@@ -1,47 +1,51 @@
 body {
-	padding-top:50px;
+  padding-top:50px;
 }
 div.page-container {
-	margin-left:10px;
-	margin-right:10px;
+  margin-left:10px;
+  margin-right:10px;
 }
 .cover-container {
-	display:none;
+  display:none;
 }
 .modal-backdrop {
-	opacity:0.2;
+  opacity:0.2;
 }
 .move-down, .move-up {
-	padding-top:4px;
-	cursor:pointer;
+  padding-top:4px;
+  cursor:pointer;
+}
+.modal-body {
+  max-height: 430px;
+  overflow: visible;
 }
 table.table tr td {
-	vertical-align:middle;
+  vertical-align:middle;
 }
 #status {
-	position:fixed;
-	bottom:0px;
-	right:0px;
-	width:300px;
-	margin-right:15px;
+  position:fixed;
+  bottom:0px;
+  right:0px;
+  width:300px;
+  margin-right:15px;
 }
 #confirm {
-	position:fixed;
-	top:40px;
-	width:100%;
+  position:fixed;
+  top:40px;
+  width:100%;
 }
 #confirm .alert {
-	border-radius: 0;
+  border-radius: 0;
 }
 .loading {
-	height:64px;
-	background:url("../img/loading.gif") no-repeat center center;
+  height:64px;
+  background:url("../img/loading.gif") no-repeat center center;
 }
 #all-books .book {
-	cursor:pointer;
+  cursor:pointer;
 }
 #all-books tr.selected td {
-	background:#e9e9e9;
-	border-top:1px solid #999;
-	border-bottom:1px solid #999;
+  background:#e9e9e9;
+  border-top:1px solid #999;
+  border-bottom:1px solid #999;
 }
